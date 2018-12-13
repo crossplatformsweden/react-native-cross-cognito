@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components <ForgotForm /> Component should render 1`] = `<View />`;

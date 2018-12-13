@@ -1,0 +1,67 @@
+// https://itnext.io/testing-react-16-3-components-with-react-test-renderer-without-enzyme-d9c65d689e88
+import React from 'react';
+import CrossButton, { ICrossButtonProps } from './CrossButton';
+import TestRenderer from 'react-test-renderer';
+import { styles } from '../../styles';
+
+function setup(iconName: string, title?: any, size?: number, onPress?: () => void) {
+  return TestRenderer.create(
+    <CrossButton
+      iconName={iconName}
+      title={title}
+      color="blue"
+      onPress={onPress || jest.fn()}
+      size={size || 64}
+    />
+  );
+}
+
+jest.unmock('react-native');
+jest.unmock('./CrossButton');
+
+// Default export requires this type of mocking
+// jest.mock('react-native-stager', () => ({
+//   __esModule: true,
+//   Stage: 'View',
+//   StageButtons: 'View',
+//   StageProgress: 'View',
+//   default: 'View',
+// }));
+
+describe('components', () => {
+  describe('<CrossButton />', () => {
+    describe('`ICrossButtonProps` interface', () =>  {
+      const propsMock: ICrossButtonProps = {};
+      it('Should match snapshot', () => {
+        expect(propsMock).toMatchSnapshot();
+      });
+
+      it('Should have `color` property that is undefined', () => {
+        expect(propsMock.color).toBeUndefined();
+      });
+    })
+
+    describe('With `title` and `iconName` properties provided', () => {
+      it('Component should render', () => {
+        const wrapper = setup('home', 'home');
+        expect(wrapper.toJSON()).toMatchSnapshot();
+      });
+
+      it('Should have paper <Button />', () => {
+        const wrapper = setup('home', 'home');
+        const child = wrapper.root.findByProps({ mode: 'text' });
+        expect(child.type).toEqual('View');
+      });
+
+      it('<FontAwesomeButton /> onPress should be called', () => {
+        let called = false;
+        const onCalled = () => called = !called;
+
+        const wrapper = setup('map', undefined, undefined, onCalled);
+        const child = wrapper.root.findByProps({ name: 'map' });
+        child.props.onPress();
+        expect(called).toBeTruthy();
+      });
+    });
+  });
+});

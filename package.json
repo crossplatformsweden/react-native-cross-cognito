@@ -1,0 +1,100 @@
+{
+  "name": "react-native-cross-cognito",
+  "version": "0.2.4",
+  "description": "React-Native implementation of AWS Cognito and Amplify SDK including login screens",
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "yarn install-globals && yarn lint",
+    "install-globals": "yarn global add typescript tslint prettier codecov",
+    "lint": "./scripts/lint.sh",
+    "git-add": "git add -A",
+    "read-sh": "sudo find . -name \"*.sh\" | xargs chmod u+x",
+    "build": "tsc -p ./tsconfig.json",
+    "build-watch": "tsc -p ./tsconfig.json --watch",
+    "test": "node node_modules/jest/bin/jest.js --ci",
+    "test-watch": "node node_modules/jest/bin/jest.js --watchAll -u",
+    "test-watch-fast": "node node_modules/jest/bin/jest.js --watchAll -u --collectCoverage=false",
+    "test-lint-build": "yarn test && yarn lint && yarn build && yarn docs && yarn gh-pages",
+    "npm-version": "./scripts/npm-version.sh",
+    "docs": "yarn generate-docs && yarn gh-pages",
+    "generate-docs": "./scripts/docs.sh",
+    "gh-pages": "NODE_DEBUG=gh-pages && yarn gh-clean && gh-pages --dotfiles -d docs",
+    "gh-clean": "node ./node_modules/gh-pages/bin/gh-pages-clean.js",
+    "preversion": "yarn lint && yarn test",
+    "version": "yarn build && git add -A source",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crossplatformsweden/react-native-cross-cognito"
+  },
+  "keywords": [
+    "react-native",
+    "typescript",
+    "cognito",
+    "aws",
+    "amplify",
+    "crossplatform",
+    "login",
+    "authentication"
+  ],
+  "author": "thomashagstrom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crossplatformsweden/react-native-cross-cognito/issues"
+  },
+  "homepage": "https://github.com/crossplatformsweden/react-native-cross-cognito#readme",
+  "devDependencies": {
+    "@babel/runtime": "^7.1.5",
+    "@expo/vector-icons": "^6.3.1",
+    "@types/enzyme": "^3.1.14",
+    "@types/es6-promise": "^3.3.0",
+    "@types/expo": "^27.0.8",
+    "@types/expo__vector-icons": "^6.2.3",
+    "@types/graphql": "^14.0.0",
+    "@types/jest": "^23.3.2",
+    "@types/lodash": "^4.14.118",
+    "@types/mapbox-gl": "^0.48.0",
+    "@types/react": "^16.4.14",
+    "@types/react-native": "^0.56.21",
+    "@types/react-native-fbsdk": "^0.6.2",
+    "@types/react-native-google-signin": "^0.12.3",
+    "@types/react-native-indicators": "^0.13.1",
+    "@types/react-native-vector-icons": "^4.6.3",
+    "@types/react-navigation": "^2.0.21",
+    "@types/react-navigation-material-bottom-tabs": "^0.3.0",
+    "@types/react-test-renderer": "^16.0.2",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
+    "gh-pages": "^2.0.1",
+    "husky": "1.0.0-rc.13",
+    "jest": "23.6.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
+    "prettier": "^1.14.3",
+    "react": "^16.6.3",
+    "react-dom": "^16.5.2",
+    "react-native": "^0.57.5",
+    "react-native-paper": "^2.2.4",
+    "react-native-typescript-transformer": "^1.2.10",
+    "react-test-renderer": "^16.5.2",
+    "ts-jest": "^23.1.4",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.0",
+    "tslint-react": "^3.6.0",
+    "typedoc": "https://github.com/TypeStrong/typedoc",
+    "typescript": "^3.1.6"
+  },
+  "peerDependencies": {
+    "react-native-paper": "^2.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn build && yarn test"
+    }
+  },
+  "dependencies": {
+  }
+}
