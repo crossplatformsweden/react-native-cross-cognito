@@ -1,9 +1,10 @@
 // https://itnext.io/testing-react-16-3-components-with-react-test-renderer-without-enzyme-d9c65d689e88
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import { LoginForm } from './index';
+import CognitoLogin from './CognitoLogin';
 
 jest.unmock('react-native');
+jest.unmock('./CognitoLogin');
 
 // Default export requires this type of mocking
 // jest.mock('react-native-stager', () => ({
@@ -15,12 +16,30 @@ jest.unmock('react-native');
 // }));
 
 describe('components', () => {
-  describe('index', () => {
-    it('Should have LoginForm', () => {
-      const wrapper = TestRenderer.create(
-        <LoginForm onEmailChanged={jest.fn()} onPasswordChanged={jest.fn()} />
-      );
+  describe('<CognitoLogin />', () => {
+    it('Component should render', () => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
       expect(wrapper.toJSON()).toMatchSnapshot();
+    });
+
+    it('onEmailChanged should update state', () => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+
+      const expectedEmail = 'bogus@stuff.com';
+      wrapper.root.instance.onEmailChanged(expectedEmail);
+
+      expect(wrapper.root.instance.state.userInput.email).toBe(expectedEmail);
+    });
+
+    it('onPasswordChanged should update state', () => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+
+      const expectedPassword = 'sup3rSecre7';
+      wrapper.root.instance.onPasswordChanged(expectedPassword);
+
+      expect(wrapper.root.instance.state.userInput.password).toBe(
+        expectedPassword
+      );
     });
 
     // it('Should have paper <Button />', () => {

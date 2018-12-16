@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components <CognitoLogin /> Component should render 1`] = `
+<View
+  style={Object {}}
+>
+  <View
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <TextInput
+      autoCapitalize="none"
+      autoCorrect={false}
+      clearButtonMode="always"
+      label="E-mail"
+      onChangeText={[Function]}
+      placeholder="E-mail"
+      value=""
+    />
+    <TextInput
+      clearButtonMode="always"
+      label="Password"
+      onChangeText={[Function]}
+      secureTextEntry={true}
+      value=""
+    />
+  </View>
+  <View
+    style={Object {}}
+  >
+    <Button
+      backgroundColor="#349b34"
+      iconName="sign-in"
+      mode="contained"
+      onPress={[Function]}
+      title="Log in"
+    />
+  </View>
+</View>
+`;

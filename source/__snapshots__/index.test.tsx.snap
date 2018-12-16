@@ -1,3 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components index Should have LoginForm 1`] = `<View />`;
+exports[`components index Should have LoginForm 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
+  <TextInput
+    autoCapitalize="none"
+    autoCorrect={false}
+    clearButtonMode="always"
+    label="E-mail"
+    onChangeText={[Function]}
+    placeholder="E-mail"
+    value=""
+  />
+  <TextInput
+    clearButtonMode="always"
+    label="Password"
+    onChangeText={[Function]}
+    secureTextEntry={true}
+    value=""
+  />
+</View>
+`;

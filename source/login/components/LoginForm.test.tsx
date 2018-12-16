@@ -18,24 +18,32 @@ jest.unmock('./LoginForm');
 describe('components', () => {
   describe('<LoginForm />', () => {
     it('Component should render', () => {
-      const wrapper = TestRenderer.create(<LoginForm />);
+      const wrapper = TestRenderer.create(
+        <LoginForm onEmailChanged={jest.fn()} onPasswordChanged={jest.fn()} />
+      );
+
       expect(wrapper.toJSON()).toMatchSnapshot();
     });
 
-    // it('Should have paper <Button />', () => {
-    //   const wrapper = TestRenderer.create(<ConfirmForm />);
-    //   const child = wrapper.root.findByProps({ mode: 'text' });
-    //   expect(child.type).toEqual('View');
-    // });
+    it('onEmailChanged should be called with new value', () => {
+      let gotText: string | undefined = undefined;
+      const onCalled = (val: string | undefined) => (gotText = val);
 
-    // it('<FontAwesomeButton /> onPress should be called', () => {
-    //   let called = false;
-    //   const onCalled = () => (called = !called);
+      const newEmail = '111222';
 
-    //   const wrapper = TestRenderer.create(<ConfirmForm />);
-    //   const child = wrapper.root.findByProps({ name: 'map' });
-    //   child.props.onPress();
-    //   expect(called).toBeTruthy();
-    // });
+      const wrapper = TestRenderer.create(
+        <LoginForm
+          initialEmail='bogus@test'
+          onEmailChanged={onCalled}
+          onPasswordChanged={jest.fn()}
+        />
+      );
+
+      const child = wrapper.root.findByProps({ label: 'E-mail' });
+      child.props.onChangeText(newEmail);
+
+      // There will not be a value test time
+      expect(gotText).toEqual(newEmail);
+    });
   });
 });
