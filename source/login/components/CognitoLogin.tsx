@@ -7,9 +7,14 @@ import {
   CrossButton,
   ICrossButtonProps,
 } from 'react-native-cross-components';
-import { ICognitoUserVariables } from '../../types';
+import { ICognitoUserVariables, CognitoAuthState } from '../../types';
 import { CognitoUserInputContext } from '../../contexts';
 import { OnLogin } from '../events/OnLogin';
+import {
+  CognitoUser,
+  IAuthenticationCallback,
+} from 'amazon-cognito-identity-js';
+import _ from 'lodash';
 
 export interface ICognitoLoginProps {
   /**
@@ -24,6 +29,10 @@ interface ICognitoLoginState {
    * See {@link ICognitoUserVariables}
    */
   userInput: ICognitoUserVariables;
+  /**
+   * See {@link CognitoAuthState}
+   */
+  authState: CognitoAuthState;
 }
 
 /**
@@ -51,6 +60,7 @@ export class CognitoLogin extends React.Component<
         email: undefined,
         password: undefined,
       },
+      authState: 'Unauthenticated',
     };
 
     this.onEmailChanged = this.onEmailChanged.bind(this);
@@ -70,8 +80,15 @@ export class CognitoLogin extends React.Component<
     this.setState({ userInput });
   }
 
-  onLogin() {
-    OnLogin(this.state.userInput);
+  async onLogin() {
+    const result = await OnLogin(this.state.userInput);
+    const user = result as CognitoUser;
+    if (!_.isNil(user)) {
+      this.setState({ authState: 'Authenticated' });
+    }
+
+    const callback = result as IAuthenticationCallback;
+    console.log('** onLogin Callback ', callback);
   }
 
   render() {
