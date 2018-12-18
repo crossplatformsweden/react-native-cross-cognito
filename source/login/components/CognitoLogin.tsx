@@ -10,10 +10,6 @@ import {
 import { ICognitoUserVariables, CognitoAuthState } from '../../types';
 import { CognitoUserInputContext } from '../../contexts';
 import { OnLogin } from '../events/OnLogin';
-import {
-  CognitoUser,
-  IAuthenticationCallback,
-} from 'amazon-cognito-identity-js';
 import _ from 'lodash';
 
 export interface ICognitoLoginProps {
@@ -82,13 +78,7 @@ export class CognitoLogin extends React.Component<
 
   async onLogin() {
     const result = await OnLogin(this.state.userInput);
-    const user = result as CognitoUser;
-    if (!_.isNil(user)) {
-      this.setState({ authState: 'Authenticated' });
-    }
-
-    const callback = result as IAuthenticationCallback;
-    console.log('** onLogin Callback ', callback);
+    console.log('**** onLogin result: ', result);
   }
 
   render() {
@@ -108,10 +98,10 @@ export class CognitoLogin extends React.Component<
         <View style={styles.container}>
           <CrossButton
             onPress={this.onLogin}
-            mode='contained'
-            title='Log in'
+            mode="contained"
+            title="Log in"
             backgroundColor={Colors.NextButton}
-            iconName='sign-in'
+            iconName="sign-in"
           />
         </View>
       </View>
