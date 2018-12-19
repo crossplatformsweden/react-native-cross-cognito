@@ -29,21 +29,40 @@ describe('components', () => {
       let gotText: string | undefined = undefined;
       const onCalled = (val: string | undefined) => (gotText = val);
 
-      const newEmail = '111222';
+      const newInput = '111222';
 
       const wrapper = TestRenderer.create(
         <LoginForm
-          initialEmail='bogus@test'
+          initialEmail="bogus@test"
           onEmailChanged={onCalled}
           onPasswordChanged={jest.fn()}
         />
       );
 
       const child = wrapper.root.findByProps({ label: 'E-mail' });
-      child.props.onChangeText(newEmail);
+      child.props.onChangeText(newInput);
 
-      // There will not be a value test time
-      expect(gotText).toEqual(newEmail);
+      expect(gotText).toEqual(newInput);
+    });
+
+    it('onPasswordChanged should be called with new value', () => {
+      let gotText: string | undefined = undefined;
+      const onCalled = (val: string | undefined) => (gotText = val);
+
+      const newInput = '111222';
+
+      const wrapper = TestRenderer.create(
+        <LoginForm
+          initialPassword="bogus@test"
+          onEmailChanged={jest.fn()}
+          onPasswordChanged={onCalled}
+        />
+      );
+
+      const child = wrapper.root.findByProps({ secureTextEntry: true });
+      child.props.onChangeText(newInput);
+
+      expect(gotText).toEqual(newInput);
     });
   });
 });

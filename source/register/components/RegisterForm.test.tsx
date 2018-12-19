@@ -18,24 +18,78 @@ jest.unmock('./RegisterForm');
 describe('components', () => {
   describe('<RegisterForm />', () => {
     it('Component should render', () => {
-      const wrapper = TestRenderer.create(<RegisterForm />);
+      const wrapper = TestRenderer.create(
+        <RegisterForm
+          onPhoneChanged={jest.fn()}
+          onEmailChanged={jest.fn()}
+          onPasswordChanged={jest.fn()}
+        />
+      );
+
       expect(wrapper.toJSON()).toMatchSnapshot();
     });
 
-    // it('Should have paper <Button />', () => {
-    //   const wrapper = TestRenderer.create(<ConfirmForm />);
-    //   const child = wrapper.root.findByProps({ mode: 'text' });
-    //   expect(child.type).toEqual('View');
-    // });
+    it('onEmailChanged should be called with new value', () => {
+      let gotText: string | undefined = undefined;
+      const onCalled = (val: string | undefined) => (gotText = val);
 
-    // it('<FontAwesomeButton /> onPress should be called', () => {
-    //   let called = false;
-    //   const onCalled = () => (called = !called);
+      const newInput = '111222';
 
-    //   const wrapper = TestRenderer.create(<ConfirmForm />);
-    //   const child = wrapper.root.findByProps({ name: 'map' });
-    //   child.props.onPress();
-    //   expect(called).toBeTruthy();
-    // });
+      const wrapper = TestRenderer.create(
+        <RegisterForm
+          onPhoneChanged={jest.fn()}
+          initialEmail="bogus@test"
+          onEmailChanged={onCalled}
+          onPasswordChanged={jest.fn()}
+        />
+      );
+
+      const child = wrapper.root.findByProps({ label: 'E-mail' });
+      child.props.onChangeText(newInput);
+
+      expect(gotText).toEqual(newInput);
+    });
+
+    it('onPhoneChanged should be called with new value', () => {
+      let gotText: string | undefined = undefined;
+      const onCalled = (val: string | undefined) => (gotText = val);
+
+      const newInput = '111222';
+
+      const wrapper = TestRenderer.create(
+        <RegisterForm
+          onEmailChanged={jest.fn()}
+          initialPhone="bogus@test"
+          onPhoneChanged={onCalled}
+          onPasswordChanged={jest.fn()}
+        />
+      );
+
+      const child = wrapper.root.findByProps({ label: 'Phone' });
+      child.props.onChangeText(newInput);
+
+      expect(gotText).toEqual(newInput);
+    });
+
+    it('onPasswordChanged should be called with new value', () => {
+      let gotText: string | undefined = undefined;
+      const onCalled = (val: string | undefined) => (gotText = val);
+
+      const newInput = '111222';
+
+      const wrapper = TestRenderer.create(
+        <RegisterForm
+          onPhoneChanged={jest.fn()}
+          initialPassword="bogus@test"
+          onEmailChanged={jest.fn()}
+          onPasswordChanged={onCalled}
+        />
+      );
+
+      const child = wrapper.root.findByProps({ secureTextEntry: true });
+      child.props.onChangeText(newInput);
+
+      expect(gotText).toEqual(newInput);
+    });
   });
 });

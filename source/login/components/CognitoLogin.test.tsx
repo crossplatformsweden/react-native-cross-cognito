@@ -2,6 +2,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import CognitoLogin from './CognitoLogin';
+import _ from 'lodash';
 
 jest.unmock('react-native');
 jest.unmock('./CognitoLogin');
@@ -42,20 +43,33 @@ describe('components', () => {
       );
     });
 
-    // it('Should have paper <Button />', () => {
-    //   const wrapper = TestRenderer.create(<ConfirmForm />);
-    //   const child = wrapper.root.findByProps({ mode: 'text' });
-    //   expect(child.type).toEqual('View');
-    // });
+    it('onPhoneChanged should update state', () => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
 
-    // it('<FontAwesomeButton /> onPress should be called', () => {
-    //   let called = false;
-    //   const onCalled = () => (called = !called);
+      const expectedInput = '07304655556';
+      wrapper.root.instance.onPhoneChanged(expectedInput);
 
-    //   const wrapper = TestRenderer.create(<ConfirmForm />);
-    //   const child = wrapper.root.findByProps({ name: 'map' });
-    //   child.props.onPress();
-    //   expect(called).toBeTruthy();
-    // });
+      expect(wrapper.root.instance.state.userInput.phone).toBe(expectedInput);
+    });
+
+    it('`onLogin` should set `state.result` to defined value', async (done) => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+      const child = wrapper.root.findByProps({ iconName: 'sign-in' });
+      await child.props.onPress();
+      const result = _.get(wrapper, ['root', 'instance', 'state', 'result']);
+
+      expect(result).not.toBeUndefined();
+      done();
+    });
+
+    it('`onRegister` should set `state.formState` to `Register`', async (done) => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+      const child = wrapper.root.findByProps({ title: 'Register' });
+      await child.props.onPress();
+      const result = _.get(wrapper, ['root', 'instance', 'state', 'formState']);
+
+      expect(result).toBe('Register');
+      done();
+    });
   });
 });

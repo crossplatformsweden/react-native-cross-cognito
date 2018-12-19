@@ -1,3 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components <RegisterForm /> Component should render 1`] = `<View />`;
+exports[`components <RegisterForm /> Component should render 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
+  <TextInput
+    autoCapitalize="none"
+    autoCorrect={false}
+    clearButtonMode="always"
+    label="E-mail"
+    onChangeText={[Function]}
+    placeholder="E-mail"
+    value=""
+  />
+  <TextInput
+    autoCorrect={false}
+    label="Phone"
+    maskProps={
+      Object {
+        "options": Object {
+          "dddMask": "(46)",
+        },
+        "type": "cel-phone",
+      }
+    }
+    onChangeText={[Function]}
+    value=""
+  />
+  <TextInput
+    clearButtonMode="always"
+    label="Password"
+    onChangeText={[Function]}
+    secureTextEntry={true}
+    value=""
+  />
+</View>
+`;

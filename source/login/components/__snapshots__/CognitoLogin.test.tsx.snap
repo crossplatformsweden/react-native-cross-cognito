@@ -5,38 +5,56 @@ exports[`components <CognitoLogin /> Component should render 1`] = `
   style={Object {}}
 >
   <View
-    style={
-      Array [
-        Object {},
-      ]
-    }
-  >
-    <TextInput
-      autoCapitalize="none"
-      autoCorrect={false}
-      clearButtonMode="always"
-      label="E-mail"
-      onChangeText={[Function]}
-      placeholder="E-mail"
-      value=""
-    />
-    <TextInput
-      clearButtonMode="always"
-      label="Password"
-      onChangeText={[Function]}
-      secureTextEntry={true}
-      value=""
-    />
-  </View>
-  <View
     style={Object {}}
   >
+    <View
+      style={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false}
+        clearButtonMode="always"
+        label="E-mail"
+        onChangeText={[Function]}
+        placeholder="E-mail"
+        value=""
+      />
+      <TextInput
+        clearButtonMode="always"
+        label="Password"
+        onChangeText={[Function]}
+        secureTextEntry={true}
+        value=""
+      />
+    </View>
     <Button
       backgroundColor="#349b34"
       iconName="sign-in"
       mode="contained"
       onPress={[Function]}
       title="Log in"
+    />
+    <Button
+      backgroundColor="#3180e0"
+      mode="contained"
+      onPress={[Function]}
+      title="Register"
+    />
+  </View>
+  <View
+    style={Object {}}
+  >
+    <Text
+      isCaption={true}
+      style={
+        Object {
+          "color": "red",
+        }
+      }
     />
   </View>
 </View>
