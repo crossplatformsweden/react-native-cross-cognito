@@ -23,7 +23,16 @@ describe('components', () => {
       expect(wrapper.toJSON()).toMatchSnapshot();
     });
 
-    it('onEmailChanged should update state', () => {
+    it('`loginButtonProps` should set button title', () => {
+      const wrapper = TestRenderer.create(
+        <CognitoLogin loginButtonProps={{ title: 'MyTitle' }} />
+      );
+
+      const child = wrapper.root.findByProps({ iconName: 'sign-in' });
+      expect(child.props.title).toBe('MyTitle')
+    });
+
+    it('`onEmailChanged` should update state', () => {
       const wrapper = TestRenderer.create(<CognitoLogin />);
 
       const expectedEmail = 'bogus@stuff.com';
@@ -32,7 +41,7 @@ describe('components', () => {
       expect(wrapper.root.instance.state.userInput.email).toBe(expectedEmail);
     });
 
-    it('onPasswordChanged should update state', () => {
+    it('`onPasswordChanged` should update state', () => {
       const wrapper = TestRenderer.create(<CognitoLogin />);
 
       const expectedPassword = 'sup3rSecre7';
@@ -43,7 +52,7 @@ describe('components', () => {
       );
     });
 
-    it('onPhoneChanged should update state', () => {
+    it('`onPhoneChanged` should update state', () => {
       const wrapper = TestRenderer.create(<CognitoLogin />);
 
       const expectedInput = '07304655556';

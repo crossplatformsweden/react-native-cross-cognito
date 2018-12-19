@@ -55,14 +55,14 @@ interface ICognitoLoginState {
  * A form for logging in to AWS Cognito through Amplify.
  *
  * Remarks:
- * * Requires Amplify to be configured
+ * * Requires Amplify to be configured: https://aws-amplify.github.io/docs/js/react
  * * State is managed using React.Context. See {@link CognitoUserInputContext}
  *
- * https://aws-amplify.github.io/docs/js/react
+ * Props are {@link ICognitoLoginProps}
  *
  * @example
- *  <CognitoLogin>
- *      // Custom layouts here
+ *  <CognitoLogin loginButtonProps={{title: 'Log in dude!'}}>
+ *     <View>{*\/Custom layouts here\/*}</View>
  *  </CognitoLogin>
  */
 export class CognitoLogin extends React.Component<
@@ -151,6 +151,7 @@ export class CognitoLogin extends React.Component<
               title="Log in"
               backgroundColor={Colors.NextButton}
               iconName="sign-in"
+              {...this.props.loginButtonProps}
             />
             <CrossButton
               onPress={() =>

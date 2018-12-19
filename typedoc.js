@@ -1,6 +1,6 @@
 module.exports = {
   out: './docs/dist/api/',
-  name: 'Crossplatform React-Native Core',
+  name: 'Crossplatform React-Native Cognito',
   mode: 'modules',
   module: 'commonjs',
   target: 'ES6',

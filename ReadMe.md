@@ -48,9 +48,9 @@ See **[Components](#components)** below for examples
 
 ![GitHub](https://img.shields.io/github/license/crossplatformsweden/react-native-cross-cognito.svg)
 
-[![React Native](https://img.shields.io/badge/React%20Native-v0.57-blue.svg)](https://facebook.github.io/react-native/)
-[![React Native Paper](https://img.shields.io/badge/React%20Native%20Paper-v2.2.4-blue.svg)](https://github.com/callstack/react-native-paper)
-[![React Native Vector Icons](https://img.shields.io/badge/React%20Native%20Vector%20Icons-v4.5.0-blue.svg)](https://github.com/oblador/react-native-vector-icons)
+[![aws-amplify](https://img.shields.io/badge/AWS%20Amplify-v1.1.17-blue.svg)](https://github.com/aws-amplify/amplify-js)
+[![aws-amplify-react-native](https://img.shields.io/badge/AWS%20Amplify%20React%20Native-v2.1.5-blue.svg)](https://www.npmjs.com/package/aws-amplify-react-native)
+[![react-native-cross-components](https://img.shields.io/badge/React%20Native%20Cross%20Components-v0.2.4-blue.svg)](https://github.com/crossplatformsweden/react-native-components)
 
 [![GitHub forks](https://img.shields.io/github/forks/crossplatformsweden/react-native-cross-cognito.svg?style=social&label=Fork)](https://github.com/crossplatformsweden/react-native-cross-cognito)
 
@@ -75,7 +75,7 @@ See **[Components](#components)** below for examples
 
 Renders a complete login form using your Amplify token.
 
-For properties and documentation, see **[API reference - Class CognitoLogin](https://crossplatformsweden.github.io/react-native-cross-cognito/classes/_components_buttons_crossbutton_.crossbutton.html)**.
+For properties and documentation, see **[API reference - Class CognitoLogin](https://crossplatformsweden.github.io/react-native-cross-cognito/classes/_login_components_cognitologin_.cognitologin.html)**.
 
 **Examples**
 
@@ -83,10 +83,11 @@ Login component with default configuration
 
 ```typescript
 	import { CognitoLogin } from 'react-native-cross-cognito';
+	import amplify from './aws-exports';
+
+	Amplify.configure(amplify);
 
 	export const MyComp => () => (
- 		<CognitoLogin
-            amplifyToken="myToken"
-          />
+ 		<CognitoLogin />
 	);
 ```
