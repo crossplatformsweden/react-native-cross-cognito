@@ -1,22 +1,13 @@
 const mock = {
     showImagePicker: (options, callback) => {
         callback({
-            customButton: '',
             didCancel: false,
-            error: '',
-            data: '',
-            uri: '',
-            origURL: '',
-            isVertical: false,
-            width: 0,
-            height: 0,
-            fileSize:0,
-            type: '',
-            fileName: '',
-            path:'',
-            latitude:0,
-            longitude:0,
-            timestamp:'',
+            error: null,
+            customButton: null,
+            uri: 'test',
+            width: 1,
+            height: 1,
+            data: 'test'
         });
     }
 };
