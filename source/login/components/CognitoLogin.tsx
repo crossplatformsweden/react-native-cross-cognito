@@ -9,7 +9,7 @@ import {
 } from 'react-native-cross-components';
 import { ICognitoUserVariables, CognitoAuthState } from '../../types';
 import { CognitoUserInputContext } from '../../contexts';
-import { OnLogin } from '../events/OnLogin';
+import { OnLogin } from '../../events/OnLogin';
 import _ from 'lodash';
 
 export interface ICognitoLoginProps {
@@ -78,7 +78,7 @@ export class CognitoLogin extends React.Component<
 
   async onLogin() {
     const result = await OnLogin(this.state.userInput);
-    console.log('**** onLogin result: ', result);
+    if (__DEV__) console.log('**** onLogin result: ', result);
   }
 
   render() {

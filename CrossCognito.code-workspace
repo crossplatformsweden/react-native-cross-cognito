@@ -2,12 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "E:\\Source\\react-native-components"
-		},
-		{
-			"path": "E:\\Source\\react-native-init-boilerplate"
 		}
 	],
 	"settings": {}

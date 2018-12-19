@@ -1,12 +1,13 @@
-import { ICognitoUserVariables, IAuthenticationResult } from '../../types';
+import { ICognitoUserVariables, IAuthenticationResult } from '../types';
 import { Auth } from 'aws-amplify';
 import { UsernamePasswordOpts } from '@aws-amplify/auth/lib/types/Auth';
-import { CognitoUser } from 'amazon-cognito-identity-js';
 import _ from 'lodash';
+import OnCheckSession from './OnCheckSession';
 
 /**
  * Handles user login event
  * @param input See {@link ICognitoUserVariables}
+ * @returns See {@link IAuthenticationResult}
  */
 export const OnLogin = async (
   input: ICognitoUserVariables
@@ -17,18 +18,9 @@ export const OnLogin = async (
   };
   try {
     const result = await Auth.signIn(opts);
-
-    if (_.get(result, 'getUsername')) {
-      return { state: 'Authenticated', user: result as CognitoUser };
-    }
-
-    if (_.get(result, 'code') === 'UserNotConfirmedException') {
-      return { state: 'ConfirmAccountCodeWaiting' };
-    }
-
-    return { state: 'Unauthenticated' };
+    return OnCheckSession(result);
   } catch (error) {
-    console.log(error);
+    if (__DEV__) console.log(error);
     return { state: 'AuthenticationError', error };
   }
 };

@@ -142,3 +142,5 @@ ios/Podfile.lock
 
 # Docs
 docs
+
+aws-exports.js
