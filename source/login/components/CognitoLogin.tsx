@@ -151,8 +151,8 @@ export class CognitoLogin extends React.Component<
   render() {
     // Extract error message. Could be an Error or a string
     const error =
-      _.get(this.state, ['authState', 'error', 'message']) ||
-      _.get(this.state, ['authState', 'error']);
+      _.get(this.state, ['result', 'error', 'message']) ||
+      _.get(this.state, ['result', 'error']);
 
     return (
       <View style={styles.container}>
@@ -204,11 +204,9 @@ export class CognitoLogin extends React.Component<
         {this.state.formState === 'Confirm' ? <ConfirmForm /> : null}
         <CognitoUserInputContext.Provider value={this.state.userInput} />
 
-        <View style={styles.container}>
-          <CrossLabel isCaption={true} style={{ color: 'red' }}>
-            {error || null}
-          </CrossLabel>
-        </View>
+        <CrossLabel isCaption={true} style={{ color: 'red' }}>
+          {error}
+        </CrossLabel>
       </View>
     );
   }

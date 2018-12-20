@@ -67,17 +67,13 @@ exports[`components <CognitoLogin /> Component should render 1`] = `
       title="Register"
     />
   </View>
-  <View
-    style={Object {}}
-  >
-    <Text
-      isCaption={true}
-      style={
-        Object {
-          "color": "red",
-        }
+  <Text
+    isCaption={true}
+    style={
+      Object {
+        "color": "red",
       }
-    />
-  </View>
+    }
+  />
 </View>
 `;

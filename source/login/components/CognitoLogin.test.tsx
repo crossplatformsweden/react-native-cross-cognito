@@ -71,6 +71,16 @@ describe('components', () => {
       done();
     });
 
+    it('Error label should contain `No userPool`', async (done) => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+      const child = wrapper.root.findByProps({ iconName: 'sign-in' });
+      await child.props.onPress();
+
+      const errorLabel = wrapper.root.findByProps({ isCaption: true });
+      expect(errorLabel.props.children).toBe('No userPool');
+      done();
+    });
+
     it('`onRegister` should set `state.formState` to `Register`', async (done) => {
       const wrapper = TestRenderer.create(<CognitoLogin />);
       const child = wrapper.root.findByProps({ title: 'Register' });
