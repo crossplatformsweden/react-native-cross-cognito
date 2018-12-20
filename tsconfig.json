@@ -64,6 +64,7 @@
   "typeAcquisition": {
     "enable": false
   },
+  "include": ["source/**/*"],
   "exclude": [
     "config",
     "build",

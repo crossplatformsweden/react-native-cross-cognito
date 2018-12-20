@@ -36,10 +36,10 @@ export class RegisterForm extends React.Component<IRegisterFormProps> {
       <View style={[styles.container]}>
         {this.props.children}
         <CrossEditor
-          label="E-mail"
-          placeholder="E-mail"
-          autoCapitalize="none"
-          clearButtonMode="always"
+          label='E-mail'
+          placeholder='E-mail'
+          autoCapitalize='none'
+          clearButtonMode='always'
           autoCorrect={false}
           value={this.props.initialEmail || ''}
           onChangeText={(text: string) => this.props.onEmailChanged(text)}
@@ -47,15 +47,15 @@ export class RegisterForm extends React.Component<IRegisterFormProps> {
         />
         <CrossEditor
           maskProps={{ type: 'cel-phone', options: { dddMask: '(46)' } }}
-          label="Phone"
+          label='Phone'
           autoCorrect={false}
           value={this.props.initialPhone || ''}
           onChangeText={(text: string) => this.props.onPhoneChanged(text)}
           {...this.props.phoneInputProps}
         />
         <CrossEditor
-          label="Password"
-          clearButtonMode="always"
+          label='Password'
+          clearButtonMode='always'
           secureTextEntry
           value={this.props.initialPassword || ''}
           onChangeText={(text: string) => this.props.onPasswordChanged(text)}

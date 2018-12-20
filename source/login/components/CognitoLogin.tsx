@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import LoginForm from './LoginForm';
 import {
   styles,
@@ -20,10 +20,20 @@ import RegisterForm from '../../register/components/RegisterForm';
 import { ForgotForm } from '../../forgot/components/ForgotForm';
 import { ConfirmForm } from '../../confirm/components/ConfirmForm';
 
+/**
+ * Properties for the {@link CognitoLogin} component
+ */
 export interface ICognitoLoginProps {
   /**
    * Optional props for the login button. Typically used to change the `title` prop.
-   * See {@link ICrossButtonProps}
+   *
+   * Read more:
+   * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
+   *
+   * @example
+   *  <CognitoLogin loginButtonProps={{title: 'Engage'}}>
+   *     <Text>Custom layouts here</Text>
+   *  </CognitoLogin>
    */
   loginButtonProps?: ICrossButtonProps | undefined;
 }
@@ -51,6 +61,11 @@ interface ICognitoLoginState {
   result: IAuthenticationResult | undefined;
 }
 
+const localStyles = StyleSheet.create({
+  marginTop10: { marginTop: 10 },
+  buttonStyle: { margin: 0, minHeight: 45 },
+});
+
 /**
  * A form for logging in to AWS Cognito through Amplify.
  *
@@ -61,8 +76,8 @@ interface ICognitoLoginState {
  * Props are {@link ICognitoLoginProps}
  *
  * @example
- *  <CognitoLogin loginButtonProps={{title: 'Log in dude!'}}>
- *     <View>{*\/Custom layouts here\/*}</View>
+ *  <CognitoLogin loginButtonProps={{title: 'Engage'}}>
+ *     <Text>Custom layouts here</Text>
  *  </CognitoLogin>
  */
 export class CognitoLogin extends React.Component<
@@ -93,6 +108,7 @@ export class CognitoLogin extends React.Component<
     switch (this.state.authState) {
       case 'ConfirmAccountCodeWaiting':
         form = 'Confirm';
+        break;
       default:
         break;
     }
@@ -133,7 +149,11 @@ export class CognitoLogin extends React.Component<
   }
 
   render() {
-    const error = _.get(this.state, ['authState', 'error', 'message']);
+    // Extract error message. Could be an Error or a string
+    const error =
+      _.get(this.state, ['authState', 'error', 'message']) ||
+      _.get(this.state, ['authState', 'error']);
+
     return (
       <View style={styles.container}>
         {this.props.children}
@@ -146,6 +166,8 @@ export class CognitoLogin extends React.Component<
               onPasswordChanged={this.onPasswordChanged}
             />
             <CrossButton
+              style={localStyles.marginTop10}
+              buttonStyle={localStyles.buttonStyle}
               onPress={async () => await this.onLogin()}
               mode="contained"
               title="Log in"
@@ -154,6 +176,8 @@ export class CognitoLogin extends React.Component<
               {...this.props.loginButtonProps}
             />
             <CrossButton
+              style={localStyles.marginTop10}
+              buttonStyle={localStyles.buttonStyle}
               onPress={() =>
                 this.setState({
                   formState: 'Register',

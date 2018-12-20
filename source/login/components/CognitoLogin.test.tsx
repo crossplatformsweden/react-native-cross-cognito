@@ -29,7 +29,7 @@ describe('components', () => {
       );
 
       const child = wrapper.root.findByProps({ iconName: 'sign-in' });
-      expect(child.props.title).toBe('MyTitle')
+      expect(child.props.title).toBe('MyTitle');
     });
 
     it('`onEmailChanged` should update state', () => {

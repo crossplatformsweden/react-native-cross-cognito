@@ -33,7 +33,7 @@ describe('components', () => {
 
       const wrapper = TestRenderer.create(
         <LoginForm
-          initialEmail="bogus@test"
+          initialEmail='bogus@test'
           onEmailChanged={onCalled}
           onPasswordChanged={jest.fn()}
         />
@@ -53,7 +53,7 @@ describe('components', () => {
 
       const wrapper = TestRenderer.create(
         <LoginForm
-          initialPassword="bogus@test"
+          initialPassword='bogus@test'
           onEmailChanged={jest.fn()}
           onPasswordChanged={onCalled}
         />
