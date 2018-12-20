@@ -169,10 +169,10 @@ export class CognitoLogin extends React.Component<
               style={localStyles.marginTop10}
               buttonStyle={localStyles.buttonStyle}
               onPress={async () => await this.onLogin()}
-              mode="contained"
-              title="Log in"
+              mode='contained'
+              title='Log in'
               backgroundColor={Colors.NextButton}
-              iconName="sign-in"
+              iconName='sign-in'
               {...this.props.loginButtonProps}
             />
             <CrossButton
@@ -183,8 +183,8 @@ export class CognitoLogin extends React.Component<
                   formState: 'Register',
                 })
               }
-              mode="contained"
-              title="Register"
+              mode='contained'
+              title='Register'
               backgroundColor={Colors.BackButton}
             />
           </View>
