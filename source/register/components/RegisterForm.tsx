@@ -48,11 +48,12 @@ export class RegisterForm extends React.Component<IRegisterFormProps> {
         />
 
         <CrossEditor
-          maskProps={{ type: 'cel-phone' }}
+          keyboardType='phone-pad'
           label='Phone'
           autoCorrect={false}
+          placeholder='+NN NNN NNN NNN NNN'
           value={this.props.initialPhone || ''}
-          onChangeText={(text: string) => this.props.onPhoneChanged(text)}
+          onChangeText={(text: string) => this.props.onPhoneChanged('+' + text)}
           {...this.props.phoneInputProps}
         />
         <CrossEditor

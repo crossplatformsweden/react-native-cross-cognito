@@ -68,7 +68,7 @@ describe('components', () => {
       const child = wrapper.root.findByProps({ label: 'Phone' });
       child.props.onChangeText(newInput);
 
-      expect(gotText).toEqual(newInput);
+      expect(gotText).toEqual('+' + newInput);
     });
 
     it('onPasswordChanged should be called with new value', () => {

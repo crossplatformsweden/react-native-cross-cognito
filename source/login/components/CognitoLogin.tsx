@@ -22,6 +22,7 @@ import { OnRegister } from '../../events/OnRegister';
 import styles from '../../styles';
 import OnConfirmMfaCode from '../../events/OnConfirmMfaCode';
 import OnConfirmAccount from '../../events/OnConfirmAccount';
+import { ICrossEditorProps } from 'react-native-cross-components';
 
 /**
  * Properties for the {@link CognitoLogin} component
@@ -75,6 +76,21 @@ export interface ICognitoLoginProps {
    *  </CognitoLogin>
    */
   registerButtonProps?: ICrossButtonProps | undefined;
+  /**
+   * Optional props for the phone input. Typically used to change the `label` prop or change the `maskProps`.
+   * See {@link ICrossEditorProps}
+   */
+  phoneInputProps?: ICrossEditorProps | undefined;
+  /**
+   * Optional props for the e-mail input. Typically used to change the `label` prop.
+   * See {@link ICrossEditorProps}
+   */
+  emailInputProps?: ICrossEditorProps | undefined;
+  /**
+   * Optional props for the password input. Typically used to change the `label` prop.
+   * See {@link ICrossEditorProps}
+   */
+  passwordInputProps?: ICrossEditorProps | undefined;
 }
 /**
  * Current active form
@@ -165,19 +181,35 @@ export class CognitoLogin extends React.Component<
 
   onEmailChanged(email: string | undefined) {
     const { userInput } = this.state;
+    if (_.isNil(email)) {
+      return;
+    }
     userInput.email = email;
     this.setState({ userInput });
   }
 
   onPasswordChanged(password: string | undefined) {
     const { userInput } = this.state;
+    if (_.isNil(password)) {
+      return;
+    }
+
     userInput.password = password;
     this.setState({ userInput });
   }
 
   onPhoneChanged(phone: string | undefined) {
     const { userInput } = this.state;
-    userInput.phone = phone;
+    let newPhone = phone;
+    if (_.isNil(newPhone)) {
+      return;
+    }
+
+    if (!newPhone.startsWith('+')) {
+      newPhone = '+' + newPhone;
+    }
+
+    userInput.phone = newPhone;
     this.setState({ userInput });
   }
 
@@ -255,6 +287,7 @@ export class CognitoLogin extends React.Component<
               initialPassword={this.state.userInput.password}
               onEmailChanged={this.onEmailChanged}
               onPasswordChanged={this.onPasswordChanged}
+              {...this.props}
             />
             <CrossButton
               style={styles.marginTop10}
@@ -291,6 +324,7 @@ export class CognitoLogin extends React.Component<
               initialPassword={this.state.userInput.password}
               onEmailChanged={this.onEmailChanged}
               onPasswordChanged={this.onPasswordChanged}
+              {...this.props}
             />
             <CrossButton
               style={styles.marginTop10}
@@ -317,13 +351,16 @@ export class CognitoLogin extends React.Component<
             />
           </View>
         ) : null}
-        {this.state.formState === 'Forgot' ? <ForgotForm /> : null}
+        {this.state.formState === 'Forgot' ? (
+          <ForgotForm {...this.props} />
+        ) : null}
         {this.state.formState === 'ConfirmAccount' ? (
           <ConfirmForm
             testID='ConfirmAccountForm'
             code={this.state.code}
             onConfirmPress={async () => await this.onConfirmAccount()}
             onCodeChanged={(code) => this.setState({ code })}
+            {...this.props}
           />
         ) : null}
         {this.state.formState === 'ConfirmMFALogin' ? (

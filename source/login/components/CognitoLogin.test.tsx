@@ -60,7 +60,7 @@ describe('components', () => {
     it('`onPhoneChanged` should update state', () => {
       const wrapper = TestRenderer.create(<CognitoLogin />);
 
-      const expectedInput = '07304655556';
+      const expectedInput = '+07304655556';
       wrapper.root.instance.onPhoneChanged(expectedInput);
 
       expect(wrapper.root.instance.state.userInput.phone).toBe(expectedInput);
