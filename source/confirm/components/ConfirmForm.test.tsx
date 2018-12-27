@@ -18,7 +18,9 @@ jest.unmock('./ConfirmForm');
 describe('components', () => {
   describe('<ConfirmForm />', () => {
     it('Component should render', () => {
-      const wrapper = TestRenderer.create(<ConfirmForm />);
+      const wrapper = TestRenderer.create(
+        <ConfirmForm code='testcode' onConfirmPress={console.log} />
+      );
       expect(wrapper.toJSON()).toMatchSnapshot();
     });
 

@@ -7,8 +7,11 @@ export type CognitoAuthState =
   | 'ConfirmAccountCodeWaiting'
   | 'ConfirmAccountCodeAccepted'
   | 'ConfirmAccountCodeNotAccepted'
+  | 'ConfirmLoginMFAWaiting'
   | 'Authenticated'
-  | 'AuthenticationError';
+  | 'AuthenticationError'
+  | 'MFA_SETUP'
+  | 'NEW_PASSWORD_REQUIRED';
 
 /**
  * Describes the result of an authentication attempt with Amazon Cognito

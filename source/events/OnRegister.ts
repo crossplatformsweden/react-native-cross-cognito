@@ -24,7 +24,7 @@ export const OnRegister = async (
     const result = await Auth.signUp(opts);
     return OnCheckSession(result);
   } catch (error) {
-    if (__DEV__) console.log(error);
+    // if (__DEV__) console.log(error);
     return { state: 'AuthenticationError', error };
   }
 };

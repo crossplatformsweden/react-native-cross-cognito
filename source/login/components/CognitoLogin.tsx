@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import LoginForm from './LoginForm';
 import {
-  styles,
   Colors,
   CrossButton,
   ICrossButtonProps,
+  CrossLabel,
 } from 'react-native-cross-components';
 import {
   ICognitoUserVariables,
@@ -15,10 +15,13 @@ import {
 import { CognitoUserInputContext } from '../../contexts';
 import { OnLogin } from '../../events/OnLogin';
 import _ from 'lodash';
-import { CrossLabel } from 'react-native-cross-components';
 import RegisterForm from '../../register/components/RegisterForm';
 import { ForgotForm } from '../../forgot/components/ForgotForm';
 import { ConfirmForm } from '../../confirm/components/ConfirmForm';
+import { OnRegister } from '../../events/OnRegister';
+import styles from '../../styles';
+import OnConfirmMfaCode from '../../events/OnConfirmMfaCode';
+import OnConfirmAccount from '../../events/OnConfirmAccount';
 
 /**
  * Properties for the {@link CognitoLogin} component
@@ -36,21 +39,58 @@ export interface ICognitoLoginProps {
    *  </CognitoLogin>
    */
   loginButtonProps?: ICrossButtonProps | undefined;
+  /**
+   * Optional props for the cancel button. Typically used to change the `title` prop.
+   *
+   * Read more:
+   * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
+   *
+   * @example
+   *  <CognitoLogin cancelButtonProps={{title: 'Disengage'}}>
+   *     <Text>Custom layouts here</Text>
+   *  </CognitoLogin>
+   */
+  cancelButtonProps?: ICrossButtonProps | undefined;
+  /**
+   * Optional props for the save button. Typically used to change the `title` prop.
+   *
+   * Read more:
+   * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
+   *
+   * @example
+   *  <CognitoLogin saveButtonProps={{title: 'Warp'}}>
+   *     <Text>Custom layouts here</Text>
+   *  </CognitoLogin>
+   */
+  saveButtonProps?: ICrossButtonProps | undefined;
+  /**
+   * Optional props for the register button. Typically used to change the `title` prop.
+   *
+   * Read more:
+   * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
+   *
+   * @example
+   *  <CognitoLogin registerButtonProps={{title: 'Enlist'}}>
+   *     <Text>Custom layouts here</Text>
+   *  </CognitoLogin>
+   */
+  registerButtonProps?: ICrossButtonProps | undefined;
 }
 /**
  * Current active form
  */
-type LoginCurrentForm = 'Login' | 'Register' | 'Confirm' | 'Forgot';
+type LoginCurrentForm =
+  | 'Login'
+  | 'Register'
+  | 'ConfirmAccount'
+  | 'ConfirmMFALogin'
+  | 'Forgot';
 
-interface ICognitoLoginState {
+export interface ICognitoLoginState {
   /**
    * User form input. See {@link ICognitoUserVariables}
    */
   userInput: ICognitoUserVariables;
-  /**
-   * Current auth state. See {@link CognitoAuthState}
-   */
-  authState: CognitoAuthState;
   /**
    * See {@link AuthFormState}
    */
@@ -59,19 +99,14 @@ interface ICognitoLoginState {
    * Result of the last authentication operation
    */
   result: IAuthenticationResult | undefined;
+  code: string | undefined;
 }
-
-const localStyles = StyleSheet.create({
-  marginTop10: { marginTop: 10 },
-  buttonStyle: { margin: 0, minHeight: 45 },
-});
 
 /**
  * A form for logging in to AWS Cognito through Amplify.
  *
  * Remarks:
  * * Requires Amplify to be configured: https://aws-amplify.github.io/docs/js/react
- * * State is managed using React.Context. See {@link CognitoUserInputContext}
  *
  * Props are {@link ICognitoLoginProps}
  *
@@ -88,27 +123,37 @@ export class CognitoLogin extends React.Component<
     super(props);
     this.state = {
       result: undefined,
-      userInput: {
-        email: undefined,
-        password: undefined,
-      },
-      authState: 'Unauthenticated',
+      userInput: { email: undefined, password: undefined },
       formState: 'Login',
+      code: undefined,
     };
 
     this.onEmailChanged = this.onEmailChanged.bind(this);
     this.onPasswordChanged = this.onPasswordChanged.bind(this);
     this.onPhoneChanged = this.onPhoneChanged.bind(this);
+    this.onConfirmMFACode = this.onConfirmMFACode.bind(this);
+    this.onConfirmAccount = this.onConfirmAccount.bind(this);
     this.onLogin = this.onLogin.bind(this);
     this.setActiveForm = this.setActiveForm.bind(this);
   }
 
   setActiveForm() {
     let form: LoginCurrentForm = 'Login';
-    switch (this.state.authState) {
+    const authState: CognitoAuthState = _.get(this.state, [
+      'result',
+      'authState',
+    ]);
+
+    if (!authState) {
+      return;
+    }
+
+    switch (authState) {
       case 'ConfirmAccountCodeWaiting':
-        form = 'Confirm';
+        form = 'ConfirmAccount';
         break;
+      case 'ConfirmLoginMFAWaiting':
+        form = 'ConfirmMFALogin';
       default:
         break;
     }
@@ -134,18 +179,62 @@ export class CognitoLogin extends React.Component<
     this.setState({ userInput });
   }
 
+  async onRegister() {
+    if (__DEV__) console.log('***** onRegister ***** ');
+    const result = await OnRegister(this.state.userInput);
+    if (__DEV__) console.log('**** onRegister result: ', result);
+
+    this.setState({ result }, this.setActiveForm);
+  }
+
+  async onConfirmAccount() {
+    if (
+      _.isNil(this.state.code) ||
+      this.state.code === '' ||
+      _.isNil(this.state.userInput.email)
+    ) {
+      return;
+    }
+
+    if (__DEV__) console.log('***** onConfirmAccount ***** ');
+
+    const result = await OnConfirmAccount(
+      this.state.code,
+      this.state.userInput.email
+    );
+
+    if (__DEV__) console.log('**** onConfirmAccount result: ', result);
+
+    this.setState({ result }, this.setActiveForm);
+  }
+
+  async onConfirmMFACode() {
+    if (
+      _.isNil(this.state.code) ||
+      this.state.code === '' ||
+      _.isNil(this.state.userInput.email)
+    ) {
+      return;
+    }
+
+    if (__DEV__) console.log('***** onConfirmMFACode ***** ');
+
+    const result = await OnConfirmMfaCode(
+      this.state.code,
+      this.state.userInput.email
+    );
+
+    if (__DEV__) console.log('**** onConfirmMFACode result: ', result);
+
+    this.setState({ result }, this.setActiveForm);
+  }
+
   async onLogin() {
     if (__DEV__) console.log('***** onLogin ***** ');
     const result = await OnLogin(this.state.userInput);
     if (__DEV__) console.log('**** onLogin result: ', result);
 
-    this.setState(
-      {
-        authState: result && result.state ? result.state : 'Unauthenticated',
-        result,
-      },
-      this.setActiveForm
-    );
+    this.setState({ result }, this.setActiveForm);
   }
 
   render() {
@@ -166,8 +255,8 @@ export class CognitoLogin extends React.Component<
               onPasswordChanged={this.onPasswordChanged}
             />
             <CrossButton
-              style={localStyles.marginTop10}
-              buttonStyle={localStyles.buttonStyle}
+              style={styles.marginTop10}
+              buttonStyle={styles.buttonStyle}
               onPress={async () => await this.onLogin()}
               mode='contained'
               title='Log in'
@@ -176,8 +265,8 @@ export class CognitoLogin extends React.Component<
               {...this.props.loginButtonProps}
             />
             <CrossButton
-              style={localStyles.marginTop10}
-              buttonStyle={localStyles.buttonStyle}
+              style={styles.marginTop10}
+              buttonStyle={styles.buttonStyle}
               onPress={() =>
                 this.setState({
                   formState: 'Register',
@@ -186,22 +275,62 @@ export class CognitoLogin extends React.Component<
               mode='contained'
               title='Register'
               backgroundColor={Colors.BackButton}
+              {...this.props.registerButtonProps}
             />
           </View>
         ) : null}
 
         {this.state.formState === 'Register' ? (
-          <RegisterForm
-            initialPhone={this.state.userInput.phone}
-            onPhoneChanged={this.onPhoneChanged}
-            initialEmail={this.state.userInput.email}
-            initialPassword={this.state.userInput.password}
-            onEmailChanged={this.onEmailChanged}
-            onPasswordChanged={this.onPasswordChanged}
-          />
+          <View style={styles.container}>
+            <RegisterForm
+              initialPhone={this.state.userInput.phone}
+              onPhoneChanged={this.onPhoneChanged}
+              initialEmail={this.state.userInput.email}
+              initialPassword={this.state.userInput.password}
+              onEmailChanged={this.onEmailChanged}
+              onPasswordChanged={this.onPasswordChanged}
+            />
+            <CrossButton
+              style={styles.marginTop10}
+              buttonStyle={styles.buttonStyle}
+              onPress={async () => await this.onRegister()}
+              mode='contained'
+              title='Save'
+              backgroundColor={Colors.NextButton}
+              iconName='sign-in'
+              {...this.props.saveButtonProps}
+            />
+            <CrossButton
+              style={styles.marginTop10}
+              buttonStyle={styles.buttonStyle}
+              onPress={() =>
+                this.setState({
+                  formState: 'Login',
+                })
+              }
+              mode='contained'
+              title='Cancel'
+              backgroundColor={Colors.CancelButton}
+              {...this.props.cancelButtonProps}
+            />
+          </View>
         ) : null}
         {this.state.formState === 'Forgot' ? <ForgotForm /> : null}
-        {this.state.formState === 'Confirm' ? <ConfirmForm /> : null}
+        {this.state.formState === 'ConfirmAccount' ? (
+          <ConfirmForm
+            testID='ConfirmAccountForm'
+            code={this.state.code}
+            onConfirmPress={async () => await this.onConfirmAccount()}
+            onCodeChanged={(code) => this.setState({ code })}
+          />
+        ) : null}
+        {this.state.formState === 'ConfirmMFALogin' ? (
+          <ConfirmForm
+            code={this.state.code}
+            onConfirmPress={async () => await this.onConfirmMFACode()}
+            onCodeChanged={(code) => this.setState({ code })}
+          />
+        ) : null}
         <CognitoUserInputContext.Provider value={this.state.userInput} />
 
         <CrossLabel isCaption={true} style={{ color: 'red' }}>

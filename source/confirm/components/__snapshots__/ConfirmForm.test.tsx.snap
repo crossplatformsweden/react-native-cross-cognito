@@ -1,3 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components <ConfirmForm /> Component should render 1`] = `<View />`;
+exports[`components <ConfirmForm /> Component should render 1`] = `
+<View
+  style={
+    Array [
+      Object {},
+    ]
+  }
+>
+  <TextInput
+    autoCapitalize="none"
+    autoCorrect={false}
+    clearButtonMode="always"
+    label="Confirmation code"
+    placeholder="Enter the code that was sent to you"
+    value="testcode"
+  />
+  <Button
+    backgroundColor="#349b34"
+    buttonStyle={
+      Object {
+        "margin": 0,
+        "minHeight": 45,
+      }
+    }
+    iconName="sign-in"
+    mode="contained"
+    onPress={[Function]}
+    style={
+      Object {
+        "marginTop": 10,
+      }
+    }
+    title="Confirm"
+  />
+</View>
+`;

@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/thomas/Source/mobile_old/source"
+		},
+		{
+			"path": "/Users/thomas/Source/react-native-core"
 		}
 	],
 	"settings": {}

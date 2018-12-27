@@ -1,17 +1,39 @@
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import _ from 'lodash';
 import { IAuthenticationResult } from '../types';
+import { Auth } from 'aws-amplify';
 
 /**
  * Check user authentication state
- * @param cognitoAuthResult result of authentication operation
+ * @param cognitoAuthResult optional result of authentication operation.
+ * Else `Auth.currentSession()`
  * @returns See {@link IAuthenticationResult}
  */
-export const OnCheckSession = (
-  cognitoAuthResult: any
-): IAuthenticationResult => {
-  if (_.get(cognitoAuthResult, 'getUsername')) {
+export const OnCheckSession = async (
+  cognitoAuthResult?: CognitoUser | any | undefined
+): Promise<IAuthenticationResult> => {
+  let session = cognitoAuthResult;
+  let user: CognitoUser = cognitoAuthResult as CognitoUser;
+  if (_.isNil(session)) {
+    session = await Auth.currentSession();
+  }
+
+  if (user && user.getUsername) {
     return { state: 'Authenticated', user: cognitoAuthResult as CognitoUser };
+  }
+
+  const challengeName: string = _.get(session, 'challengeName') || '';
+
+  if (challengeName === 'SMS_MFA' || challengeName === 'SOFTWARE_TOKEN_MFA') {
+    return { state: 'ConfirmLoginMFAWaiting' };
+  }
+
+  if (challengeName === 'MFA_SETUP') {
+    return { state: 'MFA_SETUP' };
+  }
+
+  if (challengeName === 'NEW_PASSWORD_REQUIRED') {
+    return { state: 'NEW_PASSWORD_REQUIRED' };
   }
 
   if (
