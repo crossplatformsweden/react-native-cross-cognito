@@ -32,6 +32,7 @@ export interface IRegisterFormProps extends ILoginFormProps {
 export class RegisterForm extends React.Component<IRegisterFormProps> {
   render() {
     // TODO: Country selector
+    // maskProps={{ type: 'cel-phone', options: { dddMask: '(46)' } }}
     return (
       <View style={[styles.container]}>
         {this.props.children}
@@ -45,8 +46,9 @@ export class RegisterForm extends React.Component<IRegisterFormProps> {
           onChangeText={(text: string) => this.props.onEmailChanged(text)}
           {...this.props.emailInputProps}
         />
+
         <CrossEditor
-          maskProps={{ type: 'cel-phone', options: { dddMask: '(46)' } }}
+          maskProps={{ type: 'cel-phone' }}
           label='Phone'
           autoCorrect={false}
           value={this.props.initialPhone || ''}

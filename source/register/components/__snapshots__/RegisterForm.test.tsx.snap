@@ -22,9 +22,6 @@ exports[`components <RegisterForm /> Component should render 1`] = `
     label="Phone"
     maskProps={
       Object {
-        "options": Object {
-          "dddMask": "(46)",
-        },
         "type": "cel-phone",
       }
     }

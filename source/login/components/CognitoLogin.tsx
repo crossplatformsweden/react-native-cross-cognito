@@ -106,7 +106,9 @@ export interface ICognitoLoginState {
  * A form for logging in to AWS Cognito through Amplify.
  *
  * Remarks:
- * * Requires Amplify to be configured: https://aws-amplify.github.io/docs/js/react
+ * * Requires Amplify to be configured:
+ *
+ * https://aws-amplify.github.io/docs/js/start?ref=amplify-rn-btn&platform=react-native#step-4-integrate-aws-resources
  *
  * Props are {@link ICognitoLoginProps}
  *

@@ -4,7 +4,7 @@
 
 # Crossplatform React-Native Cognito
 
-React-Native implementation of [AWS Cognito](https://aws.amazon.com/cognito/) and [Amplify SDK](https://aws-amplify.github.io/docs/js/tutorials/building-react-native-apps/) including login screens
+React-Native implementation of [AWS Cognito](https://aws.amazon.com/cognito/) and [Amplify SDK](https://aws-amplify.github.io/docs/js/start?ref=amplify-rn-btn&platform=react-native#step-4-integrate-aws-resources) including login screens
 
 ## [Show me Components!](#components)
 
