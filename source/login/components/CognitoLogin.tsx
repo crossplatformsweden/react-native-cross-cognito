@@ -205,6 +205,8 @@ export class CognitoLogin extends React.Component<
       return;
     }
 
+    newPhone = newPhone.replace(' ', '').trim();
+
     if (!newPhone.startsWith('+')) {
       newPhone = '+' + newPhone;
     }
@@ -293,10 +295,10 @@ export class CognitoLogin extends React.Component<
               style={styles.marginTop10}
               buttonStyle={styles.buttonStyle}
               onPress={async () => await this.onLogin()}
-              mode='contained'
-              title='Log in'
+              mode="contained"
+              title="Log in"
               backgroundColor={Colors.NextButton}
-              iconName='sign-in'
+              iconName="sign-in"
               {...this.props.loginButtonProps}
             />
             <CrossButton
@@ -307,8 +309,8 @@ export class CognitoLogin extends React.Component<
                   formState: 'Register',
                 })
               }
-              mode='contained'
-              title='Register'
+              mode="contained"
+              title="Register"
               backgroundColor={Colors.BackButton}
               {...this.props.registerButtonProps}
             />
@@ -330,10 +332,10 @@ export class CognitoLogin extends React.Component<
               style={styles.marginTop10}
               buttonStyle={styles.buttonStyle}
               onPress={async () => await this.onRegister()}
-              mode='contained'
-              title='Save'
+              mode="contained"
+              title="Save"
               backgroundColor={Colors.NextButton}
-              iconName='sign-in'
+              iconName="sign-in"
               {...this.props.saveButtonProps}
             />
             <CrossButton
@@ -344,8 +346,8 @@ export class CognitoLogin extends React.Component<
                   formState: 'Login',
                 })
               }
-              mode='contained'
-              title='Cancel'
+              mode="contained"
+              title="Cancel"
               backgroundColor={Colors.CancelButton}
               {...this.props.cancelButtonProps}
             />
@@ -356,7 +358,7 @@ export class CognitoLogin extends React.Component<
         ) : null}
         {this.state.formState === 'ConfirmAccount' ? (
           <ConfirmForm
-            testID='ConfirmAccountForm'
+            testID="ConfirmAccountForm"
             code={this.state.code}
             onConfirmPress={async () => await this.onConfirmAccount()}
             onCodeChanged={(code) => this.setState({ code })}
