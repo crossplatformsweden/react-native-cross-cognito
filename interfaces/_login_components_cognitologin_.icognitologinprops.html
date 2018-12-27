@@ -87,7 +87,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#cancelbuttonprops" class="tsd-kind-icon">cancel<wbr>Button<wbr>Props</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#loginbuttonprops" class="tsd-kind-icon">login<wbr>Button<wbr>Props</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#registerbuttonprops" class="tsd-kind-icon">register<wbr>Button<wbr>Props</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#savebuttonprops" class="tsd-kind-icon">save<wbr>Button<wbr>Props</a></li>
 							</ul>
 						</section>
 					</div>
@@ -96,12 +99,36 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="cancelbuttonprops" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cancel<wbr>Button<wbr>Props</h3>
+					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/0a7da33/source/login/components/CognitoLogin.tsx#L53">login/components/CognitoLogin.tsx:53</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Optional props for the cancel button. Typically used to change the <code>title</code> prop.</p>
+						</div>
+						<p>Read more:
+						<a href="https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html">https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html</a></p>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p> &lt;CognitoLogin cancelButtonProps={{title: &#39;Disengage&#39;}}&gt;
+									<Text>Custom layouts here</Text>
+								</CognitoLogin></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="loginbuttonprops" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> login<wbr>Button<wbr>Props</h3>
 					<div class="tsd-signature tsd-kind-icon">login<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/ab1cfc9/source/login/components/CognitoLogin.tsx#L38">login/components/CognitoLogin.tsx:38</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/0a7da33/source/login/components/CognitoLogin.tsx#L41">login/components/CognitoLogin.tsx:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -113,6 +140,54 @@
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
 							<dd><p> &lt;CognitoLogin loginButtonProps={{title: &#39;Engage&#39;}}&gt;
+									<Text>Custom layouts here</Text>
+								</CognitoLogin></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="registerbuttonprops" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> register<wbr>Button<wbr>Props</h3>
+					<div class="tsd-signature tsd-kind-icon">register<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/0a7da33/source/login/components/CognitoLogin.tsx#L77">login/components/CognitoLogin.tsx:77</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Optional props for the register button. Typically used to change the <code>title</code> prop.</p>
+						</div>
+						<p>Read more:
+						<a href="https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html">https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html</a></p>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p> &lt;CognitoLogin registerButtonProps={{title: &#39;Enlist&#39;}}&gt;
+									<Text>Custom layouts here</Text>
+								</CognitoLogin></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="savebuttonprops" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> save<wbr>Button<wbr>Props</h3>
+					<div class="tsd-signature tsd-kind-icon">save<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/0a7da33/source/login/components/CognitoLogin.tsx#L65">login/components/CognitoLogin.tsx:65</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Optional props for the save button. Typically used to change the <code>title</code> prop.</p>
+						</div>
+						<p>Read more:
+						<a href="https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html">https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html</a></p>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p> &lt;CognitoLogin saveButtonProps={{title: &#39;Warp&#39;}}&gt;
 									<Text>Custom layouts here</Text>
 								</CognitoLogin></p>
 							</dd>
@@ -137,6 +212,12 @@
 						<a href="../modules/_events_onchecksession_.html">"events/<wbr>OnCheck<wbr>Session"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_events_onconfirmaccount_.html">"events/<wbr>OnConfirm<wbr>Account"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_events_onconfirmmfacode_.html">"events/<wbr>OnConfirm<wbr>Mfa<wbr>Code"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_events_onlogin_.html">"events/<wbr>OnLogin"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -158,6 +239,9 @@
 						<a href="../modules/_register_components_registerform_.html">"register/components/<wbr>Register<wbr>Form"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_styles_.html">"styles"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_types_.html">"types"</a>
 					</li>
 				</ul>
@@ -173,12 +257,24 @@
 						<a href="_login_components_cognitologin_.icognitologinprops.html" class="tsd-kind-icon">ICognito<wbr>Login<wbr>Props</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_login_components_cognitologin_.icognitologinprops.html#cancelbuttonprops" class="tsd-kind-icon">cancel<wbr>Button<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_login_components_cognitologin_.icognitologinprops.html#loginbuttonprops" class="tsd-kind-icon">login<wbr>Button<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_login_components_cognitologin_.icognitologinprops.html#registerbuttonprops" class="tsd-kind-icon">register<wbr>Button<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_login_components_cognitologin_.icognitologinprops.html#savebuttonprops" class="tsd-kind-icon">save<wbr>Button<wbr>Props</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_login_components_cognitologin_.icognitologinstate.html" class="tsd-kind-icon">ICognito<wbr>Login<wbr>State</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
