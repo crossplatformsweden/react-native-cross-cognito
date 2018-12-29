@@ -26,7 +26,7 @@ export const OnConfirmMfaCode = async (
     return OnCheckSession();
   } catch (error) {
     // if (__DEV__) console.log(error);
-    return { state: 'AuthenticationError', error };
+    return OnCheckSession(error);
   }
 };
 

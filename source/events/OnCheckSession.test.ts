@@ -7,9 +7,9 @@ jest.unmock('./OnCheckSession');
 
 describe('events', () => {
   describe('OnCheckSession', () => {
-    it('When empty object then returns `Unauthenticated`', async (done) => {
+    it('When empty object then returns `AuthenticationError`', async (done) => {
       let result = await OnCheckSession({});
-      expect(result.state).toBe('Unauthenticated');
+      expect(result.state).toBe('AuthenticationError');
       done();
     });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Alert, AlertButton } from 'react-native';
 import LoginForm from './LoginForm';
 import {
   Colors,
@@ -24,6 +24,7 @@ import OnConfirmMfaCode from '../../events/OnConfirmMfaCode';
 import OnConfirmAccount from '../../events/OnConfirmAccount';
 import { ICrossEditorProps } from 'react-native-cross-components';
 import { CognitoUser } from 'amazon-cognito-identity-js';
+import OnResendSignup from '../../events/OnResendSignup';
 
 /**
  * Properties for the {@link CognitoLogin} component.
@@ -166,6 +167,7 @@ export class CognitoLogin extends React.Component<
     this.onConfirmAccount = this.onConfirmAccount.bind(this);
     this.onLogin = this.onLogin.bind(this);
     this.onResultChanged = this.onResultChanged.bind(this);
+    this.OnResendSignup = this.OnResendSignup.bind(this);
   }
 
   onResultChanged() {
@@ -237,6 +239,21 @@ export class CognitoLogin extends React.Component<
     this.setState({ userInput });
   }
 
+  async OnResendSignup() {
+    const { email } = this.state.userInput;
+    if (_.isNil(email)) {
+      this.setState({ message: 'Please enter username' });
+      return;
+    }
+
+    const sendButton: AlertButton = {
+      text: 'OK',
+      onPress: () => OnResendSignup(email),
+    };
+
+    Alert.alert('Confirm', 'Re-send code?', [sendButton], { cancelable: true });
+  }
+
   async onRegister() {
     if (__DEV__) console.log('***** onRegister ***** ');
     const result = await OnRegister(this.state.userInput);
@@ -264,7 +281,7 @@ export class CognitoLogin extends React.Component<
 
     if (__DEV__) console.log('**** onConfirmAccount result: ', result);
 
-    this.setState({ result, formState: 'Login' });
+    this.setState({ result, formState: 'Login' }, this.onResultChanged);
   }
 
   async onConfirmMFACode() {
@@ -380,13 +397,24 @@ export class CognitoLogin extends React.Component<
           <ForgotForm {...this.props} />
         ) : null}
         {this.state.formState === 'ConfirmAccount' ? (
-          <ConfirmForm
-            testID='ConfirmAccountForm'
-            code={this.state.code}
-            onConfirmPress={async () => await this.onConfirmAccount()}
-            onCodeChanged={(code) => this.setState({ code })}
-            {...this.props}
-          />
+          <View style={styles.container}>
+            <ConfirmForm
+              testID='ConfirmAccountForm'
+              code={this.state.code}
+              onConfirmPress={async () => await this.onConfirmAccount()}
+              onCodeChanged={(code) => this.setState({ code })}
+              {...this.props}
+            />
+            <CrossButton
+              style={styles.marginTop10}
+              buttonStyle={styles.buttonStyle}
+              onPress={async () => await this.OnResendSignup()}
+              mode='contained'
+              title='Resend code'
+              backgroundColor={Colors.CancelButton}
+              {...this.props.cancelButtonProps}
+            />
+          </View>
         ) : null}
         {this.state.formState === 'ConfirmMFALogin' ? (
           <ConfirmForm

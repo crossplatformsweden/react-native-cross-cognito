@@ -27,7 +27,7 @@ export const OnConfirmAccount = async (
     return result;
   } catch (error) {
     // if (__DEV__) console.log(error);
-    return { state: 'AuthenticationError', error };
+    return OnCheckSession(error);
   }
 };
 

@@ -25,7 +25,7 @@ export const OnRegister = async (
     return OnCheckSession(result);
   } catch (error) {
     // if (__DEV__) console.log(error);
-    return { state: 'AuthenticationError', error };
+    return OnCheckSession(error);
   }
 };
 
