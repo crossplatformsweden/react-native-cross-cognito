@@ -23,11 +23,18 @@ import styles from '../../styles';
 import OnConfirmMfaCode from '../../events/OnConfirmMfaCode';
 import OnConfirmAccount from '../../events/OnConfirmAccount';
 import { ICrossEditorProps } from 'react-native-cross-components';
+import { CognitoUser } from 'amazon-cognito-identity-js';
 
 /**
- * Properties for the {@link CognitoLogin} component
+ * Properties for the {@link CognitoLogin} component.
+ *
+ * Allows customization and provides the {@link onLoggedIn} event.
  */
 export interface ICognitoLoginProps {
+  /**
+   * Occurs when the user was successfully logged in and contains the resulting user.
+   */
+  onLoggedIn?: (user: CognitoUser) => void;
   /**
    * Optional props for the login button. Typically used to change the `title` prop.
    *
@@ -116,10 +123,13 @@ export interface ICognitoLoginState {
    */
   result: IAuthenticationResult | undefined;
   code: string | undefined;
+  message?: string | undefined;
 }
 
 /**
  * A form for logging in to AWS Cognito through Amplify.
+ *
+ * On successful login the {@link ICognitoLoginProps.onLoggedIn} event is triggered.
  *
  * Remarks:
  * * Requires Amplify to be configured:
@@ -129,7 +139,9 @@ export interface ICognitoLoginState {
  * Props are {@link ICognitoLoginProps}
  *
  * @example
- *  <CognitoLogin loginButtonProps={{title: 'Engage'}}>
+ *  <CognitoLogin
+ *    onLoggedIn={(user) => console.log(user)}
+ *     loginButtonProps={{title: 'Engage'}}>
  *     <Text>Custom layouts here</Text>
  *  </CognitoLogin>
  */
@@ -144,6 +156,7 @@ export class CognitoLogin extends React.Component<
       userInput: { email: undefined, password: undefined },
       formState: 'Login',
       code: undefined,
+      message: undefined,
     };
 
     this.onEmailChanged = this.onEmailChanged.bind(this);
@@ -152,21 +165,25 @@ export class CognitoLogin extends React.Component<
     this.onConfirmMFACode = this.onConfirmMFACode.bind(this);
     this.onConfirmAccount = this.onConfirmAccount.bind(this);
     this.onLogin = this.onLogin.bind(this);
-    this.setActiveForm = this.setActiveForm.bind(this);
+    this.onResultChanged = this.onResultChanged.bind(this);
   }
 
-  setActiveForm() {
+  onResultChanged() {
     let form: LoginCurrentForm = 'Login';
-    const authState: CognitoAuthState = _.get(this.state, [
-      'result',
-      'authState',
-    ]);
+    const result = this.state.result as IAuthenticationResult;
+    const authState: CognitoAuthState = _.get(this.state, ['result', 'state']);
 
     if (!authState) {
       return;
     }
 
     switch (authState) {
+      case 'Authenticated':
+        form = 'Login';
+        if (result && result.user && this.props.onLoggedIn) {
+          this.props.onLoggedIn(result.user);
+        }
+        break;
       case 'ConfirmAccountCodeWaiting':
         form = 'ConfirmAccount';
         break;
@@ -176,7 +193,12 @@ export class CognitoLogin extends React.Component<
         break;
     }
 
-    this.setState({ formState: form });
+    let { message } = this.state;
+    if (authState === 'Authenticated') {
+      message = 'Logged in!';
+    }
+
+    this.setState({ formState: form, message });
   }
 
   onEmailChanged(email: string | undefined) {
@@ -220,7 +242,7 @@ export class CognitoLogin extends React.Component<
     const result = await OnRegister(this.state.userInput);
     if (__DEV__) console.log('**** onRegister result: ', result);
 
-    this.setState({ result }, this.setActiveForm);
+    this.setState({ result }, this.onResultChanged);
   }
 
   async onConfirmAccount() {
@@ -229,6 +251,7 @@ export class CognitoLogin extends React.Component<
       this.state.code === '' ||
       _.isNil(this.state.userInput.email)
     ) {
+      this.setState({ message: 'Need code and user e-mail' });
       return;
     }
 
@@ -241,7 +264,7 @@ export class CognitoLogin extends React.Component<
 
     if (__DEV__) console.log('**** onConfirmAccount result: ', result);
 
-    this.setState({ result }, this.setActiveForm);
+    this.setState({ result, formState: 'Login' });
   }
 
   async onConfirmMFACode() {
@@ -262,7 +285,7 @@ export class CognitoLogin extends React.Component<
 
     if (__DEV__) console.log('**** onConfirmMFACode result: ', result);
 
-    this.setState({ result }, this.setActiveForm);
+    this.setState({ result }, this.onResultChanged);
   }
 
   async onLogin() {
@@ -270,14 +293,14 @@ export class CognitoLogin extends React.Component<
     const result = await OnLogin(this.state.userInput);
     if (__DEV__) console.log('**** onLogin result: ', result);
 
-    this.setState({ result }, this.setActiveForm);
+    this.setState({ result }, this.onResultChanged);
   }
 
   render() {
     // Extract error message. Could be an Error or a string
     const error =
       _.get(this.state, ['result', 'error', 'message']) ||
-      _.get(this.state, ['result', 'error']);
+      _.get(this.state, ['result', 'error'] || this.state.message);
 
     return (
       <View style={styles.container}>

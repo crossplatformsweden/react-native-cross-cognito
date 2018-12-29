@@ -23,7 +23,8 @@ export const OnConfirmAccount = async (
 
     await Auth.confirmSignUp(userName, codeInt.toString(), undefined);
 
-    return OnCheckSession();
+    const result = await OnCheckSession();
+    return result;
   } catch (error) {
     // if (__DEV__) console.log(error);
     return { state: 'AuthenticationError', error };

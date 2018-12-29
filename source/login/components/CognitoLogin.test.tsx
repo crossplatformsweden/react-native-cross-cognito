@@ -102,7 +102,7 @@ describe('components', () => {
         done();
       });
 
-      it('On save user failed `state.formState` should be `Register`', async (done) => {
+      it('On save user failed `state.formState` should be `Login`', async (done) => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'Register',
@@ -120,7 +120,7 @@ describe('components', () => {
           'formState',
         ]);
 
-        expect(result).toBe('Register');
+        expect(result).toBe('Login');
         done();
       });
 
@@ -192,5 +192,7 @@ describe('components', () => {
 
       expect(result).toBe('testcode');
     });
+
+    // TODO: Test Register > Login flow (right form?)
   });
 });

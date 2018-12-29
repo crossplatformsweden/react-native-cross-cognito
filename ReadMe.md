@@ -73,6 +73,10 @@ Login component with default configuration
 	Amplify.configure(amplify);
 
 	export const MyComp => () => (
- 		<CognitoLogin />
+	   <CognitoLogin
+	   		onLoggedIn={(user) => console.log(user)}
+	   		loginButtonProps={{title: 'Engage'}}>
+	      <Text>Custom layouts here</Text>
+	   </CognitoLogin>
 	);
 ```
