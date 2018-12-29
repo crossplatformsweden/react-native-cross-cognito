@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;events/OnConfirmAccount&quot; | Crossplatform React-Native Cognito</title>
+	<title>&quot;events/OnResendSignup&quot; | Crossplatform React-Native Cognito</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="_events_onconfirmaccount_.html">&quot;events/OnConfirmAccount&quot;</a>
+					<a href="_events_onresendsignup_.html">&quot;events/OnResendSignup&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;events/OnConfirmAccount&quot;</h1>
+			<h1>External module &quot;events/OnResendSignup&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_events_onconfirmaccount_.html#onconfirmaccount" class="tsd-kind-icon">On<wbr>Confirm<wbr>Account</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_events_onresendsignup_.html#onresendsignup" class="tsd-kind-icon">On<wbr>Resend<wbr>Signup</a></li>
 							</ul>
 						</section>
 					</div>
@@ -78,44 +78,31 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="onconfirmaccount" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> On<wbr>Confirm<wbr>Account</h3>
+					<a name="onresendsignup" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> On<wbr>Resend<wbr>Signup</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">On<wbr>Confirm<wbr>Account<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, userName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_types_.iauthenticationresult.html" class="tsd-signature-type">IAuthenticationResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">On<wbr>Resend<wbr>Signup<span class="tsd-signature-symbol">(</span>username<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/8b9419c/source/events/OnConfirmAccount.ts#L12">events/OnConfirmAccount.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/8b9419c/source/events/OnResendSignup.ts#L9">events/OnResendSignup.ts:9</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Handles confirm Cognito confirm account event</p>
+									<p>Resend the user&#39;s account confirmation code</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>code: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>user code used to confirm account</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5>userName: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>the user to confirm</p>
-										</div>
-									</div>
+									<h5>username: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_types_.iauthenticationresult.html" class="tsd-signature-type">IAuthenticationResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>See <a href="../interfaces/_types_.iauthenticationresult.html">IAuthenticationResult</a></p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>result or undefined</p>
 						</li>
 					</ul>
 				</section>
@@ -136,7 +123,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_events_onchecksession_.html">"events/<wbr>OnCheck<wbr>Session"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_events_onconfirmaccount_.html">"events/<wbr>OnConfirm<wbr>Account"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -148,7 +135,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_events_onregister_.html">"events/<wbr>OnRegister"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_events_onresendsignup_.html">"events/<wbr>OnResend<wbr>Signup"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -177,7 +164,7 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_events_onconfirmaccount_.html#onconfirmaccount" class="tsd-kind-icon">On<wbr>Confirm<wbr>Account</a>
+						<a href="_events_onresendsignup_.html#onresendsignup" class="tsd-kind-icon">On<wbr>Resend<wbr>Signup</a>
 					</li>
 				</ul>
 			</nav>
