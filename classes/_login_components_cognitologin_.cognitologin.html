@@ -70,6 +70,7 @@
 					<div class="lead">
 						<p>A form for logging in to AWS Cognito through Amplify.</p>
 					</div>
+					<p>On successful login the <a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html#onloggedin">ICognitoLoginProps.onLoggedIn</a> event is triggered.</p>
 					<p>Remarks:</p>
 					<ul>
 						<li>Requires Amplify to be configured:</li>
@@ -78,7 +79,9 @@
 					<p>Props are <a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html">ICognitoLoginProps</a></p>
 					<dl class="tsd-comment-tags">
 						<dt>example</dt>
-						<dd><p> &lt;CognitoLogin loginButtonProps={{title: &#39;Engage&#39;}}&gt;
+						<dd><p> &lt;CognitoLogin
+								onLoggedIn={(user) =&gt; console.log(user)}
+								loginButtonProps={{title: &#39;Engage&#39;}}&gt;
 								<Text>Custom layouts here</Text>
 							</CognitoLogin></p>
 						</dd>
@@ -148,8 +151,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onpasswordchanged" class="tsd-kind-icon">on<wbr>Password<wbr>Changed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onphonechanged" class="tsd-kind-icon">on<wbr>Phone<wbr>Changed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onregister" class="tsd-kind-icon">on<wbr>Register</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onresultchanged" class="tsd-kind-icon">on<wbr>Result<wbr>Changed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_login_components_cognitologin_.cognitologin.html#render" class="tsd-kind-icon">render</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#setactiveform" class="tsd-kind-icon">set<wbr>Active<wbr>Form</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#setstate" class="tsd-kind-icon">set<wbr>State</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#shouldcomponentupdate" class="tsd-kind-icon">should<wbr>Component<wbr>Update</a></li>
 							</ul>
@@ -170,7 +173,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Component.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L139">login/components/CognitoLogin.tsx:139</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L151">login/components/CognitoLogin.tsx:151</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -756,7 +759,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L224">login/components/CognitoLogin.tsx:224</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L248">login/components/CognitoLogin.tsx:248</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -773,7 +776,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L245">login/components/CognitoLogin.tsx:245</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L270">login/components/CognitoLogin.tsx:270</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -790,7 +793,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L182">login/components/CognitoLogin.tsx:182</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L204">login/components/CognitoLogin.tsx:204</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -813,7 +816,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L266">login/components/CognitoLogin.tsx:266</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L291">login/components/CognitoLogin.tsx:291</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -830,7 +833,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L191">login/components/CognitoLogin.tsx:191</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L213">login/components/CognitoLogin.tsx:213</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -853,7 +856,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L201">login/components/CognitoLogin.tsx:201</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L223">login/components/CognitoLogin.tsx:223</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -876,10 +879,27 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L216">login/components/CognitoLogin.tsx:216</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L240">login/components/CognitoLogin.tsx:240</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="onresultchanged" class="tsd-anchor"></a>
+					<h3>on<wbr>Result<wbr>Changed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Result<wbr>Changed<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L171">login/components/CognitoLogin.tsx:171</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -894,27 +914,10 @@ class Foo extends React.Component {
 							<aside class="tsd-sources">
 								<p>Overrides Component.render</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L274">login/components/CognitoLogin.tsx:274</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L299">login/components/CognitoLogin.tsx:299</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="setactiveform" class="tsd-anchor"></a>
-					<h3>set<wbr>Active<wbr>Form</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Active<wbr>Form<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L158">login/components/CognitoLogin.tsx:158</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1125,11 +1128,11 @@ class Foo extends React.Component {
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_login_components_cognitologin_.cognitologin.html#onregister" class="tsd-kind-icon">on<wbr>Register</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_login_components_cognitologin_.cognitologin.html#onresultchanged" class="tsd-kind-icon">on<wbr>Result<wbr>Changed</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 								<a href="_login_components_cognitologin_.cognitologin.html#render" class="tsd-kind-icon">render</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#setactiveform" class="tsd-kind-icon">set<wbr>Active<wbr>Form</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
 								<a href="_login_components_cognitologin_.cognitologin.html#setstate" class="tsd-kind-icon">set<wbr>State</a>

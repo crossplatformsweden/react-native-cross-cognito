@@ -68,8 +68,9 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Properties for the <a href="../classes/_login_components_cognitologin_.cognitologin.html">CognitoLogin</a> component</p>
+						<p>Properties for the <a href="../classes/_login_components_cognitologin_.cognitologin.html">CognitoLogin</a> component.</p>
 					</div>
+					<p>Allows customization and provides the <a href="_login_components_cognitologin_.icognitologinprops.html#onloggedin">onLoggedIn</a> event.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -90,6 +91,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#cancelbuttonprops" class="tsd-kind-icon">cancel<wbr>Button<wbr>Props</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#emailinputprops" class="tsd-kind-icon">email<wbr>Input<wbr>Props</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#loginbuttonprops" class="tsd-kind-icon">login<wbr>Button<wbr>Props</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#onloggedin" class="tsd-kind-icon">on<wbr>Logged<wbr>In</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#passwordinputprops" class="tsd-kind-icon">password<wbr>Input<wbr>Props</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#phoneinputprops" class="tsd-kind-icon">phone<wbr>Input<wbr>Props</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#registerbuttonprops" class="tsd-kind-icon">register<wbr>Button<wbr>Props</a></li>
@@ -107,7 +109,7 @@
 					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L54">login/components/CognitoLogin.tsx:54</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L61">login/components/CognitoLogin.tsx:61</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -131,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">email<wbr>Input<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossEditorProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L88">login/components/CognitoLogin.tsx:88</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L95">login/components/CognitoLogin.tsx:95</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -147,7 +149,7 @@
 					<div class="tsd-signature tsd-kind-icon">login<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L42">login/components/CognitoLogin.tsx:42</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L49">login/components/CognitoLogin.tsx:49</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -166,12 +168,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="onloggedin" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Logged<wbr>In</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Logged<wbr>In<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L37">login/components/CognitoLogin.tsx:37</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Occurs when the user was successfully logged in and contains the resulting user.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="passwordinputprops" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> password<wbr>Input<wbr>Props</h3>
 					<div class="tsd-signature tsd-kind-icon">password<wbr>Input<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossEditorProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L93">login/components/CognitoLogin.tsx:93</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L100">login/components/CognitoLogin.tsx:100</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -187,7 +204,7 @@
 					<div class="tsd-signature tsd-kind-icon">phone<wbr>Input<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossEditorProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L83">login/components/CognitoLogin.tsx:83</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L90">login/components/CognitoLogin.tsx:90</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -203,7 +220,7 @@
 					<div class="tsd-signature tsd-kind-icon">register<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L78">login/components/CognitoLogin.tsx:78</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L85">login/components/CognitoLogin.tsx:85</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -227,7 +244,7 @@
 					<div class="tsd-signature tsd-kind-icon">save<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/86ecd4e/source/login/components/CognitoLogin.tsx#L66">login/components/CognitoLogin.tsx:66</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/20d1c98/source/login/components/CognitoLogin.tsx#L73">login/components/CognitoLogin.tsx:73</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -315,6 +332,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_login_components_cognitologin_.icognitologinprops.html#loginbuttonprops" class="tsd-kind-icon">login<wbr>Button<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_login_components_cognitologin_.icognitologinprops.html#onloggedin" class="tsd-kind-icon">on<wbr>Logged<wbr>In</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_login_components_cognitologin_.icognitologinprops.html#passwordinputprops" class="tsd-kind-icon">password<wbr>Input<wbr>Props</a>
