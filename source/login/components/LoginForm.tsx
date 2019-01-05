@@ -15,14 +15,14 @@ import {
  */
 export interface ILoginFormProps {
   onEmailChanged: (email: string | undefined) => void;
-  onPasswordChanged: (password: string | undefined) => void;
   initialEmail?: string | undefined;
-  initialPassword?: string | undefined;
   /**
    * Optional props for the e-mail input. Typically used to change the `label` prop.
    * See {@link ICrossEditorProps}
    */
   emailInputProps?: ICrossEditorProps | undefined;
+  onPasswordChanged: (password: string | undefined) => void;
+  initialPassword?: string | undefined;
   /**
    * Optional props for the password input. Typically used to change the `label` prop.
    * See {@link ICrossEditorProps}

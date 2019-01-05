@@ -154,7 +154,13 @@ export class CognitoLogin extends React.Component<
     super(props);
     this.state = {
       result: undefined,
-      userInput: { email: undefined, password: undefined },
+      userInput: __DEV__
+        ? {
+            email: 'cogtest@mailinator.com',
+            password: 'Password1#',
+            phone: '+46730555252',
+          }
+        : { email: undefined, password: undefined },
       formState: 'Login',
       code: undefined,
       message: undefined,
@@ -191,6 +197,7 @@ export class CognitoLogin extends React.Component<
         break;
       case 'ConfirmLoginMFAWaiting':
         form = 'ConfirmMFALogin';
+        break;
       default:
         break;
     }
@@ -401,6 +408,8 @@ export class CognitoLogin extends React.Component<
             <ConfirmForm
               testID='ConfirmAccountForm'
               code={this.state.code}
+              initialEmail={this.state.userInput.email}
+              onEmailChanged={this.onEmailChanged}
               onConfirmPress={async () => await this.onConfirmAccount()}
               onCodeChanged={(code) => this.setState({ code })}
               {...this.props}
@@ -419,6 +428,8 @@ export class CognitoLogin extends React.Component<
         {this.state.formState === 'ConfirmMFALogin' ? (
           <ConfirmForm
             code={this.state.code}
+            initialEmail={this.state.userInput.email}
+            onEmailChanged={this.onEmailChanged}
             onConfirmPress={async () => await this.onConfirmMFACode()}
             onCodeChanged={(code) => this.setState({ code })}
           />
@@ -426,7 +437,7 @@ export class CognitoLogin extends React.Component<
         <CognitoUserInputContext.Provider value={this.state.userInput} />
 
         <CrossLabel isCaption={true} style={{ color: 'red' }}>
-          {error}
+          {(error || '').toString()}
         </CrossLabel>
       </View>
     );

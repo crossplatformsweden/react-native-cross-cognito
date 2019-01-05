@@ -21,14 +21,14 @@ exports[`components <CognitoLogin /> Component should render 1`] = `
         label="E-mail"
         onChangeText={[Function]}
         placeholder="E-mail"
-        value=""
+        value="cogtest@mailinator.com"
       />
       <TextInput
         clearButtonMode="always"
         label="Password"
         onChangeText={[Function]}
         secureTextEntry={true}
-        value=""
+        value="Password1#"
       />
     </View>
     <Button
@@ -74,6 +74,8 @@ exports[`components <CognitoLogin /> Component should render 1`] = `
         "color": "red",
       }
     }
-  />
+  >
+    
+  </Text>
 </View>
 `;

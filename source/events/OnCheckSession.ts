@@ -17,36 +17,88 @@ export const OnCheckSession = async (
     session = await Auth.currentSession();
   }
 
-  let user: CognitoUser = cognitoAuthResult as CognitoUser;
-  let error = cognitoAuthResult as Error;
+  if (__DEV__) {
+    console.log('**** OnCheckSession ****');
+    console.log('Session', session);
+  }
 
-  if (user && user.getUsername) {
-    return { state: 'Authenticated', user: cognitoAuthResult as CognitoUser };
+  let user = session instanceof CognitoUser ? session : null;
+  if (_.get(session, 'user') && session.user instanceof CognitoUser) {
+    user = session.user;
+  }
+  let result: IAuthenticationResult;
+  const isError = session instanceof Error;
+
+  if (_.get(user, 'username') && _.get(session, 'userConfirmed') !== false) {
+    result = { state: 'Authenticated', user: session as CognitoUser };
+
+    return result;
   }
 
   const challengeName: string = _.get(session, 'challengeName') || '';
 
+  // MFA code required
   if (challengeName === 'SMS_MFA' || challengeName === 'SOFTWARE_TOKEN_MFA') {
-    return { state: 'ConfirmLoginMFAWaiting', error };
+    result = {
+      state: 'ConfirmLoginMFAWaiting',
+      error: new Error(_.get(session, 'message') || 'Please enter MFA code'),
+    };
+
+    return result;
   }
 
+  // Need to setup MFA
   if (challengeName === 'MFA_SETUP') {
-    return { state: 'MFA_SETUP', error };
+    result = {
+      state: 'MFA_SETUP',
+      error: new Error(_.get(session, 'message') || 'Must setup MFA'),
+    };
+
+    return result;
   }
 
   if (challengeName === 'NEW_PASSWORD_REQUIRED') {
-    return { state: 'NEW_PASSWORD_REQUIRED', error };
+    result = {
+      state: 'NEW_PASSWORD_REQUIRED',
+      error: new Error(_.get(session, 'message') || 'New password required'),
+    };
+
+    return result;
   }
 
+  const code = _.get(session, 'code');
+
+  // Not confirmed
   if (
-    _.get(cognitoAuthResult, 'code') === 'UserNotConfirmedException' ||
-    _.get(cognitoAuthResult, 'code') === 'CodeMismatchException' ||
-    _.get(cognitoAuthResult, 'userConfirmed') === false
+    code === 'UserNotConfirmedException' ||
+    code === 'CodeMismatchException' ||
+    _.get(session, 'userConfirmed') === false
   ) {
-    return { state: 'ConfirmAccountCodeWaiting', error };
+    result = {
+      state: 'ConfirmAccountCodeWaiting',
+      error: new Error(_.get(session, 'message') || 'User not confirmed'),
+    };
+
+    return result;
   }
 
-  return { state: error ? 'AuthenticationError' : 'Unauthenticated', error };
+  if (!_.isNil(code) && _.get(session, 'message')) {
+    // Other codes
+    console.log('*** Cognito OnCheckSession code: "' + code + '" ***');
+    result = {
+      state: 'Unauthenticated',
+      error: new Error(session.message),
+    };
+
+    return result;
+  }
+
+  result = {
+    state: isError ? 'AuthenticationError' : 'Unauthenticated',
+    error: isError ? session : undefined,
+  };
+
+  return result;
 };
 
 export default OnCheckSession;

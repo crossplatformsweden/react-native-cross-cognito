@@ -7,6 +7,7 @@ import {
 } from 'react-native-cross-components';
 import styles from '../../styles';
 import { CrossEditor, ICrossEditorProps } from 'react-native-cross-components';
+import { IEmailProps } from '../../types';
 
 /**
  * Props for the {@link ConfirmForm} components.
@@ -15,7 +16,7 @@ import { CrossEditor, ICrossEditorProps } from 'react-native-cross-components';
  *
  * Allows you to customize {@link initialCode},  {@link confirmButtonProps} and {@link codeInputProps}.
  */
-export interface IConfirmFormProps {
+export interface IConfirmFormProps extends IEmailProps {
   /**
    * Occurs when the user press "confirm" button. Required.
    */
@@ -72,7 +73,17 @@ export class ConfirmForm extends React.Component<IConfirmFormProps> {
   render() {
     return (
       <View style={[styles.container]} testID={this.props.testID}>
-        {this.props.children}
+        {this.props.children}{' '}
+        <CrossEditor
+          label='E-mail'
+          placeholder='E-mail'
+          autoCapitalize='none'
+          clearButtonMode='always'
+          autoCorrect={false}
+          value={this.props.initialEmail || ''}
+          onChangeText={(text: string) => this.props.onEmailChanged(text)}
+          {...this.props.emailInputProps}
+        />
         <CrossEditor
           label='Confirmation code'
           placeholder='Enter the code that was sent to you'

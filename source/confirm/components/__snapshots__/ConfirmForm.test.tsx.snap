@@ -8,6 +8,16 @@ exports[`components <ConfirmForm /> Component should render 1`] = `
     ]
   }
 >
+   
+  <TextInput
+    autoCapitalize="none"
+    autoCorrect={false}
+    clearButtonMode="always"
+    label="E-mail"
+    onChangeText={[Function]}
+    placeholder="E-mail"
+    value=""
+  />
   <TextInput
     autoCapitalize="none"
     autoCorrect={false}

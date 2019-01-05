@@ -7,20 +7,22 @@ jest.unmock('./OnCheckSession');
 
 describe('events', () => {
   describe('OnCheckSession', () => {
-    it('When empty object then returns `AuthenticationError`', async (done) => {
+    it('When empty object then returns `Unauthenticated`', async (done) => {
       let result = await OnCheckSession({});
-      expect(result.state).toBe('AuthenticationError');
+      console.log('Result 1 ', result);
+      expect(result.state).toBe('Unauthenticated');
       done();
     });
 
-    it('When `getUsername` then returns `Authenticated`', async (done) => {
+    it('When `getUsername` then returns `Unauthenticated`', async (done) => {
       let result = await OnCheckSession({ getUsername: 'test' });
-      expect(result.state).toBe('Authenticated');
+      expect(result.state).toBe('Unauthenticated');
       done();
     });
 
     it('When `code` is `UserNotConfirmedException` then returns `ConfirmAccountCodeWaiting`', async (done) => {
       let result = await OnCheckSession({ code: 'UserNotConfirmedException' });
+      console.log('Result 3 ', result);
       expect(result.state).toBe('ConfirmAccountCodeWaiting');
       done();
     });
