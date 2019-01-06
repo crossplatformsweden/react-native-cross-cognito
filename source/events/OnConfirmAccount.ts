@@ -19,12 +19,9 @@ export const OnConfirmAccount = async (
       throw Error('Not a valid Code');
     }
 
-    console.log('** Cognito: confirm MFA signin code with AWS **');
-
     await Auth.confirmSignUp(userName, codeInt.toString(), undefined);
 
-    const result = await OnCheckSession();
-    return result;
+    return OnCheckSession();
   } catch (error) {
     // if (__DEV__) console.log(error);
     return OnCheckSession(error);

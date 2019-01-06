@@ -17,17 +17,20 @@ export const OnCheckSession = async (
     session = await Auth.currentSession();
   }
 
-  if (__DEV__) {
-    console.log('**** OnCheckSession ****');
-    console.log('Session', session);
-  }
-
   let user = session instanceof CognitoUser ? session : null;
   if (_.get(session, 'user') && session.user instanceof CognitoUser) {
     user = session.user;
   }
+
+  const isError: boolean = session instanceof Error;
+
+  if (__DEV__) {
+    console.log('**** OnCheckSession ****');
+    console.log('isError? ' + isError);
+    console.log(session);
+  }
+
   let result: IAuthenticationResult;
-  const isError = session instanceof Error;
 
   if (_.get(user, 'username') && _.get(session, 'userConfirmed') !== false) {
     result = { state: 'Authenticated', user: session as CognitoUser };
