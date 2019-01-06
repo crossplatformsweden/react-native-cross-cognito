@@ -56,7 +56,7 @@ See **[Components](#components)** below for examples
 
 ### CognitoLogin
 
-### GIF HERE
+![](https://media.giphy.com/media/TGMBAkTYs1Xhojabxl/giphy.gif)
 
 Renders a complete login form using your Amplify token.
 
