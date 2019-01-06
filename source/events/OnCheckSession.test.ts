@@ -9,7 +9,6 @@ describe('events', () => {
   describe('OnCheckSession', () => {
     it('When empty object then returns `Unauthenticated`', async (done) => {
       let result = await OnCheckSession({});
-      console.log('Result 1 ', result);
       expect(result.state).toBe('Unauthenticated');
       done();
     });
@@ -20,10 +19,47 @@ describe('events', () => {
       done();
     });
 
-    it('When `code` is `UserNotConfirmedException` then returns `ConfirmAccountCodeWaiting`', async (done) => {
-      let result = await OnCheckSession({ code: 'UserNotConfirmedException' });
-      console.log('Result 3 ', result);
+    it('When `code` is `UserNotConfirmedException` then returns `ConfirmLoginMFAWaiting`', async (done) => {
+      let result = await OnCheckSession({
+        code: 'UserNotConfirmedException',
+      });
       expect(result.state).toBe('ConfirmAccountCodeWaiting');
+      done();
+    });
+
+    it('When `code` is `CodeMismatchException` then returns `ConfirmLoginMFAWaiting`', async (done) => {
+      let result = await OnCheckSession({
+        code: 'CodeMismatchException',
+      });
+      expect(result.state).toBe('ConfirmAccountCodeWaiting');
+      done();
+    });
+
+    it('When `challengeName` is `SMS_MFA` then returns `ConfirmLoginMFAWaiting`', async (done) => {
+      let result = await OnCheckSession({ challengeName: 'SMS_MFA' });
+      expect(result.state).toBe('ConfirmLoginMFAWaiting');
+      done();
+    });
+
+    it('When `challengeName` is `SOFTWARE_TOKEN_MFA` then returns `ConfirmLoginMFAWaiting`', async (done) => {
+      let result = await OnCheckSession({
+        challengeName: 'SOFTWARE_TOKEN_MFA',
+      });
+      expect(result.state).toBe('ConfirmLoginMFAWaiting');
+      done();
+    });
+
+    it('When `challengeName` is `MFA_SETUP` then returns `MFA_SETUP`', async (done) => {
+      let result = await OnCheckSession({ challengeName: 'MFA_SETUP' });
+      expect(result.state).toBe('MFA_SETUP');
+      done();
+    });
+
+    it('When `challengeName` is `NEW_PASSWORD_REQUIRED` then returns `NEW_PASSWORD_REQUIRED`', async (done) => {
+      let result = await OnCheckSession({
+        challengeName: 'NEW_PASSWORD_REQUIRED',
+      });
+      expect(result.state).toBe('NEW_PASSWORD_REQUIRED');
       done();
     });
   });
