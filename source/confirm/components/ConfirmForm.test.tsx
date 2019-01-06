@@ -19,7 +19,11 @@ describe('components', () => {
   describe('<ConfirmForm />', () => {
     it('Component should render', () => {
       const wrapper = TestRenderer.create(
-        <ConfirmForm code='testcode' onConfirmPress={console.log} />
+        <ConfirmForm
+          code='testcode'
+          onConfirmPress={console.log}
+          onEmailChanged={console.log}
+        />
       );
       expect(wrapper.toJSON()).toMatchSnapshot();
     });
