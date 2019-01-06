@@ -1,17 +1,8 @@
 import React from 'react';
 import { View, Alert, AlertButton } from 'react-native';
 import LoginForm from './LoginForm';
-import {
-  Colors,
-  CrossButton,
-  ICrossButtonProps,
-  CrossLabel,
-} from 'react-native-cross-components';
-import {
-  ICognitoUserVariables,
-  CognitoAuthState,
-  IAuthenticationResult,
-} from '../../types';
+import { Colors, CrossButton, CrossLabel } from 'react-native-cross-components';
+import { CognitoAuthState, IAuthenticationResult } from '../../types';
 import { CognitoUserInputContext } from '../../contexts';
 import { OnLogin } from '../../events/OnLogin';
 import _ from 'lodash';
@@ -22,110 +13,10 @@ import { OnRegister } from '../../events/OnRegister';
 import styles from '../../styles';
 import OnConfirmMfaCode from '../../events/OnConfirmMfaCode';
 import OnConfirmAccount from '../../events/OnConfirmAccount';
-import { ICrossEditorProps } from 'react-native-cross-components';
-import { CognitoUser } from 'amazon-cognito-identity-js';
 import OnResendSignup from '../../events/OnResendSignup';
-
-/**
- * Properties for the {@link CognitoLogin} component.
- *
- * Allows customization and provides the {@link onLoggedIn} event.
- */
-export interface ICognitoLoginProps {
-  /**
-   * Occurs when the user was successfully logged in and contains the resulting user.
-   */
-  onLoggedIn?: (user: CognitoUser) => void;
-  /**
-   * Optional props for the login button. Typically used to change the `title` prop.
-   *
-   * Read more:
-   * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
-   *
-   * @example
-   *  <CognitoLogin loginButtonProps={{title: 'Engage'}}>
-   *     <Text>Custom layouts here</Text>
-   *  </CognitoLogin>
-   */
-  loginButtonProps?: ICrossButtonProps | undefined;
-  /**
-   * Optional props for the cancel button. Typically used to change the `title` prop.
-   *
-   * Read more:
-   * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
-   *
-   * @example
-   *  <CognitoLogin cancelButtonProps={{title: 'Disengage'}}>
-   *     <Text>Custom layouts here</Text>
-   *  </CognitoLogin>
-   */
-  cancelButtonProps?: ICrossButtonProps | undefined;
-  /**
-   * Optional props for the save button. Typically used to change the `title` prop.
-   *
-   * Read more:
-   * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
-   *
-   * @example
-   *  <CognitoLogin saveButtonProps={{title: 'Warp'}}>
-   *     <Text>Custom layouts here</Text>
-   *  </CognitoLogin>
-   */
-  saveButtonProps?: ICrossButtonProps | undefined;
-  /**
-   * Optional props for the register button. Typically used to change the `title` prop.
-   *
-   * Read more:
-   * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
-   *
-   * @example
-   *  <CognitoLogin registerButtonProps={{title: 'Enlist'}}>
-   *     <Text>Custom layouts here</Text>
-   *  </CognitoLogin>
-   */
-  registerButtonProps?: ICrossButtonProps | undefined;
-  /**
-   * Optional props for the phone input. Typically used to change the `label` prop or change the `maskProps`.
-   * See {@link ICrossEditorProps}
-   */
-  phoneInputProps?: ICrossEditorProps | undefined;
-  /**
-   * Optional props for the e-mail input. Typically used to change the `label` prop.
-   * See {@link ICrossEditorProps}
-   */
-  emailInputProps?: ICrossEditorProps | undefined;
-  /**
-   * Optional props for the password input. Typically used to change the `label` prop.
-   * See {@link ICrossEditorProps}
-   */
-  passwordInputProps?: ICrossEditorProps | undefined;
-}
-/**
- * Current active form
- */
-type LoginCurrentForm =
-  | 'Login'
-  | 'Register'
-  | 'ConfirmAccount'
-  | 'ConfirmMFALogin'
-  | 'Forgot';
-
-export interface ICognitoLoginState {
-  /**
-   * User form input. See {@link ICognitoUserVariables}
-   */
-  userInput: ICognitoUserVariables;
-  /**
-   * See {@link AuthFormState}
-   */
-  formState: LoginCurrentForm;
-  /**
-   * Result of the last authentication operation
-   */
-  result: IAuthenticationResult | undefined;
-  code: string | undefined;
-  message?: string | undefined;
-}
+import { ICognitoLoginProps } from './ICognitoLoginProps';
+import { LoginCurrentForm } from './LoginCurrentForm';
+import { ICognitoLoginState } from './ICognitoLoginState';
 
 /**
  * A form for logging in to AWS Cognito through Amplify.
@@ -176,7 +67,7 @@ export class CognitoLogin extends React.Component<
     this.OnResendSignup = this.OnResendSignup.bind(this);
   }
 
-  onResultChanged() {
+  onResultChanged = () => {
     let form: LoginCurrentForm = 'Login';
     const result = this.state.result as IAuthenticationResult;
     const authState: CognitoAuthState = _.get(this.state, ['result', 'state']);
@@ -210,7 +101,7 @@ export class CognitoLogin extends React.Component<
     this.setState({ formState: form, message });
   }
 
-  onEmailChanged(email: string | undefined) {
+  onEmailChanged = (email: string | undefined) => {
     const { userInput } = this.state;
     if (_.isNil(email)) {
       return;
@@ -219,7 +110,7 @@ export class CognitoLogin extends React.Component<
     this.setState({ userInput });
   }
 
-  onPasswordChanged(password: string | undefined) {
+  onPasswordChanged = (password: string | undefined) => {
     const { userInput } = this.state;
     if (_.isNil(password)) {
       return;
@@ -229,7 +120,7 @@ export class CognitoLogin extends React.Component<
     this.setState({ userInput });
   }
 
-  onPhoneChanged(phone: string | undefined) {
+  onPhoneChanged = (phone: string | undefined) => {
     const { userInput } = this.state;
     let newPhone = phone;
     if (_.isNil(newPhone)) {
@@ -246,7 +137,7 @@ export class CognitoLogin extends React.Component<
     this.setState({ userInput });
   }
 
-  async OnResendSignup() {
+  OnResendSignup = () => {
     const { email } = this.state.userInput;
     if (_.isNil(email)) {
       this.setState({ message: 'Please enter username' });
@@ -261,7 +152,7 @@ export class CognitoLogin extends React.Component<
     Alert.alert('Confirm', 'Re-send code?', [sendButton], { cancelable: true });
   }
 
-  async onRegister() {
+  onRegister = async () => {
     if (__DEV__) console.log('***** onRegister ***** ');
     const result = await OnRegister(this.state.userInput);
     if (__DEV__) console.log('**** onRegister result: ', result);
@@ -269,7 +160,7 @@ export class CognitoLogin extends React.Component<
     this.setState({ result }, this.onResultChanged);
   }
 
-  async onConfirmAccount() {
+  onConfirmAccount = async () => {
     if (
       _.isNil(this.state.code) ||
       this.state.code === '' ||
@@ -291,7 +182,7 @@ export class CognitoLogin extends React.Component<
     this.setState({ result, formState: 'Login' }, this.onResultChanged);
   }
 
-  async onConfirmMFACode() {
+  onConfirmMFACode = async () => {
     if (
       _.isNil(this.state.code) ||
       this.state.code === '' ||
@@ -312,7 +203,7 @@ export class CognitoLogin extends React.Component<
     this.setState({ result }, this.onResultChanged);
   }
 
-  async onLogin() {
+  onLogin = async () => {
     if (__DEV__) console.log('***** onLogin ***** ');
     const result = await OnLogin(this.state.userInput);
     if (__DEV__) console.log('**** onLogin result: ', result);
@@ -417,7 +308,7 @@ export class CognitoLogin extends React.Component<
             <CrossButton
               style={styles.marginTop10}
               buttonStyle={styles.buttonStyle}
-              onPress={async () => await this.OnResendSignup()}
+              onPress={() => this.OnResendSignup()}
               mode='contained'
               title='Resend code'
               backgroundColor={Colors.CancelButton}
@@ -427,6 +318,7 @@ export class CognitoLogin extends React.Component<
         ) : null}
         {this.state.formState === 'ConfirmMFALogin' ? (
           <ConfirmForm
+          testID='ConfirmMFAForm'
             code={this.state.code}
             initialEmail={this.state.userInput.email}
             onEmailChanged={this.onEmailChanged}

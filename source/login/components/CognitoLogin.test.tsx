@@ -3,7 +3,7 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import CognitoLogin from './CognitoLogin';
 import _ from 'lodash';
-import { ICognitoLoginState } from './CognitoLogin';
+import { ICognitoLoginState } from './ICognitoLoginState';
 
 jest.unmock('react-native');
 jest.unmock('./CognitoLogin');
@@ -141,7 +141,7 @@ describe('components', () => {
     });
 
     describe('formState ConfirmAccount', () => {
-      it('When formState `ConfirmAccount` `onCodeChanged` should set `state.code`', () => {
+      it('`onCodeChanged` should set `state.code`', () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         wrapper.root.instance.setState({ formState: 'ConfirmAccount' });
         const child = wrapper.root.findByProps({
@@ -153,12 +153,27 @@ describe('components', () => {
         expect(result).toBe('testcode');
       });
 
-      it('When formState `ConfirmAccount` `onConfirmPress` should return `Not a valid Code`', async (done) => {
+      it('`OnResendSignup` should pass', () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'ConfirmAccount',
-          code: 'testcode',
+          result: undefined,
+          code: undefined,
           userInput: { email: 'bogus@test.com', password: 'testPw' },
+        };
+        wrapper.root.instance.setState(state);
+        const child = wrapper.root.findByProps({
+          title: 'Resend code',
+        });
+        expect(child.props.onPress).not.toThrow();
+      });
+
+      it('When no `code` or `email` `onConfirmPress` should set `message` to `Need code and user e-mail`', async (done) => {
+        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const state: ICognitoLoginState = {
+          formState: 'ConfirmAccount',
+          code: undefined,
+          userInput: { email: undefined, password: undefined },
           result: undefined,
         };
         wrapper.root.instance.setState(state);
@@ -166,26 +181,21 @@ describe('components', () => {
           testID: 'ConfirmAccountForm',
         });
         await child.props.onConfirmPress();
-        const result = _.get(wrapper, [
-          'root',
-          'instance',
-          'state',
-          'result',
-          'error',
-          'message',
-        ]);
+        const result = _.get(wrapper, ['root', 'instance', 'state', 'message']);
         console.log('*** test result ', result);
-        expect(result).toBe('Not a valid Code');
+        expect(result).toBe('Need code and user e-mail');
         console.log('**** onConfirmPress test DONE *****');
         done();
       });
     });
+  });
 
+  describe('formState ConfirmMFALogin', () => {
     it('When formState `ConfirmMFALogin` `onCodeChanged` should set `state.code`', () => {
       const wrapper = TestRenderer.create(<CognitoLogin />);
-      wrapper.root.instance.setState({ formState: 'ConfirmAccount' });
+      wrapper.root.instance.setState({ formState: 'ConfirmMFALogin' });
       const child = wrapper.root.findByProps({
-        testID: 'ConfirmAccountForm',
+        testID: 'ConfirmMFAForm',
       });
       child.props.onCodeChanged('testcode');
       const result = _.get(wrapper, ['root', 'instance', 'state', 'code']);
@@ -193,6 +203,33 @@ describe('components', () => {
       expect(result).toBe('testcode');
     });
 
-    // TODO: Test Register > Login flow (right form?)
+    it('`onConfirmPress` should return `Not a valid Code`', async (done) => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+      const state: ICognitoLoginState = {
+        formState: 'ConfirmMFALogin',
+        code: 'testcode',
+        userInput: { email: 'bogus@test.com', password: 'testPw' },
+        result: undefined,
+      };
+      wrapper.root.instance.setState(state);
+      const child = wrapper.root.findByProps({
+        testID: 'ConfirmMFAForm',
+      });
+      await child.props.onConfirmPress();
+      const result = _.get(wrapper, [
+        'root',
+        'instance',
+        'state',
+        'result',
+        'error',
+        'message',
+      ]);
+      console.log('*** test result ', result);
+      expect(result).toBe('Not a valid Code');
+      console.log('**** onConfirmPress test DONE *****');
+      done();
+    });
   });
 });
+
+// TODO: Test Register > Login flow (right form?)
