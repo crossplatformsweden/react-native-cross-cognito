@@ -64,7 +64,7 @@ For properties and documentation, see **[API reference - Class CognitoLogin](htt
 
 **Examples**
 
-Login component with default configuration
+With success callback
 
 ```typescript
 	import { CognitoLogin } from 'react-native-cross-cognito';
@@ -74,9 +74,62 @@ Login component with default configuration
 
 	export const MyComp => () => (
 	   <CognitoLogin
-	   		onLoggedIn={(user) => console.log(user)}
-	   		loginButtonProps={{title: 'Engage'}}>
-	      <Text>Custom layouts here</Text>
-	   </CognitoLogin>
+          onLoggedIn={(user) => {
+            Alert.alert('Logged in', 'Welcome ' + user.getUsername());
+          }} />
+	);
+```
+
+With button customizations
+
+```typescript
+	import { CognitoLogin } from 'react-native-cross-cognito';
+	import amplify from './aws-exports';
+
+	Amplify.configure(amplify);
+	
+	export const MyComp => () => (
+        <CognitoLogin
+          buttonProps={{ mode: 'text' }}
+          loginButtonProps={{ mode: 'contained', title: 'ENGAGE!' }}
+          />
+	);
+```
+              
+
+With custom children
+
+```typescript
+	import { CognitoLogin } from 'react-native-cross-cognito';
+	import amplify from './aws-exports';
+
+	Amplify.configure(amplify);
+
+	export const MyComp => () => (
+        <CognitoLogin
+          registerChildren={
+            <Text
+              style={{
+                color: 'blue',
+                fontWeight: 'bold',
+                margin: 10,
+                fontSize: 16,
+              }}
+            >
+              &lt;ENLIST NOW&gt;
+            </Text>
+          }
+        >
+          <Text
+            style={{
+              color: 'red',
+              fontWeight: 'bold',
+              margin: 10,
+              fontSize: 16,
+            }}
+          >
+            * &lt;WARNING: RESTRICTED AREA&gt; :)
+          </Text>
+        </CognitoLogin>
 	);
 ```

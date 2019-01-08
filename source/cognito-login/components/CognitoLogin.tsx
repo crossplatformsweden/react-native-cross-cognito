@@ -23,6 +23,8 @@ import { LoginCurrentForm } from '../types';
  *
  * On successful login the {@link ICognitoLoginProps.onLoggedIn} event is triggered.
  *
+ * Children can be supplied for the this component as well as child components. See {@link ICognitoLoginProps}.
+ *
  * Remarks:
  * * Requires Amplify to be configured:
  *
@@ -30,12 +32,40 @@ import { LoginCurrentForm } from '../types';
  *
  * Props are {@link ICognitoLoginProps}
  *
- * @example
+ * @example <caption>With custom button props and callback</caption>
  *  <CognitoLogin
- *    onLoggedIn={(user) => console.log(user)}
+ *      onLoggedIn={(user) => {
+ *        Alert.alert('Logged in', 'Welcome ' + user.getUsername());
+ *      }}
  *    buttonProps={{mode: 'contained'}}>
  *     <Text>Custom layouts here</Text>
  *  </CognitoLogin>
+ * @example <caption>With custom children</caption>
+ *  <CognitoLogin
+ *      registerChildren={
+ *        <Text
+ *          style={{
+ *            color: 'blue',
+ *            fontWeight: 'bold',
+ *            margin: 10,
+ *            fontSize: 16,
+ *          }}
+ *        >
+ *          &lt;ENLIST NOW&gt;
+ *      </Text>
+ *      }
+ *    >
+ *      <Text
+ *        style={{
+ *          color: 'red',
+ *          fontWeight: 'bold',
+ *          margin: 10,
+ *          fontSize: 16,
+ *        }}
+ *      >
+ *        &lt;WARNING: RESTRICTED AREA&gt; :)
+ *      </Text>
+ *    </CognitoLogin>
  */
 export class CognitoLogin extends React.Component<
   ICognitoLoginProps,
@@ -90,7 +120,7 @@ export class CognitoLogin extends React.Component<
     }
 
     this.setState({ formState: form, message });
-  }
+  };
 
   onEmailChanged = (email: string | undefined) => {
     const { userInput } = this.state;
@@ -99,7 +129,7 @@ export class CognitoLogin extends React.Component<
     }
     userInput.email = email;
     this.setState({ userInput });
-  }
+  };
 
   onPasswordChanged = (password: string | undefined) => {
     const { userInput } = this.state;
@@ -109,7 +139,7 @@ export class CognitoLogin extends React.Component<
 
     userInput.password = password;
     this.setState({ userInput });
-  }
+  };
 
   onPhoneChanged = (phone: string | undefined) => {
     const { userInput } = this.state;
@@ -126,7 +156,7 @@ export class CognitoLogin extends React.Component<
 
     userInput.phone = newPhone;
     this.setState({ userInput });
-  }
+  };
 
   OnResendSignup = () => {
     const { email } = this.state.userInput;
@@ -141,7 +171,7 @@ export class CognitoLogin extends React.Component<
     };
 
     Alert.alert('Confirm', 'Re-send code?', [sendButton], { cancelable: true });
-  }
+  };
 
   onRegister = async () => {
     if (__DEV__) console.log('***** onRegister ***** ');
@@ -149,7 +179,7 @@ export class CognitoLogin extends React.Component<
     if (__DEV__) console.log('**** onRegister result: ', result);
 
     this.setState({ result }, this.onResultChanged);
-  }
+  };
 
   onConfirmAccount = async () => {
     if (
@@ -171,7 +201,7 @@ export class CognitoLogin extends React.Component<
     if (__DEV__) console.log('**** onConfirmAccount result: ', result);
 
     this.setState({ result, formState: 'Login' }, this.onResultChanged);
-  }
+  };
 
   onConfirmMFACode = async () => {
     if (
@@ -192,7 +222,7 @@ export class CognitoLogin extends React.Component<
     if (__DEV__) console.log('**** onConfirmMFACode result: ', result);
 
     this.setState({ result }, this.onResultChanged);
-  }
+  };
 
   onLogin = async () => {
     if (__DEV__) console.log('***** onLogin ***** ');
@@ -200,7 +230,7 @@ export class CognitoLogin extends React.Component<
     if (__DEV__) console.log('**** onLogin result: ', result);
 
     this.setState({ result }, this.onResultChanged);
-  }
+  };
 
   render = () => {
     // Extract error message. Could be an Error or a string
@@ -219,15 +249,17 @@ export class CognitoLogin extends React.Component<
               onEmailChanged={this.onEmailChanged}
               onPasswordChanged={this.onPasswordChanged}
               {...this.props}
-            />
+            >
+              {this.props.loginChildren}
+            </LoginForm>
             <CrossButton
               style={styles.marginTop10}
               buttonStyle={styles.buttonStyle}
               onPress={async () => await this.onLogin()}
-              mode='contained'
-              title='Log in'
+              mode="contained"
+              title="Log in"
               backgroundColor={Colors.NextButton}
-              iconName='sign-in'
+              iconName="sign-in"
               {...this.props.buttonProps}
               {...this.props.loginButtonProps}
             />
@@ -239,8 +271,8 @@ export class CognitoLogin extends React.Component<
                   formState: 'Register',
                 })
               }
-              mode='contained'
-              title='Register'
+              mode="contained"
+              title="Register"
               backgroundColor={Colors.BackButton}
               {...this.props.buttonProps}
               {...this.props.registerButtonProps}
@@ -258,15 +290,17 @@ export class CognitoLogin extends React.Component<
               onEmailChanged={this.onEmailChanged}
               onPasswordChanged={this.onPasswordChanged}
               {...this.props}
-            />
+            >
+              {this.props.registerChildren}
+            </RegisterForm>
             <CrossButton
               style={styles.marginTop10}
               buttonStyle={styles.buttonStyle}
               onPress={async () => await this.onRegister()}
-              mode='contained'
-              title='Save'
+              mode="contained"
+              title="Save"
               backgroundColor={Colors.NextButton}
-              iconName='sign-in'
+              iconName="sign-in"
               {...this.props.buttonProps}
               {...this.props.saveButtonProps}
             />
@@ -278,8 +312,8 @@ export class CognitoLogin extends React.Component<
                   formState: 'Login',
                 })
               }
-              mode='contained'
-              title='Cancel'
+              mode="contained"
+              title="Cancel"
               backgroundColor={Colors.CancelButton}
               {...this.props.buttonProps}
               {...this.props.cancelButtonProps}
@@ -287,12 +321,12 @@ export class CognitoLogin extends React.Component<
           </View>
         ) : null}
         {this.state.formState === 'Forgot' ? (
-          <ForgotForm {...this.props} />
+          <ForgotForm {...this.props}>{this.props.forgotChildren}</ForgotForm>
         ) : null}
         {this.state.formState === 'ConfirmAccount' ? (
           <View style={styles.container}>
             <ConfirmForm
-              testID='ConfirmAccountForm'
+              testID="ConfirmAccountForm"
               code={this.state.code}
               initialEmail={this.state.userInput.email}
               onEmailChanged={this.onEmailChanged}
@@ -303,13 +337,15 @@ export class CognitoLogin extends React.Component<
                 ...this.props.buttonProps,
                 ...this.props.saveButtonProps,
               }}
-            />
+            >
+              {this.props.confirmChildren}
+            </ConfirmForm>
             <CrossButton
               style={styles.marginTop10}
               buttonStyle={styles.buttonStyle}
               onPress={() => this.OnResendSignup()}
-              mode='contained'
-              title='Resend code'
+              mode="contained"
+              title="Resend code"
               backgroundColor={Colors.CancelButton}
               {...this.props.buttonProps}
               {...this.props.cancelButtonProps}
@@ -318,7 +354,7 @@ export class CognitoLogin extends React.Component<
         ) : null}
         {this.state.formState === 'ConfirmMFALogin' ? (
           <ConfirmForm
-            testID='ConfirmMFAForm'
+            testID="ConfirmMFAForm"
             code={this.state.code}
             initialEmail={this.state.userInput.email}
             onEmailChanged={this.onEmailChanged}
@@ -329,7 +365,9 @@ export class CognitoLogin extends React.Component<
               ...this.props.buttonProps,
               ...this.props.saveButtonProps,
             }}
-          />
+          >
+            {this.props.confirmChildren}
+          </ConfirmForm>
         ) : null}
         <CognitoUserInputContext.Provider value={this.state.userInput} />
 
@@ -338,7 +376,7 @@ export class CognitoLogin extends React.Component<
         </CrossLabel>
       </View>
     );
-  }
+  };
 }
 
 export default CognitoLogin;
