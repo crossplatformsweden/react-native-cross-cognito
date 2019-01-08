@@ -11,6 +11,19 @@ export interface ICognitoLoginProps {
    * Occurs when the user was successfully logged in and contains the resulting user.
    */
   onLoggedIn?: (user: CognitoUser) => void;
+
+  /**
+   * Optional props to customize all buttons. Typically used to change the `mode` prop.
+   *
+   * Read more:
+   * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
+   *
+   * @example
+   *  <CognitoLogin buttonProps={{mode: 'contained'}}>
+   *     <Text>Custom layouts here</Text>
+   *  </CognitoLogin>
+   */
+  buttonProps?: ICrossButtonProps | undefined;
   /**
    * Optional props for the login button. Typically used to change the `title` prop.
    *
