@@ -1,5 +1,6 @@
 import { ICognitoUserVariables, IAuthenticationResult } from '../../types';
-import { LoginCurrentForm } from './LoginCurrentForm';
+import { LoginCurrentForm } from '../types';
+
 export interface ICognitoLoginState {
   /**
    * User form input. See {@link ICognitoUserVariables}

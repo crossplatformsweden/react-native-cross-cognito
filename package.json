@@ -3,6 +3,7 @@
   "version": "0.1.7",
   "description": "React-Native implementation of AWS Cognito and Amplify SDK including login screens",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "dev": "yarn install-globals && yarn lint",
     "install-globals": "yarn global add typescript tslint prettier codecov",
@@ -54,9 +55,6 @@
     "@types/lodash": "^4.14.118",
     "@types/react": "^16.4.14",
     "@types/react-native": "^0.56.21",
-    "@types/react-native-fbsdk": "^0.6.2",
-    "@types/react-native-google-signin": "^0.12.3",
-    "@types/react-native-indicators": "^0.13.1",
     "@types/react-native-vector-icons": "^4.6.3",
     "@types/react-test-renderer": "^16.0.2",
     "amazon-cognito-identity-js": "^3.0.6",

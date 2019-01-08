@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Alert, AlertButton } from 'react-native';
-import LoginForm from './LoginForm';
+import LoginForm from '../../login/components/LoginForm';
 import { Colors, CrossButton, CrossLabel } from 'react-native-cross-components';
 import { CognitoAuthState, IAuthenticationResult } from '../../types';
 import { CognitoUserInputContext } from '../../contexts';
@@ -15,8 +15,8 @@ import OnConfirmMfaCode from '../../events/OnConfirmMfaCode';
 import OnConfirmAccount from '../../events/OnConfirmAccount';
 import OnResendSignup from '../../events/OnResendSignup';
 import { ICognitoLoginProps } from './ICognitoLoginProps';
-import { LoginCurrentForm } from './LoginCurrentForm';
 import { ICognitoLoginState } from './ICognitoLoginState';
+import { LoginCurrentForm } from '../types';
 
 /**
  * A form for logging in to AWS Cognito through Amplify.
@@ -56,15 +56,6 @@ export class CognitoLogin extends React.Component<
       code: undefined,
       message: undefined,
     };
-
-    this.onEmailChanged = this.onEmailChanged.bind(this);
-    this.onPasswordChanged = this.onPasswordChanged.bind(this);
-    this.onPhoneChanged = this.onPhoneChanged.bind(this);
-    this.onConfirmMFACode = this.onConfirmMFACode.bind(this);
-    this.onConfirmAccount = this.onConfirmAccount.bind(this);
-    this.onLogin = this.onLogin.bind(this);
-    this.onResultChanged = this.onResultChanged.bind(this);
-    this.OnResendSignup = this.OnResendSignup.bind(this);
   }
 
   onResultChanged = () => {
@@ -99,7 +90,7 @@ export class CognitoLogin extends React.Component<
     }
 
     this.setState({ formState: form, message });
-  }
+  };
 
   onEmailChanged = (email: string | undefined) => {
     const { userInput } = this.state;
@@ -108,7 +99,7 @@ export class CognitoLogin extends React.Component<
     }
     userInput.email = email;
     this.setState({ userInput });
-  }
+  };
 
   onPasswordChanged = (password: string | undefined) => {
     const { userInput } = this.state;
@@ -118,7 +109,7 @@ export class CognitoLogin extends React.Component<
 
     userInput.password = password;
     this.setState({ userInput });
-  }
+  };
 
   onPhoneChanged = (phone: string | undefined) => {
     const { userInput } = this.state;
@@ -135,7 +126,7 @@ export class CognitoLogin extends React.Component<
 
     userInput.phone = newPhone;
     this.setState({ userInput });
-  }
+  };
 
   OnResendSignup = () => {
     const { email } = this.state.userInput;
@@ -150,7 +141,7 @@ export class CognitoLogin extends React.Component<
     };
 
     Alert.alert('Confirm', 'Re-send code?', [sendButton], { cancelable: true });
-  }
+  };
 
   onRegister = async () => {
     if (__DEV__) console.log('***** onRegister ***** ');
@@ -158,7 +149,7 @@ export class CognitoLogin extends React.Component<
     if (__DEV__) console.log('**** onRegister result: ', result);
 
     this.setState({ result }, this.onResultChanged);
-  }
+  };
 
   onConfirmAccount = async () => {
     if (
@@ -180,7 +171,7 @@ export class CognitoLogin extends React.Component<
     if (__DEV__) console.log('**** onConfirmAccount result: ', result);
 
     this.setState({ result, formState: 'Login' }, this.onResultChanged);
-  }
+  };
 
   onConfirmMFACode = async () => {
     if (
@@ -201,7 +192,7 @@ export class CognitoLogin extends React.Component<
     if (__DEV__) console.log('**** onConfirmMFACode result: ', result);
 
     this.setState({ result }, this.onResultChanged);
-  }
+  };
 
   onLogin = async () => {
     if (__DEV__) console.log('***** onLogin ***** ');
@@ -209,9 +200,9 @@ export class CognitoLogin extends React.Component<
     if (__DEV__) console.log('**** onLogin result: ', result);
 
     this.setState({ result }, this.onResultChanged);
-  }
+  };
 
-  render() {
+  render = () => {
     // Extract error message. Could be an Error or a string
     const error =
       _.get(this.state, ['result', 'error', 'message']) ||
@@ -233,10 +224,10 @@ export class CognitoLogin extends React.Component<
               style={styles.marginTop10}
               buttonStyle={styles.buttonStyle}
               onPress={async () => await this.onLogin()}
-              mode='contained'
-              title='Log in'
+              mode="contained"
+              title="Log in"
               backgroundColor={Colors.NextButton}
-              iconName='sign-in'
+              iconName="sign-in"
               {...this.props.loginButtonProps}
             />
             <CrossButton
@@ -247,8 +238,8 @@ export class CognitoLogin extends React.Component<
                   formState: 'Register',
                 })
               }
-              mode='contained'
-              title='Register'
+              mode="contained"
+              title="Register"
               backgroundColor={Colors.BackButton}
               {...this.props.registerButtonProps}
             />
@@ -270,10 +261,10 @@ export class CognitoLogin extends React.Component<
               style={styles.marginTop10}
               buttonStyle={styles.buttonStyle}
               onPress={async () => await this.onRegister()}
-              mode='contained'
-              title='Save'
+              mode="contained"
+              title="Save"
               backgroundColor={Colors.NextButton}
-              iconName='sign-in'
+              iconName="sign-in"
               {...this.props.saveButtonProps}
             />
             <CrossButton
@@ -284,8 +275,8 @@ export class CognitoLogin extends React.Component<
                   formState: 'Login',
                 })
               }
-              mode='contained'
-              title='Cancel'
+              mode="contained"
+              title="Cancel"
               backgroundColor={Colors.CancelButton}
               {...this.props.cancelButtonProps}
             />
@@ -297,7 +288,7 @@ export class CognitoLogin extends React.Component<
         {this.state.formState === 'ConfirmAccount' ? (
           <View style={styles.container}>
             <ConfirmForm
-              testID='ConfirmAccountForm'
+              testID="ConfirmAccountForm"
               code={this.state.code}
               initialEmail={this.state.userInput.email}
               onEmailChanged={this.onEmailChanged}
@@ -309,8 +300,8 @@ export class CognitoLogin extends React.Component<
               style={styles.marginTop10}
               buttonStyle={styles.buttonStyle}
               onPress={() => this.OnResendSignup()}
-              mode='contained'
-              title='Resend code'
+              mode="contained"
+              title="Resend code"
               backgroundColor={Colors.CancelButton}
               {...this.props.cancelButtonProps}
             />
@@ -318,7 +309,7 @@ export class CognitoLogin extends React.Component<
         ) : null}
         {this.state.formState === 'ConfirmMFALogin' ? (
           <ConfirmForm
-          testID='ConfirmMFAForm'
+            testID="ConfirmMFAForm"
             code={this.state.code}
             initialEmail={this.state.userInput.email}
             onEmailChanged={this.onEmailChanged}
@@ -333,7 +324,7 @@ export class CognitoLogin extends React.Component<
         </CrossLabel>
       </View>
     );
-  }
+  };
 }
 
 export default CognitoLogin;
