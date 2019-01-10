@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ICognitoLoginProps | Crossplatform React-Native Cognito</title>
+	<title>IForgotFormProps | Crossplatform React-Native Cognito</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_login_components_cognitologin_.html">&quot;login/components/CognitoLogin&quot;</a>
+					<a href="../modules/_forgot_components_forgotform_.html">&quot;forgot/components/ForgotForm&quot;</a>
 				</li>
 				<li>
-					<a href="_login_components_cognitologin_.icognitologinprops.html">ICognitoLoginProps</a>
+					<a href="_forgot_components_forgotform_.iforgotformprops.html">IForgotFormProps</a>
 				</li>
 			</ul>
-			<h1>Interface ICognitoLoginProps</h1>
+			<h1>Interface IForgotFormProps</h1>
 		</div>
 	</div>
 </header>
@@ -68,16 +68,20 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Properties for the <a href="../classes/_login_components_cognitologin_.cognitologin.html">CognitoLogin</a> component.</p>
+						<p>Properties for <a href="../classes/_forgot_components_forgotform_.forgotform.html">ForgotForm</a> component. Required prop is <a href="_forgot_components_forgotform_.iforgotformprops.html#onsubmit">onSubmit</a>.</p>
 					</div>
-					<p>Allows customization and provides the <a href="_login_components_cognitologin_.icognitologinprops.html#onloggedin">onLoggedIn</a> event.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ICognitoLoginProps</span>
+						<a href="_types_.iemailprops.html" class="tsd-signature-type">IEmailProps</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">IForgotFormProps</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -88,14 +92,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#cancelbuttonprops" class="tsd-kind-icon">cancel<wbr>Button<wbr>Props</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#emailinputprops" class="tsd-kind-icon">email<wbr>Input<wbr>Props</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#loginbuttonprops" class="tsd-kind-icon">login<wbr>Button<wbr>Props</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#onloggedin" class="tsd-kind-icon">on<wbr>Logged<wbr>In</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#passwordinputprops" class="tsd-kind-icon">password<wbr>Input<wbr>Props</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#phoneinputprops" class="tsd-kind-icon">phone<wbr>Input<wbr>Props</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#registerbuttonprops" class="tsd-kind-icon">register<wbr>Button<wbr>Props</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_login_components_cognitologin_.icognitologinprops.html#savebuttonprops" class="tsd-kind-icon">save<wbr>Button<wbr>Props</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_forgot_components_forgotform_.iforgotformprops.html#buttonprops" class="tsd-kind-icon">button<wbr>Props</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_forgot_components_forgotform_.iforgotformprops.html#emailinputprops" class="tsd-kind-icon">email<wbr>Input<wbr>Props</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_forgot_components_forgotform_.iforgotformprops.html#initialemail" class="tsd-kind-icon">initial<wbr>Email</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_forgot_components_forgotform_.iforgotformprops.html#onemailchanged" class="tsd-kind-icon">on<wbr>Email<wbr>Changed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_forgot_components_forgotform_.iforgotformprops.html#onsubmit" class="tsd-kind-icon">on<wbr>Submit</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_forgot_components_forgotform_.iforgotformprops.html#testid" class="tsd-kind-icon">testID</a></li>
 							</ul>
 						</section>
 					</div>
@@ -104,36 +106,37 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="cancelbuttonprops" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cancel<wbr>Button<wbr>Props</h3>
-					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<a name="buttonprops" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> button<wbr>Props</h3>
+					<div class="tsd-signature tsd-kind-icon">button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L62">login/components/CognitoLogin.tsx:62</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/forgot/components/ForgotForm.tsx#L31">forgot/components/ForgotForm.tsx:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Optional props for the cancel button. Typically used to change the <code>title</code> prop.</p>
+							<p>Optional props for the submit button. Typically used to change the <code>title</code> prop.</p>
 						</div>
 						<p>Read more:
 						<a href="https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html">https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html</a></p>
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
-							<dd><p> &lt;CognitoLogin cancelButtonProps={{title: &#39;Disengage&#39;}}&gt;
+							<dd><p> &lt;ForgotForm buttonProps={{title: &#39;Warp&#39;}}&gt;
 									<Text>Custom layouts here</Text>
-								</CognitoLogin></p>
+								</ForgotForm></p>
 							</dd>
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="emailinputprops" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> email<wbr>Input<wbr>Props</h3>
 					<div class="tsd-signature tsd-kind-icon">email<wbr>Input<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossEditorProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_.iemailprops.html">IEmailProps</a>.<a href="_types_.iemailprops.html#emailinputprops">emailInputProps</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L96">login/components/CognitoLogin.tsx:96</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/types.ts#L79">types.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -143,124 +146,98 @@
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="loginbuttonprops" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> login<wbr>Button<wbr>Props</h3>
-					<div class="tsd-signature tsd-kind-icon">login<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="initialemail" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> initial<wbr>Email</h3>
+					<div class="tsd-signature tsd-kind-icon">initial<wbr>Email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_.iemailprops.html">IEmailProps</a>.<a href="_types_.iemailprops.html#initialemail">initialEmail</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L50">login/components/CognitoLogin.tsx:50</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/types.ts#L74">types.ts:74</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Optional props for the login button. Typically used to change the <code>title</code> prop.</p>
-						</div>
-						<p>Read more:
-						<a href="https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html">https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html</a></p>
-						<dl class="tsd-comment-tags">
-							<dt>example</dt>
-							<dd><p> &lt;CognitoLogin loginButtonProps={{title: &#39;Engage&#39;}}&gt;
-									<Text>Custom layouts here</Text>
-								</CognitoLogin></p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="onloggedin" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Logged<wbr>In</h3>
-					<div class="tsd-signature tsd-kind-icon">on<wbr>Logged<wbr>In<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L38">login/components/CognitoLogin.tsx:38</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Occurs when the user was successfully logged in and contains the resulting user.</p>
+							<p>Optional initial value for the e-mail input</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="passwordinputprops" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> password<wbr>Input<wbr>Props</h3>
-					<div class="tsd-signature tsd-kind-icon">password<wbr>Input<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossEditorProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="onemailchanged" class="tsd-anchor"></a>
+					<h3>on<wbr>Email<wbr>Changed</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Email<wbr>Changed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_types_.iemailprops.html">IEmailProps</a>.<a href="_types_.iemailprops.html#onemailchanged">onEmailChanged</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L101">login/components/CognitoLogin.tsx:101</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/types.ts#L70">types.ts:70</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Optional props for the password input. Typically used to change the <code>label</code> prop.
-							See {@link ICrossEditorProps}</p>
+							<p>Occurs when the user inputs e-mail</p>
 						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>email: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="phoneinputprops" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> phone<wbr>Input<wbr>Props</h3>
-					<div class="tsd-signature tsd-kind-icon">phone<wbr>Input<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossEditorProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<a name="onsubmit" class="tsd-anchor"></a>
+					<h3>on<wbr>Submit</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Submit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L91">login/components/CognitoLogin.tsx:91</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/forgot/components/ForgotForm.tsx#L19">forgot/components/ForgotForm.tsx:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Optional props for the phone input. Typically used to change the <code>label</code> prop or change the <code>maskProps</code>.
-							See {@link ICrossEditorProps}</p>
+							<p>Occurs when the user clicks &quot;reset password&quot; button. Required.</p>
 						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="registerbuttonprops" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> register<wbr>Button<wbr>Props</h3>
-					<div class="tsd-signature tsd-kind-icon">register<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<a name="testid" class="tsd-anchor"></a>
+					<h3>testID</h3>
+					<div class="tsd-signature tsd-kind-icon">testID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L86">login/components/CognitoLogin.tsx:86</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/forgot/components/ForgotForm.tsx#L32">forgot/components/ForgotForm.tsx:32</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Optional props for the register button. Typically used to change the <code>title</code> prop.</p>
-						</div>
-						<p>Read more:
-						<a href="https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html">https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html</a></p>
-						<dl class="tsd-comment-tags">
-							<dt>example</dt>
-							<dd><p> &lt;CognitoLogin registerButtonProps={{title: &#39;Enlist&#39;}}&gt;
-									<Text>Custom layouts here</Text>
-								</CognitoLogin></p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="savebuttonprops" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> save<wbr>Button<wbr>Props</h3>
-					<div class="tsd-signature tsd-kind-icon">save<wbr>Button<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ICrossButtonProps</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L74">login/components/CognitoLogin.tsx:74</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Optional props for the save button. Typically used to change the <code>title</code> prop.</p>
-						</div>
-						<p>Read more:
-						<a href="https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html">https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html</a></p>
-						<dl class="tsd-comment-tags">
-							<dt>example</dt>
-							<dd><p> &lt;CognitoLogin saveButtonProps={{title: &#39;Warp&#39;}}&gt;
-									<Text>Custom layouts here</Text>
-								</CognitoLogin></p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -269,6 +246,18 @@
 				<ul>
 					<li class="globals  ">
 						<a href="../index.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_cognito_login_components_cognitologin_.html">"cognito-<wbr>login/components/<wbr>Cognito<wbr>Login"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_cognito_login_components_icognitologinprops_.html">"cognito-<wbr>login/components/ICognito<wbr>Login<wbr>Props"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_cognito_login_components_icognitologinstate_.html">"cognito-<wbr>login/components/ICognito<wbr>Login<wbr>State"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_cognito_login_types_.html">"cognito-<wbr>login/types"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_confirm_components_confirmform_.html">"confirm/components/<wbr>Confirm<wbr>Form"</a>
@@ -286,6 +275,12 @@
 						<a href="../modules/_events_onconfirmmfacode_.html">"events/<wbr>OnConfirm<wbr>Mfa<wbr>Code"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_events_onconfirmpassword_.html">"events/<wbr>OnConfirm<wbr>Password"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_events_onforgotpassword_.html">"events/<wbr>OnForgot<wbr>Password"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_events_onlogin_.html">"events/<wbr>OnLogin"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -294,17 +289,17 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_events_onresendsignup_.html">"events/<wbr>OnResend<wbr>Signup"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_forgot_components_forgotform_.html">"forgot/components/<wbr>Forgot<wbr>Form"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">"index"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_login_components_cognitologin_.html">"login/components/<wbr>Cognito<wbr>Login"</a>
-					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_login_components_loginform_.html">"login/components/<wbr>Login<wbr>Form"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_new_password_components_passwordform_.html">"new-<wbr>password/components/<wbr>Password<wbr>Form"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_register_components_registerform_.html">"register/components/<wbr>Register<wbr>Form"</a>
@@ -320,44 +315,35 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../classes/_login_components_cognitologin_.cognitologin.html" class="tsd-kind-icon">Cognito<wbr>Login</a>
+						<a href="../classes/_forgot_components_forgotform_.forgotform.html" class="tsd-kind-icon">Forgot<wbr>Form</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_login_components_cognitologin_.icognitologinprops.html" class="tsd-kind-icon">ICognito<wbr>Login<wbr>Props</a>
+						<a href="_forgot_components_forgotform_.iforgotformprops.html" class="tsd-kind-icon">IForgot<wbr>Form<wbr>Props</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_login_components_cognitologin_.icognitologinprops.html#cancelbuttonprops" class="tsd-kind-icon">cancel<wbr>Button<wbr>Props</a>
+								<a href="_forgot_components_forgotform_.iforgotformprops.html#buttonprops" class="tsd-kind-icon">button<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_forgot_components_forgotform_.iforgotformprops.html#emailinputprops" class="tsd-kind-icon">email<wbr>Input<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_forgot_components_forgotform_.iforgotformprops.html#initialemail" class="tsd-kind-icon">initial<wbr>Email</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_forgot_components_forgotform_.iforgotformprops.html#onemailchanged" class="tsd-kind-icon">on<wbr>Email<wbr>Changed</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_login_components_cognitologin_.icognitologinprops.html#emailinputprops" class="tsd-kind-icon">email<wbr>Input<wbr>Props</a>
+								<a href="_forgot_components_forgotform_.iforgotformprops.html#onsubmit" class="tsd-kind-icon">on<wbr>Submit</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_login_components_cognitologin_.icognitologinprops.html#loginbuttonprops" class="tsd-kind-icon">login<wbr>Button<wbr>Props</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_login_components_cognitologin_.icognitologinprops.html#onloggedin" class="tsd-kind-icon">on<wbr>Logged<wbr>In</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_login_components_cognitologin_.icognitologinprops.html#passwordinputprops" class="tsd-kind-icon">password<wbr>Input<wbr>Props</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_login_components_cognitologin_.icognitologinprops.html#phoneinputprops" class="tsd-kind-icon">phone<wbr>Input<wbr>Props</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_login_components_cognitologin_.icognitologinprops.html#registerbuttonprops" class="tsd-kind-icon">register<wbr>Button<wbr>Props</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_login_components_cognitologin_.icognitologinprops.html#savebuttonprops" class="tsd-kind-icon">save<wbr>Button<wbr>Props</a>
+								<a href="_forgot_components_forgotform_.iforgotformprops.html#testid" class="tsd-kind-icon">testID</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_login_components_cognitologin_.icognitologinstate.html" class="tsd-kind-icon">ICognito<wbr>Login<wbr>State</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

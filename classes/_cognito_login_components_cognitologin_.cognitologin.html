@@ -52,10 +52,10 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_login_components_cognitologin_.html">&quot;login/components/CognitoLogin&quot;</a>
+					<a href="../modules/_cognito_login_components_cognitologin_.html">&quot;cognito-login/components/CognitoLogin&quot;</a>
 				</li>
 				<li>
-					<a href="_login_components_cognitologin_.cognitologin.html">CognitoLogin</a>
+					<a href="_cognito_login_components_cognitologin_.cognitologin.html">CognitoLogin</a>
 				</li>
 			</ul>
 			<h1>Class CognitoLogin&lt;SS&gt;</h1>
@@ -70,20 +70,51 @@
 					<div class="lead">
 						<p>A form for logging in to AWS Cognito through Amplify.</p>
 					</div>
-					<p>On successful login the <a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html#onloggedin">ICognitoLoginProps.onLoggedIn</a> event is triggered.</p>
+					<p>On successful login the <a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html#onloggedin">ICognitoLoginProps.onLoggedIn</a> event is triggered.</p>
+					<p>Children can be supplied for the this component as well as child components. See <a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html">ICognitoLoginProps</a>.</p>
 					<p>Remarks:</p>
 					<ul>
 						<li>Requires Amplify to be configured:</li>
 					</ul>
 					<p><a href="https://aws-amplify.github.io/docs/js/start?ref=amplify-rn-btn&amp;platform=react-native#step-4-integrate-aws-resources">https://aws-amplify.github.io/docs/js/start?ref=amplify-rn-btn&amp;platform=react-native#step-4-integrate-aws-resources</a></p>
-					<p>Props are <a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html">ICognitoLoginProps</a></p>
+					<p>Props are <a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html">ICognitoLoginProps</a></p>
 					<dl class="tsd-comment-tags">
 						<dt>example</dt>
-						<dd><p> &lt;CognitoLogin
-								onLoggedIn={(user) =&gt; console.log(user)}
-								loginButtonProps={{title: &#39;Engage&#39;}}&gt;
-								<Text>Custom layouts here</Text>
-							</CognitoLogin></p>
+						<dd><caption>With custom button props and callback</caption>
+							<CognitoLogin
+							onLoggedIn={(user) => {
+							Alert.alert('Logged in', 'Welcome ' + user.getUsername());
+							}}
+							buttonProps={{mode: 'contained'}}>
+							<Text>Custom layouts here</Text>
+						</CognitoLogin></dd>
+						<dt>example</dt>
+						<dd><caption>With custom children</caption>
+							<CognitoLogin
+							registerChildren={
+							<Text
+							style={{
+							color: 'blue',
+							fontWeight: 'bold',
+							margin: 10,
+							fontSize: 16,
+							}}
+							>
+							&lt;ENLIST NOW&gt;
+							</Text>
+							}
+							>
+							<Text
+							style={{
+							color: 'red',
+							fontWeight: 'bold',
+							margin: 10,
+							fontSize: 16,
+							}}
+							>
+							&lt;WARNING: RESTRICTED AREA&gt; :)
+							</Text>
+							</CognitoLogin>
 						</dd>
 					</dl>
 				</div>
@@ -100,7 +131,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">Component</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>
+						<span class="tsd-signature-type">Component</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">CognitoLogin</span>
@@ -116,46 +147,55 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_login_components_cognitologin_.cognitologin.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_cognito_login_components_cognitologin_.cognitologin.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#context" class="tsd-kind-icon">context</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#props" class="tsd-kind-icon">props</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#refs" class="tsd-kind-icon">refs</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#state" class="tsd-kind-icon">state</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_login_components_cognitologin_.cognitologin.html#contexttype" class="tsd-kind-icon">context<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#context" class="tsd-kind-icon">context</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#props" class="tsd-kind-icon">props</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#refs" class="tsd-kind-icon">refs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#state" class="tsd-kind-icon">state</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_cognito_login_components_cognitologin_.cognitologin.html#contexttype" class="tsd-kind-icon">context<wbr>Type</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onresendsignup" class="tsd-kind-icon">On<wbr>Resend<wbr>Signup</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#unsafe_componentwillmount" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Mount</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#unsafe_componentwillreceiveprops" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Receive<wbr>Props</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#unsafe_componentwillupdate" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Update</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#componentdidcatch" class="tsd-kind-icon">component<wbr>Did<wbr>Catch</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#componentdidmount" class="tsd-kind-icon">component<wbr>Did<wbr>Mount</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#componentdidupdate" class="tsd-kind-icon">component<wbr>Did<wbr>Update</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#componentwillmount" class="tsd-kind-icon">component<wbr>Will<wbr>Mount</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#componentwillreceiveprops" class="tsd-kind-icon">component<wbr>Will<wbr>Receive<wbr>Props</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#componentwillunmount" class="tsd-kind-icon">component<wbr>Will<wbr>Unmount</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#componentwillupdate" class="tsd-kind-icon">component<wbr>Will<wbr>Update</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#forceupdate" class="tsd-kind-icon">force<wbr>Update</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#getsnapshotbeforeupdate" class="tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onconfirmaccount" class="tsd-kind-icon">on<wbr>Confirm<wbr>Account</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onconfirmmfacode" class="tsd-kind-icon">on<wbr>ConfirmMFACode</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onemailchanged" class="tsd-kind-icon">on<wbr>Email<wbr>Changed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onlogin" class="tsd-kind-icon">on<wbr>Login</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onpasswordchanged" class="tsd-kind-icon">on<wbr>Password<wbr>Changed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onphonechanged" class="tsd-kind-icon">on<wbr>Phone<wbr>Changed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onregister" class="tsd-kind-icon">on<wbr>Register</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_login_components_cognitologin_.cognitologin.html#onresultchanged" class="tsd-kind-icon">on<wbr>Result<wbr>Changed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_login_components_cognitologin_.cognitologin.html#render" class="tsd-kind-icon">render</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#setstate" class="tsd-kind-icon">set<wbr>State</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_login_components_cognitologin_.cognitologin.html#shouldcomponentupdate" class="tsd-kind-icon">should<wbr>Component<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#forgotpasswordasync" class="tsd-kind-icon">Forgot<wbr>Password<wbr>Async</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onresendsignup" class="tsd-kind-icon">On<wbr>Resend<wbr>Signup</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onresetpassword" class="tsd-kind-icon">On<wbr>Reset<wbr>Password</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#unsafe_componentwillmount" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Mount</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#unsafe_componentwillreceiveprops" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Receive<wbr>Props</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#unsafe_componentwillupdate" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#componentdidcatch" class="tsd-kind-icon">component<wbr>Did<wbr>Catch</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#componentdidmount" class="tsd-kind-icon">component<wbr>Did<wbr>Mount</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#componentdidupdate" class="tsd-kind-icon">component<wbr>Did<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#componentwillmount" class="tsd-kind-icon">component<wbr>Will<wbr>Mount</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#componentwillreceiveprops" class="tsd-kind-icon">component<wbr>Will<wbr>Receive<wbr>Props</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#componentwillunmount" class="tsd-kind-icon">component<wbr>Will<wbr>Unmount</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#componentwillupdate" class="tsd-kind-icon">component<wbr>Will<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#forceupdate" class="tsd-kind-icon">force<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#getsnapshotbeforeupdate" class="tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onconfirmaccount" class="tsd-kind-icon">on<wbr>Confirm<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onconfirmmfacode" class="tsd-kind-icon">on<wbr>ConfirmMFACode</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onemailchanged" class="tsd-kind-icon">on<wbr>Email<wbr>Changed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onlogin" class="tsd-kind-icon">on<wbr>Login</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onpasswordchanged" class="tsd-kind-icon">on<wbr>Password<wbr>Changed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onphonechanged" class="tsd-kind-icon">on<wbr>Phone<wbr>Changed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onregister" class="tsd-kind-icon">on<wbr>Register</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onresultchanged" class="tsd-kind-icon">on<wbr>Result<wbr>Changed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#onsavenewpassword" class="tsd-kind-icon">on<wbr>Save<wbr>New<wbr>Password</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_cognito_login_components_cognitologin_.cognitologin.html#render" class="tsd-kind-icon">render</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#setstate" class="tsd-kind-icon">set<wbr>State</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_cognito_login_components_cognitologin_.cognitologin.html#shouldcomponentupdate" class="tsd-kind-icon">should<wbr>Component<wbr>Update</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-class"><a href="_cognito_login_components_cognitologin_.cognitologin.html#cancelalertbutton" class="tsd-kind-icon">cancel<wbr>Alert<wbr>Button</a></li>
 							</ul>
 						</section>
 					</div>
@@ -167,23 +207,23 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Cognito<wbr>Login<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_login_components_cognitologin_.cognitologin.html" class="tsd-signature-type">CognitoLogin</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Cognito<wbr>Login<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_cognito_login_components_cognitologin_.cognitologin.html" class="tsd-signature-type">CognitoLogin</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides Component.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L152">login/components/CognitoLogin.tsx:152</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L76">cognito-login/components/CognitoLogin.tsx:76</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>props: <a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a></h5>
+									<h5>props: <a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_login_components_cognitologin_.cognitologin.html" class="tsd-signature-type">CognitoLogin</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_cognito_login_components_cognitologin_.cognitologin.html" class="tsd-signature-type">CognitoLogin</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -220,7 +260,7 @@ context!: React.ContextType&lt;<span class="hljs-keyword">typeof</span> MyContex
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="props" class="tsd-anchor"></a>
 					<h3>props</h3>
-					<div class="tsd-signature tsd-kind-icon">props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from Component.props</p>
 						<ul>
@@ -257,7 +297,7 @@ context!: React.ContextType&lt;<span class="hljs-keyword">typeof</span> MyContex
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="state" class="tsd-anchor"></a>
 					<h3>state</h3>
-					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from Component.state</p>
 						<ul>
@@ -301,19 +341,59 @@ class Foo extends React.Component {
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="onresendsignup" class="tsd-anchor"></a>
-					<h3>On<wbr>Resend<wbr>Signup</h3>
+					<a name="forgotpasswordasync" class="tsd-anchor"></a>
+					<h3>Forgot<wbr>Password<wbr>Async</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">On<wbr>Resend<wbr>Signup<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">Forgot<wbr>Password<wbr>Async<span class="tsd-signature-symbol">(</span>email<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L249">login/components/CognitoLogin.tsx:249</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L201">cognito-login/components/CognitoLogin.tsx:201</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>email: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="onresendsignup" class="tsd-anchor"></a>
+					<h3>On<wbr>Resend<wbr>Signup</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">On<wbr>Resend<wbr>Signup<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L173">cognito-login/components/CognitoLogin.tsx:173</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="onresetpassword" class="tsd-anchor"></a>
+					<h3>On<wbr>Reset<wbr>Password</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">On<wbr>Reset<wbr>Password<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L209">cognito-login/components/CognitoLogin.tsx:209</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -359,7 +439,7 @@ class Foo extends React.Component {
 					<a name="unsafe_componentwillreceiveprops" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> UNSAFE_<wbr>component<wbr>Will<wbr>Receive<wbr>Props</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Receive<wbr>Props<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Receive<wbr>Props<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -394,7 +474,7 @@ class Foo extends React.Component {
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5>nextContext: <span class="tsd-signature-type">any</span></h5>
@@ -408,7 +488,7 @@ class Foo extends React.Component {
 					<a name="unsafe_componentwillupdate" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> UNSAFE_<wbr>component<wbr>Will<wbr>Update</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Update<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Update<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -441,10 +521,10 @@ class Foo extends React.Component {
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
-									<h5>nextState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nextState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5>nextContext: <span class="tsd-signature-type">any</span></h5>
@@ -514,7 +594,7 @@ class Foo extends React.Component {
 					<a name="componentdidupdate" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> component<wbr>Did<wbr>Update</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">component<wbr>Did<wbr>Update<span class="tsd-signature-symbol">(</span>prevProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, prevState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>, snapshot<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">SS</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">component<wbr>Did<wbr>Update<span class="tsd-signature-symbol">(</span>prevProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, prevState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>, snapshot<span class="tsd-signature-symbol">?: </span><a href="" class="tsd-signature-type">SS</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -533,10 +613,10 @@ class Foo extends React.Component {
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>prevProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>prevProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
-									<h5>prevState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>prevState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> snapshot: <a href="" class="tsd-signature-type">SS</a></h5>
@@ -587,7 +667,7 @@ class Foo extends React.Component {
 					<a name="componentwillreceiveprops" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> component<wbr>Will<wbr>Receive<wbr>Props</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">component<wbr>Will<wbr>Receive<wbr>Props<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">component<wbr>Will<wbr>Receive<wbr>Props<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -621,7 +701,7 @@ class Foo extends React.Component {
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5>nextContext: <span class="tsd-signature-type">any</span></h5>
@@ -659,7 +739,7 @@ class Foo extends React.Component {
 					<a name="componentwillupdate" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> component<wbr>Will<wbr>Update</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">component<wbr>Will<wbr>Update<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">component<wbr>Will<wbr>Update<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -691,10 +771,10 @@ class Foo extends React.Component {
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
-									<h5>nextState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nextState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5>nextContext: <span class="tsd-signature-type">any</span></h5>
@@ -732,7 +812,7 @@ class Foo extends React.Component {
 					<a name="getsnapshotbeforeupdate" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> get<wbr>Snapshot<wbr>Before<wbr>Update</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update<span class="tsd-signature-symbol">(</span>prevProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, prevState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SS</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update<span class="tsd-signature-symbol">(</span>prevProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, prevState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SS</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -754,10 +834,10 @@ class Foo extends React.Component {
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>prevProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>prevProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
-									<h5>prevState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>prevState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SS</span>
@@ -777,7 +857,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L272">login/components/CognitoLogin.tsx:272</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L239">cognito-login/components/CognitoLogin.tsx:239</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -794,7 +874,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L294">login/components/CognitoLogin.tsx:294</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L261">cognito-login/components/CognitoLogin.tsx:261</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -811,7 +891,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L213">login/components/CognitoLogin.tsx:213</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L137">cognito-login/components/CognitoLogin.tsx:137</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -834,7 +914,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L315">login/components/CognitoLogin.tsx:315</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L311">cognito-login/components/CognitoLogin.tsx:311</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -851,7 +931,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L222">login/components/CognitoLogin.tsx:222</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L146">cognito-login/components/CognitoLogin.tsx:146</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -874,7 +954,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L232">login/components/CognitoLogin.tsx:232</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L156">cognito-login/components/CognitoLogin.tsx:156</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -897,7 +977,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L264">login/components/CognitoLogin.tsx:264</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L231">cognito-login/components/CognitoLogin.tsx:231</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -914,10 +994,32 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L179">login/components/CognitoLogin.tsx:179</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L97">cognito-login/components/CognitoLogin.tsx:97</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Determines the currently visible form</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="onsavenewpassword" class="tsd-anchor"></a>
+					<h3>on<wbr>Save<wbr>New<wbr>Password</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Save<wbr>New<wbr>Password<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L285">cognito-login/components/CognitoLogin.tsx:285</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -932,7 +1034,7 @@ class Foo extends React.Component {
 							<aside class="tsd-sources">
 								<p>Overrides Component.render</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/4712db6/source/login/components/CognitoLogin.tsx#L323">login/components/CognitoLogin.tsx:323</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L319">cognito-login/components/CognitoLogin.tsx:319</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -976,7 +1078,7 @@ class Foo extends React.Component {
 					<a name="shouldcomponentupdate" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> should<wbr>Component<wbr>Update</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">should<wbr>Component<wbr>Update<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">should<wbr>Component<wbr>Update<span class="tsd-signature-symbol">(</span>nextProps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span>, nextState<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span>, nextContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -999,10 +1101,10 @@ class Foo extends React.Component {
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nextProps: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html" class="tsd-signature-type">ICognitoLoginProps</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
-									<h5>nextState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>nextState: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_cognito_login_components_icognitologinstate_.icognitologinstate.html" class="tsd-signature-type">ICognitoLoginState</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
 									<h5>nextContext: <span class="tsd-signature-type">any</span></h5>
@@ -1013,12 +1115,74 @@ class Foo extends React.Component {
 					</ul>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class">
+					<a name="cancelalertbutton" class="tsd-anchor"></a>
+					<h3>cancel<wbr>Alert<wbr>Button</h3>
+					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Alert<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L522">cognito-login/components/CognitoLogin.tsx:522</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="cancelalertbutton.style" class="tsd-anchor"></a>
+						<h3>style</h3>
+						<div class="tsd-signature tsd-kind-icon">style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"cancel"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;cancel&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L525">cognito-login/components/CognitoLogin.tsx:525</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="cancelalertbutton.text" class="tsd-anchor"></a>
+						<h3>text</h3>
+						<div class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Cancel&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L523">cognito-login/components/CognitoLogin.tsx:523</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+						<a name="cancelalertbutton.onpress" class="tsd-anchor"></a>
+						<h3>on<wbr>Press</h3>
+						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon">on<wbr>Press<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/f74dd5c/source/cognito-login/components/CognitoLogin.tsx#L524">cognito-login/components/CognitoLogin.tsx:524</a></li>
+									</ul>
+								</aside>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							</li>
+						</ul>
+					</section>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="globals  ">
 						<a href="../index.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_cognito_login_components_cognitologin_.html">"cognito-<wbr>login/components/<wbr>Cognito<wbr>Login"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_cognito_login_components_icognitologinprops_.html">"cognito-<wbr>login/components/ICognito<wbr>Login<wbr>Props"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_cognito_login_components_icognitologinstate_.html">"cognito-<wbr>login/components/ICognito<wbr>Login<wbr>State"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_cognito_login_types_.html">"cognito-<wbr>login/types"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_confirm_components_confirmform_.html">"confirm/components/<wbr>Confirm<wbr>Form"</a>
@@ -1036,6 +1200,12 @@ class Foo extends React.Component {
 						<a href="../modules/_events_onconfirmmfacode_.html">"events/<wbr>OnConfirm<wbr>Mfa<wbr>Code"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_events_onconfirmpassword_.html">"events/<wbr>OnConfirm<wbr>Password"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_events_onforgotpassword_.html">"events/<wbr>OnForgot<wbr>Password"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_events_onlogin_.html">"events/<wbr>OnLogin"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -1050,11 +1220,11 @@ class Foo extends React.Component {
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">"index"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_login_components_cognitologin_.html">"login/components/<wbr>Cognito<wbr>Login"</a>
-					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_login_components_loginform_.html">"login/components/<wbr>Login<wbr>Form"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_new_password_components_passwordform_.html">"new-<wbr>password/components/<wbr>Password<wbr>Form"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_register_components_registerform_.html">"register/components/<wbr>Register<wbr>Form"</a>
@@ -1072,108 +1242,114 @@ class Foo extends React.Component {
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_login_components_cognitologin_.cognitologin.html" class="tsd-kind-icon">Cognito<wbr>Login</a>
+						<a href="_cognito_login_components_cognitologin_.cognitologin.html" class="tsd-kind-icon">Cognito<wbr>Login</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_login_components_cognitologin_.cognitologin.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#context" class="tsd-kind-icon">context</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#context" class="tsd-kind-icon">context</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#props" class="tsd-kind-icon">props</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#props" class="tsd-kind-icon">props</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#refs" class="tsd-kind-icon">refs</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#refs" class="tsd-kind-icon">refs</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#state" class="tsd-kind-icon">state</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#state" class="tsd-kind-icon">state</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_login_components_cognitologin_.cognitologin.html#contexttype" class="tsd-kind-icon">context<wbr>Type</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#contexttype" class="tsd-kind-icon">context<wbr>Type</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#onresendsignup" class="tsd-kind-icon">On<wbr>Resend<wbr>Signup</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#unsafe_componentwillmount" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Mount</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#unsafe_componentwillreceiveprops" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Receive<wbr>Props</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#unsafe_componentwillupdate" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Update</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#componentdidcatch" class="tsd-kind-icon">component<wbr>Did<wbr>Catch</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#componentdidmount" class="tsd-kind-icon">component<wbr>Did<wbr>Mount</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#componentdidupdate" class="tsd-kind-icon">component<wbr>Did<wbr>Update</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#componentwillmount" class="tsd-kind-icon">component<wbr>Will<wbr>Mount</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#componentwillreceiveprops" class="tsd-kind-icon">component<wbr>Will<wbr>Receive<wbr>Props</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#componentwillunmount" class="tsd-kind-icon">component<wbr>Will<wbr>Unmount</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#componentwillupdate" class="tsd-kind-icon">component<wbr>Will<wbr>Update</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#forceupdate" class="tsd-kind-icon">force<wbr>Update</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#getsnapshotbeforeupdate" class="tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#forgotpasswordasync" class="tsd-kind-icon">Forgot<wbr>Password<wbr>Async</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#onconfirmaccount" class="tsd-kind-icon">on<wbr>Confirm<wbr>Account</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onresendsignup" class="tsd-kind-icon">On<wbr>Resend<wbr>Signup</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#onconfirmmfacode" class="tsd-kind-icon">on<wbr>ConfirmMFACode</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onresetpassword" class="tsd-kind-icon">On<wbr>Reset<wbr>Password</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#unsafe_componentwillmount" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Mount</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#unsafe_componentwillreceiveprops" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Receive<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#unsafe_componentwillupdate" class="tsd-kind-icon">UNSAFE_<wbr>component<wbr>Will<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#componentdidcatch" class="tsd-kind-icon">component<wbr>Did<wbr>Catch</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#componentdidmount" class="tsd-kind-icon">component<wbr>Did<wbr>Mount</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#componentdidupdate" class="tsd-kind-icon">component<wbr>Did<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#componentwillmount" class="tsd-kind-icon">component<wbr>Will<wbr>Mount</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#componentwillreceiveprops" class="tsd-kind-icon">component<wbr>Will<wbr>Receive<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#componentwillunmount" class="tsd-kind-icon">component<wbr>Will<wbr>Unmount</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#componentwillupdate" class="tsd-kind-icon">component<wbr>Will<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#forceupdate" class="tsd-kind-icon">force<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#getsnapshotbeforeupdate" class="tsd-kind-icon">get<wbr>Snapshot<wbr>Before<wbr>Update</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#onemailchanged" class="tsd-kind-icon">on<wbr>Email<wbr>Changed</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onconfirmaccount" class="tsd-kind-icon">on<wbr>Confirm<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#onlogin" class="tsd-kind-icon">on<wbr>Login</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onconfirmmfacode" class="tsd-kind-icon">on<wbr>ConfirmMFACode</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#onpasswordchanged" class="tsd-kind-icon">on<wbr>Password<wbr>Changed</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onemailchanged" class="tsd-kind-icon">on<wbr>Email<wbr>Changed</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#onphonechanged" class="tsd-kind-icon">on<wbr>Phone<wbr>Changed</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onlogin" class="tsd-kind-icon">on<wbr>Login</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#onregister" class="tsd-kind-icon">on<wbr>Register</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onpasswordchanged" class="tsd-kind-icon">on<wbr>Password<wbr>Changed</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_login_components_cognitologin_.cognitologin.html#onresultchanged" class="tsd-kind-icon">on<wbr>Result<wbr>Changed</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onphonechanged" class="tsd-kind-icon">on<wbr>Phone<wbr>Changed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onregister" class="tsd-kind-icon">on<wbr>Register</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onresultchanged" class="tsd-kind-icon">on<wbr>Result<wbr>Changed</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#onsavenewpassword" class="tsd-kind-icon">on<wbr>Save<wbr>New<wbr>Password</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_login_components_cognitologin_.cognitologin.html#render" class="tsd-kind-icon">render</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#render" class="tsd-kind-icon">render</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#setstate" class="tsd-kind-icon">set<wbr>State</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#setstate" class="tsd-kind-icon">set<wbr>State</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_login_components_cognitologin_.cognitologin.html#shouldcomponentupdate" class="tsd-kind-icon">should<wbr>Component<wbr>Update</a>
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#shouldcomponentupdate" class="tsd-kind-icon">should<wbr>Component<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-class">
+								<a href="_cognito_login_components_cognitologin_.cognitologin.html#cancelalertbutton" class="tsd-kind-icon">cancel<wbr>Alert<wbr>Button</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_login_components_cognitologin_.icognitologinprops.html" class="tsd-kind-icon">ICognito<wbr>Login<wbr>Props</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_login_components_cognitologin_.icognitologinstate.html" class="tsd-kind-icon">ICognito<wbr>Login<wbr>State</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
