@@ -66,6 +66,23 @@ exports[`components <CognitoLogin /> Component should render 1`] = `
       }
       title="Register"
     />
+    <Button
+      backgroundColor="#ff0000"
+      buttonStyle={
+        Object {
+          "margin": 0,
+          "minHeight": 45,
+        }
+      }
+      mode="text"
+      onPress={[Function]}
+      style={
+        Object {
+          "marginTop": 10,
+        }
+      }
+      title="Forgot password"
+    />
   </View>
   <Text
     isCaption={true}

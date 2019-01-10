@@ -60,12 +60,13 @@ export const OnCheckSession = async (
     return result;
   }
 
-  if (challengeName === 'NEW_PASSWORD_REQUIRED') {
-    result = {
-      state: 'NEW_PASSWORD_REQUIRED',
-      error: new Error(_.get(session, 'message') || 'New password required'),
-    };
-
+  // Resetting password
+  const codeDelivery = _.get(session, ['CodeDeliveryDetails', 'Destination']);
+  if (
+    challengeName === 'NEW_PASSWORD_REQUIRED' ||
+    (!_.isNil(codeDelivery) && !_.isEmpty(codeDelivery))
+  ) {
+    result = { state: 'NEW_PASSWORD_REQUIRED' };
     return result;
   }
 
@@ -87,11 +88,11 @@ export const OnCheckSession = async (
 
   if (!_.isNil(code) && _.get(session, 'message')) {
     // Other codes
-    console.log('*** Cognito OnCheckSession code: "' + code + '" ***');
-    result = {
-      state: 'Unauthenticated',
-      error: new Error(session.message),
-    };
+    result = { state: 'Unauthenticated', error: new Error(session.message) };
+    console.log(
+      '*** Cognito OnCheckSession other code: "' + code + '" result:'
+    );
+    console.log(result);
 
     return result;
   }

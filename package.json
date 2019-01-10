@@ -85,7 +85,8 @@
   },
   "peerDependencies": {
     "aws-amplify": "~1.x",
-    "aws-amplify-react-native": "~2.x"
+    "aws-amplify-react-native": "~2.x",
+    "react-native-paper": "~2.2.x"
   },
   "husky": {
     "hooks": {

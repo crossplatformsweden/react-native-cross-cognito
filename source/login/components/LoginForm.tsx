@@ -1,34 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
-import {
-  CrossEditor,
-  styles,
-  ICrossEditorProps,
-} from 'react-native-cross-components';
+import { CrossEditor, styles } from 'react-native-cross-components';
+import { IEmailProps, IPasswordProps } from '../../types';
 
 /**
  * Props for the {@link LoginForm} components.
  *
- * Required props include {@link onEmailChanged} and {@link onPasswordChanged}.
+ * Required props include {@link IEmailProps.onEmailChanged} and {@link IPasswordProps.onPasswordChanged}.
  *
- * Allows you to customize {@link initialEmail} / password as well as {@link emailInputProps}.
+ * Allows you to customize {@link IEmailProps.initialEmail} / password as well as {@link IEmailProps.emailInputProps}.
  */
-export interface ILoginFormProps {
-  onEmailChanged: (email: string | undefined) => void;
-  initialEmail?: string | undefined;
-  /**
-   * Optional props for the e-mail input. Typically used to change the `label` prop.
-   * See {@link ICrossEditorProps}
-   */
-  emailInputProps?: ICrossEditorProps | undefined;
-  onPasswordChanged: (password: string | undefined) => void;
-  initialPassword?: string | undefined;
-  /**
-   * Optional props for the password input. Typically used to change the `label` prop.
-   * See {@link ICrossEditorProps}
-   */
-  passwordInputProps?: ICrossEditorProps | undefined;
-}
+export interface ILoginFormProps extends IEmailProps, IPasswordProps {}
 
 /**
  * Allows the user to ender credentials and passes them back through prop events.

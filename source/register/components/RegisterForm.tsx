@@ -1,28 +1,19 @@
 import React from 'react';
 import { View } from 'react-native';
-import {
-  CrossEditor,
-  styles,
-  ICrossEditorProps,
-} from 'react-native-cross-components';
-import { ILoginFormProps } from '../../login/components/LoginForm';
+import { CrossEditor, styles } from 'react-native-cross-components';
+import { IPhoneProps, IEmailProps, IPasswordProps } from '../../types';
 
 /**
  * Props for the {@link RegisterForm} components. Extends {@link ILoginFormProps}
  *
- * Required props include {@link onEmailChanged}, {@link onPhoneChanged} and {@link onPasswordChanged}.
+ * Required props are callbacks {@link IEmailProps.onEmailChanged}, {@link IPhoneProps.onPhoneChanged} and {@link IPasswordProps.onPasswordChanged}.
  *
- * Allows you to customize {@link initialEmail} / phone / password as well as {@link emailInputProps}.
+ * Allows you to customize {@link IEmailProps.initialEmail} / phone / password as well as {@link IEmailProps.emailInputProps}.
  */
-export interface IRegisterFormProps extends ILoginFormProps {
-  onPhoneChanged: (password: string | undefined) => void;
-  initialPhone?: string | undefined;
-  /**
-   * Optional props for the phone input. Typically used to change the `label` prop or change the `maskProps`.
-   * See {@link ICrossEditorProps}
-   */
-  phoneInputProps?: ICrossEditorProps | undefined;
-}
+export interface IRegisterFormProps
+  extends IEmailProps,
+    IPasswordProps,
+    IPhoneProps {}
 
 /**
  * Allows the user to enter user info and passes them back through prop events.

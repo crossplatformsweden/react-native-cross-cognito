@@ -15,7 +15,7 @@ module.exports = {
       throw new Error('No userPool');
     },
     resendSignUp: (username) => username,
-    forgotPassword: jest.fn(),
+    forgotPassword: () => ({ CodeDeliveryDetails: { Destination: 'E-mail' } }),
     forgotPasswordSubmit: jest.fn(),
     currentSession: jest.fn(),
     currentUserInfo: jest.fn(),

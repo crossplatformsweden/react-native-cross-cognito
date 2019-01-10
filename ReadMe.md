@@ -12,10 +12,16 @@ React-Native implementation of [AWS Cognito](https://aws.amazon.com/cognito/) an
 
 If not using [Expo](https://www.expo.io/), install with [aws amplify](https://aws-amplify.github.io/docs/js/tutorials/building-react-native-apps/) and link it.
 
+This package makes use of our **[react-native-cross-components](https://github.com/crossplatformsweden/react-native-components)** that are based on on `react-native-paper`, which is therefore a peer dependency.
+
 ```bash
 	npm i aws-amplify
 	npm i aws-amplify-react-native
+	npm i react-native-paper
 	npm i react-native-cross-cognito
+	
+	# one liner
+	npm i aws-amplify aws-amplify-react-native react-native-paper react-native-cross-cognito
 ```
 
 Or if you're hanging with the cool kids
@@ -23,14 +29,18 @@ Or if you're hanging with the cool kids
 ```bash
 	yarn add aws-amplify
 	yarn add aws-amplify-react-native
+	yarn add react-native-paper
 	yarn add react-native-cross-cognito
+	
+	# one liner
+	yarn add aws-amplify aws-amplify-react-native react-native-paper react-native-cross-cognito
 ```
 
 ## Documentation
 
 See our GitHub Pages generated from code comments. This documentation is also available as intellisense / auto complete.
 
-- **[API Documnentation](https://crossplatformsweden.github.io/react-native-cross-cognito/)**
+- **[API Documentation](https://crossplatformsweden.github.io/react-native-cross-cognito/)**
 
 See **[Components](#components)** below for examples
 

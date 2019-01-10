@@ -7,20 +7,23 @@ import {
 } from 'react-native-cross-components';
 import styles from '../../styles';
 import { CrossEditor } from 'react-native-cross-components';
-import { IEmailProps, ICodeProps } from '../../types';
+import { IEmailProps, IPasswordProps, ICodeProps } from '../../types';
 
 /**
- * Props for the {@link ConfirmForm} component.
+ * Props for the {@link PasswordForm} component.
  *
- * Required properties: {@link onConfirmPress}.
+ * Required properties: {@link onSavePress}.
  *
- * Allows you to customize {@link ICodeProps} and {@link IEmailProps}.
+ * Allows you to customize {@link ICodeProps}, {@link IEmailProps} and {@link IPasswordProps}.
  */
-export interface IConfirmFormProps extends IEmailProps, ICodeProps {
+export interface IPasswordFormProps
+  extends IEmailProps,
+    IPasswordProps,
+    ICodeProps {
   /**
-   * Occurs when the user press "confirm" button. Required.
+   * Occurs when the user press "save" button. Required.
    */
-  onConfirmPress: () => void;
+  onSavePress: () => void;
   testID?: string;
   /**
    * Optional props for the register button. Typically used to change the `title` prop.
@@ -29,27 +32,27 @@ export interface IConfirmFormProps extends IEmailProps, ICodeProps {
    * https://crossplatformsweden.github.io/react-native-components/interfaces/_components_buttons_crossbutton_.icrossbuttonprops.html
    *
    * @example
-   *  <ConfirmForm confirmButtonProps={{title: 'Enlist'}}>
+   *  <PasswordForm confirmButtonProps={{title: 'Enlist'}}>
    *     <Text>Custom layouts here</Text>
-   *  </ConfirmForm>
+   *  </PasswordForm>
    */
-  confirmButtonProps?: ICrossButtonProps | undefined;
+  saveButtonProps?: ICrossButtonProps | undefined;
 }
 
 /**
  * Allows the user to ender credentials and passes them back through prop events.
  *
- * Props are {@link IConfirmFormProps}
+ * Props are {@link IPasswordFormProps}
  *
  * @example
- *  <ConfirmForm
- *      onConfirmPress={(code) => console.log('Confirmed', code)}
- *      confirmButtonProps={{title: 'Enlist'}}
+ *  <PasswordForm
+ *      onSavePress={(code) => console.log('Confirmed', code)}
+ *      saveButtonProps={{title: 'Enlist'}}
  *      codeInputProps={{label: 'WouldntYouLikeToKnow'}}>
  *     <Text>Custom layouts here</Text>
- *  </ConfirmForm>
+ *  </PasswordForm>
  */
-export class ConfirmForm extends React.Component<IConfirmFormProps> {
+export class PasswordForm extends React.Component<IPasswordFormProps> {
   render() {
     return (
       <View style={[styles.container]} testID={this.props.testID}>
@@ -74,19 +77,27 @@ export class ConfirmForm extends React.Component<IConfirmFormProps> {
           onChangeText={this.props.onCodeChanged}
           {...this.props.codeInputProps}
         />
+        <CrossEditor
+          label='New Password'
+          clearButtonMode='always'
+          secureTextEntry
+          value={this.props.initialPassword || ''}
+          onChangeText={(text: string) => this.props.onPasswordChanged(text)}
+          {...this.props.passwordInputProps}
+        />
         <CrossButton
           style={styles.marginTop10}
           buttonStyle={styles.buttonStyle}
-          onPress={this.props.onConfirmPress}
+          onPress={async () => await this.props.onSavePress()}
           mode='contained'
-          title='Confirm'
+          title='Save'
           backgroundColor={Colors.NextButton}
           iconName='sign-in'
-          {...this.props.confirmButtonProps}
+          {...this.props.saveButtonProps}
         />
       </View>
     );
   }
 }
 
-export default ConfirmForm;
+export default PasswordForm;
