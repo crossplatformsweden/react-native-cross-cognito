@@ -26,6 +26,7 @@ exports[`components <ForgotForm /> Component should render 1`] = `
       }
     }
     mode="contained"
+    onPress={[MockFunction]}
     style={
       Object {
         "marginTop": 10,

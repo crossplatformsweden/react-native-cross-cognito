@@ -18,7 +18,9 @@ jest.unmock('./ForgotForm');
 describe('components', () => {
   describe('<ForgotForm />', () => {
     it('Component should render', () => {
-      const wrapper = TestRenderer.create(<ForgotForm />);
+      const wrapper = TestRenderer.create(
+        <ForgotForm onSubmit={jest.fn()} onEmailChanged={jest.fn()} />
+      );
       expect(wrapper.toJSON()).toMatchSnapshot();
     });
 
