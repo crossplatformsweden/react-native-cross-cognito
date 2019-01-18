@@ -8,14 +8,13 @@ jest.unmock('./OnLogin');
 
 describe('events', () => {
   describe('OnLogin', () => {
-    it('When `input` has values should return `AuthenticationError` ', async (done) => {
+    it('When `input` has values should return `AuthenticationError` ', async () => {
       const input: ICognitoUserVariables = {
         email: 'bogus@bogus.com',
         password: 'noneOfYourBusiness',
       };
       const result = await OnLogin(input);
       expect(result.state).toBe('AuthenticationError');
-      done();
     });
   });
 });

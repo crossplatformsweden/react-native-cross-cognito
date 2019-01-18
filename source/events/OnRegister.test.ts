@@ -8,7 +8,7 @@ jest.unmock('./OnRegister');
 
 describe('events', () => {
   describe('OnRegister', () => {
-    it('When `input` has values should return `AuthenticationError` ', async (done) => {
+    it('When `input` has values should return `AuthenticationError` ', async () => {
       const input: ICognitoUserVariables = {
         email: 'bogus@bogus.com',
         password: 'noneOfYourBusiness',
@@ -16,7 +16,6 @@ describe('events', () => {
       const result = await OnRegister(input);
 
       expect(result.state).toBe('AuthenticationError');
-      done();
     });
   });
 });

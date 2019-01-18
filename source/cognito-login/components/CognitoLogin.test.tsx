@@ -30,6 +30,26 @@ describe('components', () => {
       expect(wrapper.toJSON()).toMatchSnapshot();
     });
 
+    it('`state.userInput` should be defined', () => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+      expect(wrapper.root.instance.state.userInput).toBeDefined();
+    });
+
+    it('`state.userInput.email` should be `undefined`', () => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+      expect(wrapper.root.instance.state.userInput.email).toBeUndefined();
+    });
+
+    it('`state.userInput.password` should be `undefined`', () => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+      expect(wrapper.root.instance.state.userInput.password).toBeUndefined();
+    });
+
+    it('`state.userInput.formState` should be `Login`', () => {
+      const wrapper = TestRenderer.create(<CognitoLogin />);
+      expect(wrapper.root.instance.state.formState).toBe('Login');
+    });
+
     it('`loginButtonProps` should set button title', () => {
       const wrapper = TestRenderer.create(
         <CognitoLogin loginButtonProps={{ title: 'MyTitle' }} />
@@ -69,14 +89,13 @@ describe('components', () => {
         expect(wrapper.root.instance.state.userInput.phone).toBe(expectedInput);
       });
 
-      it('`onLogin` should set `state.result` to defined value', async (done) => {
+      it('`onLogin` should set `state.result` to defined value', async () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const child = wrapper.root.findByProps({ iconName: 'sign-in' });
         await child.props.onPress();
         const result = _.get(wrapper, ['root', 'instance', 'state', 'result']);
 
         expect(result).not.toBeUndefined();
-        done();
       });
 
       it('`Register` button should set `state.formState` to `Register`', () => {
@@ -108,20 +127,45 @@ describe('components', () => {
 
         expect(result).toBe('Forgot');
       });
+
+      it('`OnResetPassword` should set `formState` to `Login`', async () => {
+        const wrapper = TestRenderer.create(<CognitoLogin />);
+        await wrapper.root.instance.OnResetPassword();
+        const result = _.get(wrapper, [
+          'root',
+          'instance',
+          'state',
+          'formState',
+        ]);
+
+        expect(result).toBe('Login');
+      });
+
+      it('`ForgotPasswordAsync` should set `formState` to `NewPassword`', async () => {
+        const wrapper = TestRenderer.create(<CognitoLogin />);
+        await wrapper.root.instance.ForgotPasswordAsync('test@test.com');
+        const result = _.get(wrapper, [
+          'root',
+          'instance',
+          'state',
+          'formState',
+        ]);
+
+        expect(result).toBe('NewPassword');
+      });
     });
 
-    it('Error label should contain `No userPool`', async (done) => {
+    it('Error label should contain `No userPool`', async () => {
       const wrapper = TestRenderer.create(<CognitoLogin />);
       const child = wrapper.root.findByProps({ iconName: 'sign-in' });
       await child.props.onPress();
 
       const errorLabel = wrapper.root.findByProps({ isCaption: true });
       expect(errorLabel.props.children).toBe('No userPool');
-      done();
     });
 
     describe('formState Register', () => {
-      it('On save user failed `state.formState` should be `Register`', async (done) => {
+      it('On save user failed `state.formState` should be `Register`', async () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'Register',
@@ -140,7 +184,6 @@ describe('components', () => {
         ]);
 
         expect(result).toBe('Register');
-        done();
       });
 
       it('Cancel button should set `formState` to `Login`', () => {
@@ -187,7 +230,7 @@ describe('components', () => {
         expect(child.props.onPress).not.toThrow();
       });
 
-      it('On confirm account should set `formState` to `Login`', async (done) => {
+      it('On confirm account should set `formState` to `Login`', async () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'ConfirmAccount',
@@ -209,10 +252,9 @@ describe('components', () => {
         console.log('*** test result ', result);
         expect(result).toBe('Login');
         console.log('**** onConfirmPress test DONE *****');
-        done();
       });
 
-      it('When no `code` or `email` `onConfirmPress` should set `message` to `Need code and user e-mail`', async (done) => {
+      it('When no `code` or `email` `onConfirmPress` should set `message` to `Need code and user e-mail`', async () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'ConfirmAccount',
@@ -229,7 +271,6 @@ describe('components', () => {
         console.log('*** test result ', result);
         expect(result).toBe('Need code and user e-mail');
         console.log('**** onConfirmPress test DONE *****');
-        done();
       });
     });
 
@@ -246,7 +287,7 @@ describe('components', () => {
         expect(result).toBe('testcode');
       });
 
-      it('`onConfirmPress` should return `Not a valid Code`', async (done) => {
+      it('`onConfirmPress` should return `Not a valid Code`', async () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'ConfirmMFALogin',
@@ -268,10 +309,9 @@ describe('components', () => {
           'message',
         ]);
         expect(result).toBe('Not a valid Code');
-        done();
       });
 
-      it('When no `code` or `email` `onConfirmPress` should set `message` to `Please enter username and the code`', async (done) => {
+      it('When no `code` or `email` `onConfirmPress` should set `message` to `Please enter username and the code`', async () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'ConfirmMFALogin',
@@ -286,7 +326,6 @@ describe('components', () => {
         await child.props.onConfirmPress();
         const result = _.get(wrapper, ['root', 'instance', 'state', 'message']);
         expect(result).toBe('Please enter username and the code');
-        done();
       });
     });
 
@@ -303,7 +342,7 @@ describe('components', () => {
         expect(result).toBe('testcode');
       });
 
-      it('On save password should set formState to `Login`', async (done) => {
+      it('On save password should set formState to `Login`', async () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'NewPassword',
@@ -324,10 +363,9 @@ describe('components', () => {
         ]);
 
         expect(result).toBe('Login');
-        done();
       });
 
-      it('When no `code` or `email` `onSavePress` should set `message` to `Need code and user e-mail`', async (done) => {
+      it('When no `code` or `email` `onSavePress` should set `message` to `Need code and user e-mail`', async () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'NewPassword',
@@ -342,12 +380,11 @@ describe('components', () => {
         await child.props.onSavePress();
         const result = _.get(wrapper, ['root', 'instance', 'state', 'message']);
         expect(result).toBe('Please enter username, code and new password');
-        done();
       });
     });
 
     describe('formState Forgot', () => {
-      it('When no `code` or `email` `onSavePress` should set `message` to `Need code and user e-mail`', async (done) => {
+      it('When no `code` or `email` `onSavePress` should set `message` to `Need code and user e-mail`', async () => {
         const wrapper = TestRenderer.create(<CognitoLogin />);
         const state: ICognitoLoginState = {
           formState: 'Forgot',
@@ -362,10 +399,9 @@ describe('components', () => {
         await child.props.onSubmit();
         const result = _.get(wrapper, ['root', 'instance', 'state', 'message']);
         expect(result).toBe('Please enter username');
-        done();
       });
 
-      it('On forgot password should not throw', async (done) => {
+      it('On forgot password should not throw', async () => {
         // Have to mock the alert dialog that occurs
         jest.mock('react-native', {
           Alert: { alert: OnForgotPassword('bogus@test.com') },
@@ -382,10 +418,9 @@ describe('components', () => {
           testID: 'ForgotForm',
         });
         expect(await child.props.onSubmit).not.toThrow();
-        done();
       });
 
-      it('ForgotPassword should set formState to `NewPassword`', async (done) => {
+      it('ForgotPassword should set formState to `NewPassword`', async () => {
         // Have to mock the alert dialog that occurs
         jest.mock('react-native', {
           Alert: jest.fn,
@@ -408,7 +443,6 @@ describe('components', () => {
 
         console.log('ForgotPassword result FormState: ', result);
         expect(result).toBe('NewPassword');
-        done();
       });
     });
   });

@@ -7,11 +7,10 @@ jest.unmock('./OnForgotPassword');
 
 describe('events', () => {
   describe('OnForgotPassword', () => {
-    it('When `input` has values should return `Unauthenticated` ', async (done) => {
+    it('When `input` has values should return `Unauthenticated` ', async () => {
       const result = await OnForgotPassword('bogus@bogus.com');
 
       expect(result.state).toBe('NEW_PASSWORD_REQUIRED');
-      done();
     });
   });
 });

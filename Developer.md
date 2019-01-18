@@ -278,28 +278,37 @@ Use VS Code's debugging capabilities to maintain a effective development cycle.
 And finally Jest Test debugging:
 
 ```json
-    	{
-            "type": "node",
-            "request": "launch",
-            "name": "Jest All",
-            "program": "${workspaceRoot}/node_modules/jest/bin/jest",
-            "args": [
-                "--runInBand"
-            ],
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Jest Current File",
-            "program": "${workspaceRoot}/node_modules/jest/bin/jest",
-            "args": [
-                "${file}"
-            ],
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
-        },
+({
+  "name": "Debug Jest Tests",
+  "type": "node",
+  "request": "launch",
+  "runtimeArgs": [
+    "--inspect-brk",
+    "${workspaceRoot}/node_modules/.bin/jest",
+    "--runInBand",
+    "--collectCoverage=false"
+  ],
+  "args": ["test", "--runInBand", "--no-cache", "--env=jsdom"],
+  "console": "integratedTerminal",
+  "internalConsoleOptions": "neverOpen",
+  "port": 9229
+},
+{
+  "type": "node",
+  "request": "launch",
+  "name": "Jest Current File",
+  "program": "${workspaceRoot}/node_modules/jest/bin/jest",
+  "runtimeArgs": [
+    "--inspect-brk",
+    "${workspaceRoot}/node_modules/.bin/jest",
+    "--runInBand",
+    "--collectCoverage=false"
+  ],
+  "args": ["${file}", "--no-cache", "--env=jsdom"],
+  "console": "integratedTerminal",
+  "internalConsoleOptions": "neverOpen",
+  "port": 9229
+})
 ```
 
 # Release

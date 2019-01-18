@@ -7,18 +7,16 @@ jest.unmock('./OnResendSignup');
 
 describe('events', () => {
   describe('OnResendSignup', () => {
-    it('When `username` is defined should return input', async (done) => {
+    it('When `username` is defined should return input', async () => {
       const email = 'bogus@bogus.com';
       const result = await OnResendSignup(email);
 
       expect(result).toBe(email);
-      done();
     });
 
-    it('When `username` is undefined should return undefined', async (done) => {
+    it('When `username` is undefined should return undefined', async () => {
       const result = await OnResendSignup('');
       expect(result).toBeUndefined();
-      done();
     });
   });
 });

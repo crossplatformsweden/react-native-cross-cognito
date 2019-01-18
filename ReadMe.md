@@ -62,6 +62,19 @@ See **[Components](#components)** below for examples
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
+## Services and helpers
+
+### GetJwtToken
+Gets the current user's Jwt token from AWS Cognito.
+
+For documentation see **[API reference - GetJwtToken](https://crossplatformsweden.github.io/react-native-cross-cognito/modules/_jwt_getjwttoken_.html)**.
+
+```typescript
+	import { GetJwtToken } from 'react-native-cross-cognito';
+	
+	const myToken = await GetJwtToken();
+```
+
 ## Components
 
 ### CognitoLogin
