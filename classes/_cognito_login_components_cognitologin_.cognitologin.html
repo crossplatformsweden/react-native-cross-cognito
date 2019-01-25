@@ -70,6 +70,7 @@
 					<div class="lead">
 						<p>A form for logging in to AWS Cognito through Amplify.</p>
 					</div>
+					<p>On successful registration the <a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html#onregistereduser">ICognitoLoginProps.onRegisteredUser</a> event is triggered.</p>
 					<p>On successful login the <a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html#onloggedin">ICognitoLoginProps.onLoggedIn</a> event is triggered.</p>
 					<p>Children can be supplied for the this component as well as child components. See <a href="../interfaces/_cognito_login_components_icognitologinprops_.icognitologinprops.html">ICognitoLoginProps</a>.</p>
 					<p>Remarks:</p>
@@ -82,6 +83,9 @@
 						<dt>example</dt>
 						<dd><caption>With custom button props and callback</caption>
 							<CognitoLogin
+							onRegisteredUser={(user) => {
+							Alert.alert('Registration complete', 'Thank you ' + user.getUsername());
+							}}
 							onLoggedIn={(user) => {
 							Alert.alert('Logged in', 'Welcome ' + user.getUsername());
 							}}
@@ -215,7 +219,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Component.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L75">cognito-login/components/CognitoLogin.tsx:75</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L80">cognito-login/components/CognitoLogin.tsx:80</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -351,7 +355,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L194">cognito-login/components/CognitoLogin.tsx:194</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L199">cognito-login/components/CognitoLogin.tsx:199</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -374,7 +378,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L166">cognito-login/components/CognitoLogin.tsx:166</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L171">cognito-login/components/CognitoLogin.tsx:171</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -391,7 +395,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L202">cognito-login/components/CognitoLogin.tsx:202</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L207">cognito-login/components/CognitoLogin.tsx:207</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -858,7 +862,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L227">cognito-login/components/CognitoLogin.tsx:227</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L236">cognito-login/components/CognitoLogin.tsx:236</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -875,7 +879,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L249">cognito-login/components/CognitoLogin.tsx:249</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L258">cognito-login/components/CognitoLogin.tsx:258</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -892,7 +896,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L130">cognito-login/components/CognitoLogin.tsx:130</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L135">cognito-login/components/CognitoLogin.tsx:135</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -915,7 +919,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L299">cognito-login/components/CognitoLogin.tsx:299</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L308">cognito-login/components/CognitoLogin.tsx:308</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -932,7 +936,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L139">cognito-login/components/CognitoLogin.tsx:139</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L144">cognito-login/components/CognitoLogin.tsx:144</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -955,7 +959,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L149">cognito-login/components/CognitoLogin.tsx:149</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L154">cognito-login/components/CognitoLogin.tsx:154</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -978,7 +982,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L219">cognito-login/components/CognitoLogin.tsx:219</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L224">cognito-login/components/CognitoLogin.tsx:224</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -995,7 +999,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L90">cognito-login/components/CognitoLogin.tsx:90</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L95">cognito-login/components/CognitoLogin.tsx:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1017,7 +1021,7 @@ class Foo extends React.Component {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L273">cognito-login/components/CognitoLogin.tsx:273</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L282">cognito-login/components/CognitoLogin.tsx:282</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1035,7 +1039,7 @@ class Foo extends React.Component {
 							<aside class="tsd-sources">
 								<p>Overrides Component.render</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L307">cognito-login/components/CognitoLogin.tsx:307</a></li>
+									<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L316">cognito-login/components/CognitoLogin.tsx:316</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -1124,7 +1128,7 @@ class Foo extends React.Component {
 					<div class="tsd-signature tsd-kind-icon">Forgot<wbr>Password<wbr>Alert<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L509">cognito-login/components/CognitoLogin.tsx:509</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L518">cognito-login/components/CognitoLogin.tsx:518</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1133,7 +1137,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;OK&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L510">cognito-login/components/CognitoLogin.tsx:510</a></li>
+								<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L519">cognito-login/components/CognitoLogin.tsx:519</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1147,7 +1151,7 @@ class Foo extends React.Component {
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L511">cognito-login/components/CognitoLogin.tsx:511</a></li>
+										<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L520">cognito-login/components/CognitoLogin.tsx:520</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1161,7 +1165,7 @@ class Foo extends React.Component {
 					<div class="tsd-signature tsd-kind-icon">cancel<wbr>Alert<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L515">cognito-login/components/CognitoLogin.tsx:515</a></li>
+							<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L524">cognito-login/components/CognitoLogin.tsx:524</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1170,7 +1174,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"cancel"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;cancel&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L518">cognito-login/components/CognitoLogin.tsx:518</a></li>
+								<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L527">cognito-login/components/CognitoLogin.tsx:527</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1180,7 +1184,7 @@ class Foo extends React.Component {
 						<div class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Cancel&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L516">cognito-login/components/CognitoLogin.tsx:516</a></li>
+								<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L525">cognito-login/components/CognitoLogin.tsx:525</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1194,7 +1198,7 @@ class Foo extends React.Component {
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/7b0b756/source/cognito-login/components/CognitoLogin.tsx#L517">cognito-login/components/CognitoLogin.tsx:517</a></li>
+										<li>Defined in <a href="https://github.com/crossplatformsweden/react-native-cross-cognito/blob/6438b94/source/cognito-login/components/CognitoLogin.tsx#L526">cognito-login/components/CognitoLogin.tsx:526</a></li>
 									</ul>
 								</aside>
 								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
