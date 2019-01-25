@@ -4,86 +4,90 @@ exports[`components <CognitoLogin /> Component should render 1`] = `
 <View
   style={Object {}}
 >
-  <View
-    style={Object {}}
-  >
-    <View
-      style={
-        Array [
-          Object {},
-        ]
-      }
-    >
-      <TextInput
-        autoCapitalize="none"
-        autoCorrect={false}
-        clearButtonMode="always"
-        label="E-mail"
-        onChangeText={[Function]}
-        placeholder="E-mail"
-        value=""
-      />
-      <TextInput
-        clearButtonMode="always"
-        label="Password"
-        onChangeText={[Function]}
-        secureTextEntry={true}
-        value=""
-      />
+  <RCTScrollView>
+    <View>
+      <View
+        style={Object {}}
+      >
+        <View
+          style={
+            Array [
+              Object {},
+            ]
+          }
+        >
+          <TextInput
+            autoCapitalize="none"
+            autoCorrect={false}
+            clearButtonMode="always"
+            label="E-mail"
+            onChangeText={[Function]}
+            placeholder="E-mail"
+            value=""
+          />
+          <TextInput
+            clearButtonMode="always"
+            label="Password"
+            onChangeText={[Function]}
+            secureTextEntry={true}
+            value=""
+          />
+        </View>
+        <Button
+          backgroundColor="#349b34"
+          buttonStyle={
+            Object {
+              "margin": 0,
+              "minHeight": 45,
+            }
+          }
+          iconName="sign-in"
+          mode="contained"
+          onPress={[Function]}
+          style={
+            Object {
+              "marginTop": 10,
+            }
+          }
+          title="Log in"
+        />
+        <Button
+          backgroundColor="#3180e0"
+          buttonStyle={
+            Object {
+              "margin": 0,
+              "minHeight": 45,
+            }
+          }
+          mode="contained"
+          onPress={[Function]}
+          style={
+            Object {
+              "marginTop": 10,
+            }
+          }
+          title="Register"
+        />
+        <Button
+          backgroundColor="#ff0000"
+          buttonStyle={
+            Object {
+              "margin": 0,
+              "minHeight": 45,
+            }
+          }
+          mode="text"
+          onPress={[Function]}
+          style={
+            Object {
+              "marginTop": 10,
+            }
+          }
+          title="Forgot password"
+        />
+      </View>
     </View>
-    <Button
-      backgroundColor="#349b34"
-      buttonStyle={
-        Object {
-          "margin": 0,
-          "minHeight": 45,
-        }
-      }
-      iconName="sign-in"
-      mode="contained"
-      onPress={[Function]}
-      style={
-        Object {
-          "marginTop": 10,
-        }
-      }
-      title="Log in"
-    />
-    <Button
-      backgroundColor="#3180e0"
-      buttonStyle={
-        Object {
-          "margin": 0,
-          "minHeight": 45,
-        }
-      }
-      mode="contained"
-      onPress={[Function]}
-      style={
-        Object {
-          "marginTop": 10,
-        }
-      }
-      title="Register"
-    />
-    <Button
-      backgroundColor="#ff0000"
-      buttonStyle={
-        Object {
-          "margin": 0,
-          "minHeight": 45,
-        }
-      }
-      mode="text"
-      onPress={[Function]}
-      style={
-        Object {
-          "marginTop": 10,
-        }
-      }
-      title="Forgot password"
-    />
-  </View>
+  </RCTScrollView>
   <Text
     isCaption={true}
     style={

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert, AlertButton } from 'react-native';
+import { View, Alert, AlertButton, ScrollView } from 'react-native';
 import LoginForm from '../../login/components/LoginForm';
 import { Colors, CrossButton, CrossLabel } from 'react-native-cross-components';
 import { CognitoAuthState, IAuthenticationResult } from '../../types';
@@ -322,154 +322,183 @@ export class CognitoLogin extends React.Component<
 
     return (
       <View style={styles.container} testID={this.props.testID}>
-        {this.props.children}
-        {this.state.formState === 'Login' ? (
-          <View style={styles.container}>
-            <LoginForm
-              initialEmail={this.state.userInput.email}
-              initialPassword={this.state.userInput.password}
-              onEmailChanged={this.onEmailChanged}
-              onPasswordChanged={this.onPasswordChanged}
-              {...this.props}
-            >
-              {this.props.loginChildren}
-            </LoginForm>
-            <CrossButton
-              style={styles.marginTop10}
-              buttonStyle={styles.buttonStyle}
-              onPress={async () => await this.onLogin()}
-              mode='contained'
-              title='Log in'
-              backgroundColor={Colors.NextButton}
-              iconName='sign-in'
-              {...this.props.buttonProps}
-              {...this.props.loginButtonProps}
-            />
-            <CrossButton
-              style={styles.marginTop10}
-              buttonStyle={styles.buttonStyle}
-              onPress={() =>
-                this.setState({
-                  formState: 'Register',
-                })
-              }
-              mode='contained'
-              title='Register'
-              backgroundColor={Colors.BackButton}
-              {...this.props.buttonProps}
-              {...this.props.registerButtonProps}
-            />
-            <CrossButton
-              style={styles.marginTop10}
-              buttonStyle={styles.buttonStyle}
-              onPress={() =>
-                this.setState({
-                  formState: 'Forgot',
-                })
-              }
-              mode='text'
-              title='Forgot password'
-              backgroundColor={Colors.CancelButton}
-              {...this.props.buttonProps}
-              {...this.props.cancelButtonProps}
-            />
-          </View>
-        ) : null}
+        <ScrollView>
+          {this.props.children}
+          {this.state.formState === 'Login' ? (
+            <View style={styles.container}>
+              <LoginForm
+                initialEmail={this.state.userInput.email}
+                initialPassword={this.state.userInput.password}
+                onEmailChanged={this.onEmailChanged}
+                onPasswordChanged={this.onPasswordChanged}
+                {...this.props}
+              >
+                {this.props.loginChildren}
+              </LoginForm>
+              <CrossButton
+                style={styles.marginTop10}
+                buttonStyle={styles.buttonStyle}
+                onPress={async () => await this.onLogin()}
+                mode='contained'
+                title='Log in'
+                backgroundColor={Colors.NextButton}
+                iconName='sign-in'
+                {...this.props.buttonProps}
+                {...this.props.loginButtonProps}
+              />
+              <CrossButton
+                style={styles.marginTop10}
+                buttonStyle={styles.buttonStyle}
+                onPress={() =>
+                  this.setState({
+                    formState: 'Register',
+                  })
+                }
+                mode='contained'
+                title='Register'
+                backgroundColor={Colors.BackButton}
+                {...this.props.buttonProps}
+                {...this.props.registerButtonProps}
+              />
+              <CrossButton
+                style={styles.marginTop10}
+                buttonStyle={styles.buttonStyle}
+                onPress={() =>
+                  this.setState({
+                    formState: 'Forgot',
+                  })
+                }
+                mode='text'
+                title='Forgot password'
+                backgroundColor={Colors.CancelButton}
+                {...this.props.buttonProps}
+                {...this.props.cancelButtonProps}
+              />
+            </View>
+          ) : null}
 
-        {this.state.formState === 'Register' ? (
-          <View style={styles.container}>
-            <RegisterForm
-              initialPhone={this.state.userInput.phone}
-              onPhoneChanged={this.onPhoneChanged}
-              initialEmail={this.state.userInput.email}
-              onEmailChanged={this.onEmailChanged}
-              initialPassword={this.state.userInput.password}
-              onPasswordChanged={this.onPasswordChanged}
-              {...this.props}
-            >
-              {this.props.registerChildren}
-            </RegisterForm>
-            <CrossButton
-              style={styles.marginTop10}
-              buttonStyle={styles.buttonStyle}
-              onPress={async () => await this.onRegister()}
-              mode='contained'
-              title='Save'
-              backgroundColor={Colors.NextButton}
-              iconName='sign-in'
-              {...this.props.buttonProps}
-              {...this.props.saveButtonProps}
-            />
-            <CrossButton
-              style={styles.marginTop10}
-              buttonStyle={styles.buttonStyle}
-              onPress={() =>
-                this.setState({
-                  formState: 'Login',
-                })
-              }
-              mode='contained'
-              title='Cancel'
-              backgroundColor={Colors.CancelButton}
-              {...this.props.buttonProps}
-              {...this.props.cancelButtonProps}
-            />
-          </View>
-        ) : null}
-        {this.state.formState === 'NewPassword' ? (
-          <View style={styles.container}>
-            <PasswordForm
-              testID='PasswordForm'
-              onSavePress={async () => await this.onSaveNewPassword()}
-              initialPassword={this.state.userInput.password}
-              onPasswordChanged={this.onPasswordChanged}
-              initialEmail={this.state.userInput.email}
-              onEmailChanged={this.onEmailChanged}
-              code={this.state.code}
-              onCodeChanged={(code) => this.setState({ code })}
-            />
-          </View>
-        ) : null}
-        {this.state.formState === 'Forgot' ? (
-          <View style={styles.container}>
-            <ForgotForm
-              testID='ForgotForm'
-              initialEmail={this.state.userInput.email}
-              onEmailChanged={this.onEmailChanged}
-              onSubmit={this.OnResetPassword}
-              buttonProps={{
-                ...this.props.buttonProps,
-                ...this.props.saveButtonProps,
-              }}
-              {...this.props}
-            >
-              {this.props.forgotChildren}
-            </ForgotForm>
-            <CrossButton
-              style={styles.marginTop10}
-              buttonStyle={styles.buttonStyle}
-              onPress={() =>
-                this.setState({
-                  formState: 'Login',
-                })
-              }
-              mode='contained'
-              title='Cancel'
-              backgroundColor={Colors.BackButton}
-              {...this.props.buttonProps}
-              {...this.props.cancelButtonProps}
-            />
-          </View>
-        ) : null}
-        {this.state.formState === 'ConfirmAccount' ? (
-          <View style={styles.container}>
+          {this.state.formState === 'Register' ? (
+            <View style={styles.container}>
+              <RegisterForm
+                initialPhone={this.state.userInput.phone}
+                onPhoneChanged={this.onPhoneChanged}
+                initialEmail={this.state.userInput.email}
+                onEmailChanged={this.onEmailChanged}
+                initialPassword={this.state.userInput.password}
+                onPasswordChanged={this.onPasswordChanged}
+                {...this.props}
+              >
+                {this.props.registerChildren}
+              </RegisterForm>
+              <CrossButton
+                style={styles.marginTop10}
+                buttonStyle={styles.buttonStyle}
+                onPress={async () => await this.onRegister()}
+                mode='contained'
+                title='Save'
+                backgroundColor={Colors.NextButton}
+                iconName='sign-in'
+                {...this.props.buttonProps}
+                {...this.props.saveButtonProps}
+              />
+              <CrossButton
+                style={styles.marginTop10}
+                buttonStyle={styles.buttonStyle}
+                onPress={() =>
+                  this.setState({
+                    formState: 'Login',
+                  })
+                }
+                mode='contained'
+                title='Cancel'
+                backgroundColor={Colors.CancelButton}
+                {...this.props.buttonProps}
+                {...this.props.cancelButtonProps}
+              />
+            </View>
+          ) : null}
+          {this.state.formState === 'NewPassword' ? (
+            <View style={styles.container}>
+              <PasswordForm
+                testID='PasswordForm'
+                onSavePress={async () => await this.onSaveNewPassword()}
+                initialPassword={this.state.userInput.password}
+                onPasswordChanged={this.onPasswordChanged}
+                initialEmail={this.state.userInput.email}
+                onEmailChanged={this.onEmailChanged}
+                code={this.state.code}
+                onCodeChanged={(code) => this.setState({ code })}
+              />
+            </View>
+          ) : null}
+          {this.state.formState === 'Forgot' ? (
+            <View style={styles.container}>
+              <ForgotForm
+                testID='ForgotForm'
+                initialEmail={this.state.userInput.email}
+                onEmailChanged={this.onEmailChanged}
+                onSubmit={this.OnResetPassword}
+                buttonProps={{
+                  ...this.props.buttonProps,
+                  ...this.props.saveButtonProps,
+                }}
+                {...this.props}
+              >
+                {this.props.forgotChildren}
+              </ForgotForm>
+              <CrossButton
+                style={styles.marginTop10}
+                buttonStyle={styles.buttonStyle}
+                onPress={() =>
+                  this.setState({
+                    formState: 'Login',
+                  })
+                }
+                mode='contained'
+                title='Cancel'
+                backgroundColor={Colors.BackButton}
+                {...this.props.buttonProps}
+                {...this.props.cancelButtonProps}
+              />
+            </View>
+          ) : null}
+          {this.state.formState === 'ConfirmAccount' ? (
+            <View style={styles.container}>
+              <ConfirmForm
+                testID='ConfirmAccountForm'
+                code={this.state.code}
+                onCodeChanged={(code) => this.setState({ code })}
+                initialEmail={this.state.userInput.email}
+                onEmailChanged={this.onEmailChanged}
+                onConfirmPress={async () => await this.onConfirmAccount()}
+                {...this.props}
+                confirmButtonProps={{
+                  ...this.props.buttonProps,
+                  ...this.props.saveButtonProps,
+                }}
+              >
+                {this.props.confirmChildren}
+              </ConfirmForm>
+              <CrossButton
+                style={styles.marginTop10}
+                buttonStyle={styles.buttonStyle}
+                onPress={() => this.OnResendSignup()}
+                mode='contained'
+                title='Resend code'
+                backgroundColor={Colors.CancelButton}
+                {...this.props.buttonProps}
+                {...this.props.cancelButtonProps}
+              />
+            </View>
+          ) : null}
+          {this.state.formState === 'ConfirmMFALogin' ? (
             <ConfirmForm
-              testID='ConfirmAccountForm'
+              testID='ConfirmMFAForm'
               code={this.state.code}
-              onCodeChanged={(code) => this.setState({ code })}
               initialEmail={this.state.userInput.email}
               onEmailChanged={this.onEmailChanged}
-              onConfirmPress={async () => await this.onConfirmAccount()}
+              onConfirmPress={async () => await this.onConfirmMFACode()}
+              onCodeChanged={(code) => this.setState({ code })}
               {...this.props}
               confirmButtonProps={{
                 ...this.props.buttonProps,
@@ -478,36 +507,8 @@ export class CognitoLogin extends React.Component<
             >
               {this.props.confirmChildren}
             </ConfirmForm>
-            <CrossButton
-              style={styles.marginTop10}
-              buttonStyle={styles.buttonStyle}
-              onPress={() => this.OnResendSignup()}
-              mode='contained'
-              title='Resend code'
-              backgroundColor={Colors.CancelButton}
-              {...this.props.buttonProps}
-              {...this.props.cancelButtonProps}
-            />
-          </View>
-        ) : null}
-        {this.state.formState === 'ConfirmMFALogin' ? (
-          <ConfirmForm
-            testID='ConfirmMFAForm'
-            code={this.state.code}
-            initialEmail={this.state.userInput.email}
-            onEmailChanged={this.onEmailChanged}
-            onConfirmPress={async () => await this.onConfirmMFACode()}
-            onCodeChanged={(code) => this.setState({ code })}
-            {...this.props}
-            confirmButtonProps={{
-              ...this.props.buttonProps,
-              ...this.props.saveButtonProps,
-            }}
-          >
-            {this.props.confirmChildren}
-          </ConfirmForm>
-        ) : null}
-
+          ) : null}
+        </ScrollView>
         <CrossLabel isCaption={true} style={{ color: 'red' }}>
           {(error || '').toString()}
         </CrossLabel>
