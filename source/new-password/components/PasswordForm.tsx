@@ -7,7 +7,12 @@ import {
 } from 'react-native-cross-components';
 import styles from '../../styles';
 import { CrossEditor } from 'react-native-cross-components';
-import { IEmailProps, IPasswordProps, ICodeProps } from '../../types';
+import {
+  IEmailProps,
+  IPasswordProps,
+  ICodeProps,
+  ITestIDProps,
+} from '../../types';
 
 /**
  * Props for the {@link PasswordForm} component.
@@ -19,12 +24,12 @@ import { IEmailProps, IPasswordProps, ICodeProps } from '../../types';
 export interface IPasswordFormProps
   extends IEmailProps,
     IPasswordProps,
-    ICodeProps {
+    ICodeProps,
+    ITestIDProps {
   /**
    * Occurs when the user press "save" button. Required.
    */
   onSavePress: () => void;
-  testID?: string;
   /**
    * Optional props for the register button. Typically used to change the `title` prop.
    *

@@ -2,6 +2,7 @@ import { ICrossButtonProps } from 'react-native-cross-components';
 import { ICrossEditorProps } from 'react-native-cross-components';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import { ReactNode } from 'react';
+import { ITestIDProps } from '../../types';
 /**
  * Properties for the {@link CognitoLogin} component.
  *
@@ -11,7 +12,7 @@ import { ReactNode } from 'react';
  *
  * Children can be supplied to the forms: {@link registerChildren}, {@link confirmChildren}, {@link forgotChildren}, {@link loginChildren}
  */
-export interface ICognitoLoginProps {
+export interface ICognitoLoginProps extends ITestIDProps {
   /**
    * Occurs when the user was successfully logged in and contains the resulting user.
    */

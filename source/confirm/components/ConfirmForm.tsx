@@ -7,7 +7,7 @@ import {
 } from 'react-native-cross-components';
 import styles from '../../styles';
 import { CrossEditor } from 'react-native-cross-components';
-import { IEmailProps, ICodeProps } from '../../types';
+import { IEmailProps, ICodeProps, ITestIDProps } from '../../types';
 
 /**
  * Props for the {@link ConfirmForm} component.
@@ -16,12 +16,14 @@ import { IEmailProps, ICodeProps } from '../../types';
  *
  * Allows you to customize {@link ICodeProps} and {@link IEmailProps}.
  */
-export interface IConfirmFormProps extends IEmailProps, ICodeProps {
+export interface IConfirmFormProps
+  extends IEmailProps,
+    ICodeProps,
+    ITestIDProps {
   /**
    * Occurs when the user press "confirm" button. Required.
    */
   onConfirmPress: () => void;
-  testID?: string;
   /**
    * Optional props for the register button. Typically used to change the `title` prop.
    *

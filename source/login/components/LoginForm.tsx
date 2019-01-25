@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { CrossEditor, styles } from 'react-native-cross-components';
-import { IEmailProps, IPasswordProps } from '../../types';
+import { IEmailProps, IPasswordProps, ITestIDProps } from '../../types';
 
 /**
  * Props for the {@link LoginForm} components.
@@ -10,7 +10,10 @@ import { IEmailProps, IPasswordProps } from '../../types';
  *
  * Allows you to customize {@link IEmailProps.initialEmail} / password as well as {@link IEmailProps.emailInputProps}.
  */
-export interface ILoginFormProps extends IEmailProps, IPasswordProps {}
+export interface ILoginFormProps
+  extends IEmailProps,
+    IPasswordProps,
+    ITestIDProps {}
 
 /**
  * Allows the user to ender credentials and passes them back through prop events.
@@ -21,7 +24,7 @@ export class LoginForm extends React.Component<ILoginFormProps> {
   render() {
     // TODO: E-mail validation
     return (
-      <View style={[styles.container]}>
+      <View style={[styles.container]} testID={this.props.testID}>
         {this.props.children}
         <CrossEditor
           label='E-mail'

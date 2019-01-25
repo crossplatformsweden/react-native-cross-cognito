@@ -321,7 +321,7 @@ export class CognitoLogin extends React.Component<
     console.log('*** CognitioLogin error: ', error || 'none');
 
     return (
-      <View style={styles.container}>
+      <View style={styles.container} testID={this.props.testID}>
         {this.props.children}
         {this.state.formState === 'Login' ? (
           <View style={styles.container}>

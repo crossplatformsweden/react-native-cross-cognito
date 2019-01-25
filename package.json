@@ -47,19 +47,14 @@
   "homepage": "https://github.com/crossplatformsweden/react-native-cross-cognito#readme",
   "devDependencies": {
     "@babel/runtime": "^7.1.5",
-    "@expo/vector-icons": "^6.3.1",
     "@types/es6-promise": "^3.3.0",
-    "@types/expo": "^27.0.8",
-    "@types/expo__vector-icons": "^6.2.3",
     "@types/jest": "^23.3.2",
     "@types/lodash": "^4.14.118",
     "@types/react": "^16.4.14",
     "@types/react-native": "^0.56.21",
-    "@types/react-native-vector-icons": "^4.6.3",
     "@types/react-test-renderer": "^16.0.2",
     "amazon-cognito-identity-js": "^3.0.6",
     "aws-amplify": "^1.1.17",
-    "aws-amplify-react-native": "^2.1.5",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
     "gh-pages": "^2.0.1",
@@ -85,7 +80,6 @@
   },
   "peerDependencies": {
     "aws-amplify": "~1.x",
-    "aws-amplify-react-native": "~2.x",
     "react-native-paper": "~2.2.x"
   },
   "husky": {

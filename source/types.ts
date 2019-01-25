@@ -1,5 +1,10 @@
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import { ICrossEditorProps } from 'react-native-cross-components';
+
+export type ITestIDProps = {
+  testID?: string | undefined;
+};
+
 /**
  * Describes the current state of user authentication process with AWS Cognito
  */

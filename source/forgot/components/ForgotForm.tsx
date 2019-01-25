@@ -6,13 +6,13 @@ import {
   ICrossButtonProps,
 } from 'react-native-cross-components';
 import styles from '../../styles';
-import { IEmailProps } from '../../types';
+import { IEmailProps, ITestIDProps } from '../../types';
 import { Colors } from 'react-native-cross-components';
 
 /**
  * Properties for {@link ForgotForm} component. Required prop is {@link onSubmit}.
  */
-export interface IForgotFormProps extends IEmailProps {
+export interface IForgotFormProps extends IEmailProps, ITestIDProps {
   /**
    * Occurs when the user clicks "reset password" button. Required.
    */

@@ -1,7 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
 import { CrossEditor, styles } from 'react-native-cross-components';
-import { IPhoneProps, IEmailProps, IPasswordProps } from '../../types';
+import {
+  IPhoneProps,
+  IEmailProps,
+  IPasswordProps,
+  ITestIDProps,
+} from '../../types';
 
 /**
  * Props for the {@link RegisterForm} components. Extends {@link ILoginFormProps}
@@ -13,7 +18,8 @@ import { IPhoneProps, IEmailProps, IPasswordProps } from '../../types';
 export interface IRegisterFormProps
   extends IEmailProps,
     IPasswordProps,
-    IPhoneProps {}
+    IPhoneProps,
+    ITestIDProps {}
 
 /**
  * Allows the user to enter user info and passes them back through prop events.
@@ -25,7 +31,7 @@ export class RegisterForm extends React.Component<IRegisterFormProps> {
     // TODO: Country selector
     // maskProps={{ type: 'cel-phone', options: { dddMask: '(46)' } }}
     return (
-      <View style={[styles.container]}>
+      <View style={[styles.container]} testID={this.props.testID}>
         {this.props.children}
         <CrossEditor
           label='E-mail'
