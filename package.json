@@ -79,8 +79,11 @@
     "typescript": "^3.1.6"
   },
   "peerDependencies": {
-    "aws-amplify": "~1.x",
-    "react-native-paper": "~2.2.x"
+    "aws-amplify": "^1.1.17",
+    "react": "*",
+    "react-native": "*",
+    "react-native-paper": "^2.6.1",
+    "react-native-vector-icons": "*"
   },
   "husky": {
     "hooks": {
@@ -88,6 +91,6 @@
     }
   },
   "dependencies": {
-    "react-native-cross-components": "^0.2.4"
+    "react-native-cross-components": "^0.2.7"
   }
 }

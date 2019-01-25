@@ -10,31 +10,43 @@ React-Native implementation of [AWS Cognito](https://aws.amazon.com/cognito/) an
 
 ## Install
 
-If not using [Expo](https://www.expo.io/), install with [aws amplify](https://aws-amplify.github.io/docs/js/tutorials/building-react-native-apps/) and link it.
+This package makes use of our **[react-native-cross-components](https://github.com/crossplatformsweden/react-native-components)** that are based on on `react-native-paper`. Paper which is therefore a peer dependency.
 
-This package makes use of our **[react-native-cross-components](https://github.com/crossplatformsweden/react-native-components)** that are based on on `react-native-paper`, which is therefore a peer dependency.
+### Native
+Install with [aws amplify](https://aws-amplify.github.io/docs/js/tutorials/building-react-native-apps/) and link it.
+
 
 ```bash
+	npm i react-native-vector-icons
 	npm i aws-amplify
-	npm i aws-amplify-react-native
 	npm i react-native-paper
 	npm i react-native-cross-cognito
 	
 	# one liner
-	npm i aws-amplify aws-amplify-react-native react-native-paper react-native-cross-cognito
+	npm i react-native-vector-icons aws-amplify react-native-paper react-native-cross-cognito
 ```
 
-Or if you're hanging with the cool kids
-
 ```bash
+	yarn add react-native-vector-icons
 	yarn add aws-amplify
-	yarn add aws-amplify-react-native
 	yarn add react-native-paper
 	yarn add react-native-cross-cognito
 	
 	# one liner
-	yarn add aws-amplify aws-amplify-react-native react-native-paper react-native-cross-cognito
+	yarn add react-native-vector-icons aws-amplify react-native-paper react-native-cross-cognito
 ```
+
+
+### Expo prev CRNA
+
+```bash
+	npm i react-native-cross-cognito
+```
+
+```bash
+	yarn add react-native-cross-cognito
+```
+
 
 ## Documentation
 
@@ -56,11 +68,17 @@ See **[Components](#components)** below for examples
 [![GitHub stars](https://img.shields.io/github/stars/crossplatformsweden/react-native-cross-cognito.svg?style=social&label=Star)](https://github.com/crossplatformsweden/react-native-cross-cognito) [![GitHub watchers](https://img.shields.io/github/watchers/crossplatformsweden/react-native-cross-cognito.svg?style=social&label=Watch)](https://github.com/crossplatformsweden/react-native-cross-cognito) [![Twitter Follow](https://img.shields.io/twitter/follow/crossplatformse.svg?style=social)](https://twitter.com/crossplatformse)
 
 ## Table of Contents
-
-- [Crossplatform React-Native Components](#crossplatform-react-native-cross-cognito)
-  - [Components](#components)
+  * [Install](#install)
+    + [Native](#native)
+    + [Expo prev CRNA](#expo-prev-crna)
+  * [Documentation](#documentation)
+  * [Services and helpers](#services-and-helpers)
+    + [GetJwtToken](#getjwttoken)
+  * [Components](#components)
+    + [CognitoLogin](#cognitologin)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## Services and helpers
 
