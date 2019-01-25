@@ -3,16 +3,25 @@ import { ICrossEditorProps } from 'react-native-cross-components';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import { ReactNode } from 'react';
 import { ITestIDProps } from '../../types';
+import { StyleProp, ViewStyle } from 'react-native';
 /**
  * Properties for the {@link CognitoLogin} component.
  *
  * Has callback events for {@link onLoggedIn} and {@link onRegisteredUser}.
  *
- * Customize using {@link buttonProps}, {@link loginButtonProps} etc.
+ * Customize using {@link style}, {@link scrolViewStyle}, {@link buttonProps}, {@link loginButtonProps} etc.
  *
  * Children can be supplied to the forms: {@link registerChildren}, {@link confirmChildren}, {@link forgotChildren}, {@link loginChildren}
  */
 export interface ICognitoLoginProps extends ITestIDProps {
+  /**
+   * Optional custom style main `View` container
+   */
+  style?: StyleProp<ViewStyle> | undefined;
+  /**
+   * Optional custom style main `ScrollView`
+   */
+  scrolViewStyle?: StyleProp<ViewStyle> | undefined;
   /**
    * Occurs when the user was successfully logged in and contains the resulting user.
    */
