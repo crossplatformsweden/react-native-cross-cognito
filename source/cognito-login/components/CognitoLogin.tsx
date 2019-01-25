@@ -23,6 +23,8 @@ import { OnConfirmPassword } from '../../events/OnConfirmPassword';
 /**
  * A form for logging in to AWS Cognito through Amplify.
  *
+ * On successful registration the {@link ICognitoLoginProps.onRegisteredUser} event is triggered.
+ *
  * On successful login the {@link ICognitoLoginProps.onLoggedIn} event is triggered.
  *
  * Children can be supplied for the this component as well as child components. See {@link ICognitoLoginProps}.
@@ -36,9 +38,12 @@ import { OnConfirmPassword } from '../../events/OnConfirmPassword';
  *
  * @example <caption>With custom button props and callback</caption>
  *  <CognitoLogin
- *      onLoggedIn={(user) => {
- *        Alert.alert('Logged in', 'Welcome ' + user.getUsername());
- *      }}
+ *    onRegisteredUser={(user) => {
+ *      Alert.alert('Registration complete', 'Thank you ' + user.getUsername());
+ *    }}
+ *    onLoggedIn={(user) => {
+ *      Alert.alert('Logged in', 'Welcome ' + user.getUsername());
+ *    }}
  *    buttonProps={{mode: 'contained'}}>
  *     <Text>Custom layouts here</Text>
  *  </CognitoLogin>

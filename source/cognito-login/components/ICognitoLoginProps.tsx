@@ -5,7 +5,9 @@ import { ReactNode } from 'react';
 /**
  * Properties for the {@link CognitoLogin} component.
  *
- * Allows customization and provides the {@link onLoggedIn} event.
+ * Has callback events for {@link onLoggedIn} and {@link onRegisteredUser}.
+ *
+ * Customize using {@link buttonProps}, {@link loginButtonProps} etc.
  *
  * Children can be supplied to the forms: {@link registerChildren}, {@link confirmChildren}, {@link forgotChildren}, {@link loginChildren}
  */

@@ -96,10 +96,12 @@ With success callback
 	Amplify.configure(amplify);
 
 	export const MyComp => () => (
-	   <CognitoLogin
-          onLoggedIn={(user) => {
-            Alert.alert('Logged in', 'Welcome ' + user.getUsername());
-          }} />
+		<CognitoLogin
+			onRegisteredUser={(user) => {
+				Alert.alert('Registration complete', 'Thank you ' + user.getUsername());
+			}}
+			onLoggedIn={(user) => {
+				Alert.alert('Logged in', 'Welcome ' + user.getUsername());			}} />
 	);
 ```
 
