@@ -45,10 +45,10 @@ export class ForgotForm extends React.Component<IForgotFormProps> {
       <View style={[styles.container]} testID={this.props.testID}>
         {this.props.children}
         <CrossEditor
-          label="E-mail"
-          placeholder="E-mail"
-          autoCapitalize="none"
-          clearButtonMode="always"
+          label='E-mail'
+          placeholder='E-mail'
+          autoCapitalize='none'
+          clearButtonMode='always'
           autoCorrect={false}
           value={this.props.initialEmail || ''}
           onChangeText={(text: string) => this.props.onEmailChanged(text)}
@@ -58,8 +58,8 @@ export class ForgotForm extends React.Component<IForgotFormProps> {
           style={styles.marginTop10}
           buttonStyle={styles.buttonStyle}
           onPress={this.props.onSubmit}
-          mode="contained"
-          title="Reset password"
+          mode='contained'
+          title='Reset password'
           backgroundColor={Colors.NextButton}
           {...this.props.buttonProps}
         />

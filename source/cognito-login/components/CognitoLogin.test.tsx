@@ -1,13 +1,12 @@
 // https://itnext.io/testing-react-16-3-components-with-react-test-renderer-without-enzyme-d9c65d689e88
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import CognitoLogin from './CognitoLogin';
 import _ from 'lodash';
 import { ICognitoLoginState } from './ICognitoLoginState';
 import OnForgotPassword from '../../events/OnForgotPassword';
-
-jest.unmock('react-native');
-jest.unmock('./CognitoLogin');
+import { ICognitoLoginProps } from './ICognitoLoginProps';
+import { CognitoUser, CognitoUserPool } from 'amazon-cognito-identity-js';
+import { Auth } from 'aws-amplify';
 
 // Default export requires this type of mocking
 // jest.mock('react-native-stager', () => ({
@@ -19,49 +18,62 @@ jest.unmock('./CognitoLogin');
 // }));
 
 describe('components', () => {
-  beforeAll(() => {
-    jest.resetAllMocks();
-    jest.setTimeout(10000);
-  });
-
   describe('<CognitoLogin />', () => {
-    it('Component should render', () => {
-      const wrapper = TestRenderer.create(<CognitoLogin />);
+    beforeAll(() => {
+      jest.unmock('react-native');
+      jest.unmock('./CognitoLogin');
+
+      jest.setTimeout(10000);
+    });
+
+    const GetDefaultCognitoLogin = async (
+      props?: ICognitoLoginProps | undefined
+    ) => {
+      const { CognitoLogin } = await import('./CognitoLogin');
+      const wrapper = TestRenderer.create(<CognitoLogin {...props} />);
+      return wrapper;
+    };
+
+    it('Component should render', async () => {
+      const wrapper = await GetDefaultCognitoLogin();
       expect(wrapper.toJSON()).toMatchSnapshot();
     });
 
-    it('`state.userInput` should be defined', () => {
-      const wrapper = TestRenderer.create(<CognitoLogin />);
+    it('`state.userInput` should be defined', async () => {
+      const wrapper = await GetDefaultCognitoLogin();
       expect(wrapper.root.instance.state.userInput).toBeDefined();
     });
 
-    it('`state.userInput.email` should be `undefined`', () => {
-      const wrapper = TestRenderer.create(<CognitoLogin />);
+    it('`state.userInput.email` should be `undefined`', async () => {
+      const wrapper = await GetDefaultCognitoLogin();
       expect(wrapper.root.instance.state.userInput.email).toBeUndefined();
     });
 
-    it('`state.userInput.password` should be `undefined`', () => {
-      const wrapper = TestRenderer.create(<CognitoLogin />);
+    it('`state.userInput.password` should be `undefined`', async () => {
+      const wrapper = await GetDefaultCognitoLogin();
       expect(wrapper.root.instance.state.userInput.password).toBeUndefined();
     });
 
-    it('`state.userInput.formState` should be `Login`', () => {
-      const wrapper = TestRenderer.create(<CognitoLogin />);
+    it('`state.userInput.formState` should be `Login`', async () => {
+      const wrapper = await GetDefaultCognitoLogin();
       expect(wrapper.root.instance.state.formState).toBe('Login');
     });
 
-    it('`loginButtonProps` should set button title', () => {
-      const wrapper = TestRenderer.create(
-        <CognitoLogin loginButtonProps={{ title: 'MyTitle' }} />
-      );
-
+    it('`loginButtonProps` should set button title', async () => {
+      const wrapper = await GetDefaultCognitoLogin({
+        loginButtonProps: { title: 'MyTitle' },
+      });
       const child = wrapper.root.findByProps({ iconName: 'sign-in' });
       expect(child.props.title).toBe('MyTitle');
     });
 
     describe('Component state updates', () => {
-      it('`onEmailChanged` should update state', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      beforeAll(() => {
+        jest.setTimeout(10000);
+      });
+
+      it('`onEmailChanged` should update state', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
 
         const expectedEmail = 'bogus@stuff.com';
         wrapper.root.instance.onEmailChanged(expectedEmail);
@@ -69,8 +81,8 @@ describe('components', () => {
         expect(wrapper.root.instance.state.userInput.email).toBe(expectedEmail);
       });
 
-      it('`onPasswordChanged` should update state', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('`onPasswordChanged` should update state', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
 
         const expectedPassword = 'sup3rSecre7';
         wrapper.root.instance.onPasswordChanged(expectedPassword);
@@ -80,8 +92,8 @@ describe('components', () => {
         );
       });
 
-      it('`onPhoneChanged` should update state', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('`onPhoneChanged` should update state', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
 
         const expectedInput = '+07304655556';
         wrapper.root.instance.onPhoneChanged(expectedInput);
@@ -90,7 +102,7 @@ describe('components', () => {
       });
 
       it('`onLogin` should set `state.result` to defined value', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const child = wrapper.root.findByProps({ iconName: 'sign-in' });
         await child.props.onPress();
         const result = _.get(wrapper, ['root', 'instance', 'state', 'result']);
@@ -98,8 +110,8 @@ describe('components', () => {
         expect(result).not.toBeUndefined();
       });
 
-      it('`Register` button should set `state.formState` to `Register`', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('`Register` button should set `state.formState` to `Register`', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
         const child = wrapper.root.findByProps({ title: 'Register' });
         child.props.onPress();
         const result = _.get(wrapper, [
@@ -112,8 +124,8 @@ describe('components', () => {
         expect(result).toBe('Register');
       });
 
-      it('`Forgot password` button should set `formState` to `Forgot`', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('`Forgot password` button should set `formState` to `Forgot`', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
         const child = wrapper.root.findByProps({
           title: 'Forgot password',
         });
@@ -129,7 +141,7 @@ describe('components', () => {
       });
 
       it('`OnResetPassword` should set `formState` to `Login`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         await wrapper.root.instance.OnResetPassword();
         const result = _.get(wrapper, [
           'root',
@@ -142,7 +154,7 @@ describe('components', () => {
       });
 
       it('`ForgotPasswordAsync` should set `formState` to `NewPassword`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         await wrapper.root.instance.ForgotPasswordAsync('test@test.com');
         const result = _.get(wrapper, [
           'root',
@@ -156,7 +168,7 @@ describe('components', () => {
     });
 
     it('Error label should contain `No userPool`', async () => {
-      const wrapper = TestRenderer.create(<CognitoLogin />);
+      const wrapper = await GetDefaultCognitoLogin();
       const child = wrapper.root.findByProps({ iconName: 'sign-in' });
       await child.props.onPress();
 
@@ -165,8 +177,28 @@ describe('components', () => {
     });
 
     describe('formState Register', () => {
-      it('On save user failed `state.formState` should be `Register`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('onRegister should return user', async () => {
+        let result: any = undefined;
+        const setUser = (newUser: any) => (result = newUser);
+
+        const mockUser = new CognitoUser({
+          Username: 'bogus@test.com',
+          Pool: new CognitoUserPool({
+            UserPoolId: 'us-west-1_4g646Ssds',
+            ClientId: '3tsldf7voa1hol83o6tk3j2349',
+          }),
+        });
+
+        const spy = jest.spyOn(Auth, 'signUp').mockImplementation(() => ({
+          code: 'UserNotConfirmedException',
+          user: mockUser,
+        }));
+
+        const { CognitoLogin } = await import('./CognitoLogin');
+
+        const wrapper = TestRenderer.create(
+          <CognitoLogin onRegisteredUser={setUser} />
+        );
         const state: ICognitoLoginState = {
           formState: 'Register',
           code: 'testcode',
@@ -174,20 +206,14 @@ describe('components', () => {
           result: undefined,
         };
         wrapper.root.instance.setState(state);
-        const child = wrapper.root.findByProps({ title: 'Save' });
-        await child.props.onPress();
-        const result = _.get(wrapper, [
-          'root',
-          'instance',
-          'state',
-          'formState',
-        ]);
+        await wrapper.root.instance.onRegister();
 
-        expect(result).toBe('Register');
+        expect(result).toBeDefined();
+        spy.mockRestore();
       });
 
-      it('Cancel button should set `formState` to `Login`', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('Cancel button should set `formState` to `Login`', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
         wrapper.root.instance.setState({ formState: 'Register' });
         const child = wrapper.root.findByProps({ title: 'Cancel' });
         child.props.onPress();
@@ -203,8 +229,8 @@ describe('components', () => {
     });
 
     describe('formState ConfirmAccount', () => {
-      it('`onCodeChanged` should set `state.code`', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('`onCodeChanged` should set `state.code`', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
         wrapper.root.instance.setState({ formState: 'ConfirmAccount' });
         const child = wrapper.root.findByProps({
           testID: 'ConfirmAccountForm',
@@ -215,8 +241,8 @@ describe('components', () => {
         expect(result).toBe('testcode');
       });
 
-      it('`OnResendSignup` should pass', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('`OnResendSignup` should pass', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'ConfirmAccount',
           result: undefined,
@@ -224,14 +250,12 @@ describe('components', () => {
           userInput: { email: 'bogus@test.com', password: 'testPw' },
         };
         wrapper.root.instance.setState(state);
-        const child = wrapper.root.findByProps({
-          title: 'Resend code',
-        });
+        const child = wrapper.root.findByProps({ title: 'Resend code' });
         expect(child.props.onPress).not.toThrow();
       });
 
       it('On confirm account should set `formState` to `Login`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'ConfirmAccount',
           code: '12134243',
@@ -255,7 +279,7 @@ describe('components', () => {
       });
 
       it('When no `code` or `email` `onConfirmPress` should set `message` to `Need code and user e-mail`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'ConfirmAccount',
           code: undefined,
@@ -275,8 +299,8 @@ describe('components', () => {
     });
 
     describe('formState ConfirmMFALogin', () => {
-      it('`onCodeChanged` should set `state.code`', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('`onCodeChanged` should set `state.code`', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
         wrapper.root.instance.setState({ formState: 'ConfirmMFALogin' });
         const child = wrapper.root.findByProps({
           testID: 'ConfirmMFAForm',
@@ -288,7 +312,7 @@ describe('components', () => {
       });
 
       it('`onConfirmPress` should return `Not a valid Code`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'ConfirmMFALogin',
           code: 'testcode',
@@ -312,7 +336,7 @@ describe('components', () => {
       });
 
       it('When no `code` or `email` `onConfirmPress` should set `message` to `Please enter username and the code`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'ConfirmMFALogin',
           code: undefined,
@@ -330,8 +354,8 @@ describe('components', () => {
     });
 
     describe('formState NewPassword', () => {
-      it('`onCodeChanged` should set `state.code`', () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+      it('`onCodeChanged` should set `state.code`', async () => {
+        const wrapper = await GetDefaultCognitoLogin();
         wrapper.root.instance.setState({ formState: 'NewPassword' });
         const child = wrapper.root.findByProps({
           testID: 'PasswordForm',
@@ -343,7 +367,7 @@ describe('components', () => {
       });
 
       it('On save password should set formState to `Login`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'NewPassword',
           result: undefined,
@@ -366,7 +390,7 @@ describe('components', () => {
       });
 
       it('When no `code` or `email` `onSavePress` should set `message` to `Need code and user e-mail`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'NewPassword',
           code: undefined,
@@ -384,8 +408,12 @@ describe('components', () => {
     });
 
     describe('formState Forgot', () => {
+      beforeAll(() => {
+        jest.setTimeout(10000);
+      });
+
       it('When no `code` or `email` `onSavePress` should set `message` to `Need code and user e-mail`', async () => {
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'Forgot',
           code: undefined,
@@ -406,7 +434,7 @@ describe('components', () => {
         jest.mock('react-native', {
           Alert: { alert: OnForgotPassword('bogus@test.com') },
         });
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'Forgot',
           result: undefined,
@@ -414,9 +442,7 @@ describe('components', () => {
           userInput: { email: 'bogus@test.com', password: 'testPw' },
         };
         wrapper.root.instance.setState(state);
-        const child = wrapper.root.findByProps({
-          testID: 'ForgotForm',
-        });
+        const child = wrapper.root.findByProps({ testID: 'ForgotForm' });
         expect(await child.props.onSubmit).not.toThrow();
       });
 
@@ -425,7 +451,7 @@ describe('components', () => {
         jest.mock('react-native', {
           Alert: jest.fn,
         });
-        const wrapper = TestRenderer.create(<CognitoLogin />);
+        const wrapper = await GetDefaultCognitoLogin();
         const state: ICognitoLoginState = {
           formState: 'Forgot',
           result: undefined,

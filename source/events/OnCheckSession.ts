@@ -17,7 +17,7 @@ export const OnCheckSession = async (
     session = await Auth.currentSession();
   }
 
-  let user = session instanceof CognitoUser ? session : null;
+  let user = session instanceof CognitoUser ? session : undefined;
   if (_.get(session, 'user') && session.user instanceof CognitoUser) {
     user = session.user;
   }
@@ -80,6 +80,7 @@ export const OnCheckSession = async (
   ) {
     result = {
       state: 'ConfirmAccountCodeWaiting',
+      user: (user as CognitoUser) || (session as CognitoUser) || undefined,
       error: new Error(_.get(session, 'message') || 'User not confirmed'),
     };
 

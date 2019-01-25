@@ -16,6 +16,11 @@ export interface ICognitoLoginProps {
   onLoggedIn?: (user: CognitoUser) => void;
 
   /**
+   * Occurs when the user was succcessfully registered and carries the user object.
+   */
+  onRegisteredUser?: (user: CognitoUser) => void;
+
+  /**
    * Optional props to customize all buttons. Typically used to change the `mode` prop.
    *
    * Read more:

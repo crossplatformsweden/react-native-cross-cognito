@@ -221,6 +221,10 @@ export class CognitoLogin extends React.Component<
     const result = await OnRegister(this.state.userInput);
     if (__DEV__) console.log('**** OnRegister result: ', result);
 
+    if (result.user && this.props.onRegisteredUser) {
+      this.props.onRegisteredUser(result.user);
+    }
+
     this.setState({ result }, this.onResultChanged);
   }
 
