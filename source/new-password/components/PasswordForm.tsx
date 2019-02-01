@@ -63,6 +63,7 @@ export class PasswordForm extends React.Component<IPasswordFormProps> {
       <View style={[styles.container]} testID={this.props.testID}>
         {this.props.children}{' '}
         <CrossEditor
+          testID='email'
           label='E-mail'
           placeholder='E-mail'
           autoCapitalize='none'
@@ -73,6 +74,7 @@ export class PasswordForm extends React.Component<IPasswordFormProps> {
           {...this.props.emailInputProps}
         />
         <CrossEditor
+          testID='code'
           label='Confirmation code'
           placeholder='Enter the code that was sent to you'
           autoCapitalize='none'
@@ -83,6 +85,7 @@ export class PasswordForm extends React.Component<IPasswordFormProps> {
           {...this.props.codeInputProps}
         />
         <CrossEditor
+          testID='password'
           label='New Password'
           clearButtonMode='always'
           secureTextEntry

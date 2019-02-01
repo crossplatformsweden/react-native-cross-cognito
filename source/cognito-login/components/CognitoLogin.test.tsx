@@ -67,6 +67,14 @@ describe('components', () => {
       expect(child.props.title).toBe('MyTitle');
     });
 
+    it('activeForm prop should update state', async () => {
+      const wrapper = await GetDefaultCognitoLogin({
+        activeForm: 'Forgot',
+      });
+      const newState = wrapper.root.instance.state;
+      expect(newState.formState).toBe('Forgot');
+    });
+
     describe('Component state updates', () => {
       beforeAll(() => {
         jest.setTimeout(10000);

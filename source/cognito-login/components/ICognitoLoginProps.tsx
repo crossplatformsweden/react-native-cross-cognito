@@ -2,6 +2,7 @@ import { ICrossButtonProps } from 'react-native-cross-components';
 import { ICrossEditorProps } from 'react-native-cross-components';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import { ReactNode } from 'react';
+import { LoginCurrentForm } from '../types';
 import { ITestIDProps } from '../../types';
 import { StyleProp, ViewStyle } from 'react-native';
 /**
@@ -31,6 +32,11 @@ export interface ICognitoLoginProps extends ITestIDProps {
    * Occurs when the user was succcessfully registered and carries the user object.
    */
   onRegisteredUser?: (user: CognitoUser) => void;
+
+  /**
+   * Sets the active form. Read more: {@link AuthFormState}
+   */
+  activeForm?: LoginCurrentForm | undefined;
 
   /**
    * Optional props to customize all buttons. Typically used to change the `mode` prop.

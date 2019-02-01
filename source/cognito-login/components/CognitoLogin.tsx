@@ -29,12 +29,26 @@ import { OnConfirmPassword } from '../../events/OnConfirmPassword';
  *
  * Children can be supplied for the this component as well as child components. See {@link ICognitoLoginProps}.
  *
+ * Active form can be controlled using {@link ICognitoLoginProps.activeForm} prop.
+ *
  * Remarks:
  * * Requires Amplify to be configured:
  *
  * https://aws-amplify.github.io/docs/js/start?ref=amplify-rn-btn&platform=react-native#step-4-integrate-aws-resources
  *
  * Props are {@link ICognitoLoginProps}
+ *
+ * @example <caption>Initial form and callback</caption>
+ *  <CognitoLogin
+ *    activeForm='Register'
+ *    onRegisteredUser={(user) => {
+ *      Alert.alert('Registration complete', 'Thank you ' + user.getUsername());
+ *    }}
+ *    onLoggedIn={(user) => {
+ *      Alert.alert('Logged in', 'Welcome ' + user.getUsername());
+ *    }}>
+ *     <Text>Custom layouts here</Text>
+ *  </CognitoLogin>
  *
  * @example <caption>With custom button props and callback</caption>
  *  <CognitoLogin
@@ -87,6 +101,22 @@ export class CognitoLogin extends React.Component<
       code: undefined,
       message: undefined,
     };
+  }
+
+  static getDerivedStateFromProps(
+    props: ICognitoLoginProps,
+    state: ICognitoLoginState
+  ) {
+    // This is an anti-pattern but only way to let outsider control state
+    if (props.activeForm && props.activeForm != state.formState) {
+      const newState: ICognitoLoginState = {
+        ...state,
+        formState: props.activeForm,
+      };
+      return newState;
+    }
+
+    return null;
   }
 
   /**
