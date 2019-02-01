@@ -97,26 +97,10 @@ export class CognitoLogin extends React.Component<
     this.state = {
       result: undefined,
       userInput: { email: undefined, password: undefined },
-      formState: 'Login',
+      formState: this.props.activeForm || 'Login',
       code: undefined,
       message: undefined,
     };
-  }
-
-  static getDerivedStateFromProps(
-    props: ICognitoLoginProps,
-    state: ICognitoLoginState
-  ) {
-    // This is an anti-pattern but only way to let outsider control state
-    if (props.activeForm && props.activeForm != state.formState) {
-      const newState: ICognitoLoginState = {
-        ...state,
-        formState: props.activeForm,
-      };
-      return newState;
-    }
-
-    return null;
   }
 
   /**
